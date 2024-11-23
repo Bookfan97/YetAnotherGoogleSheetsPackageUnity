@@ -1,0 +1,16 @@
+{
+  "name": "com.definitiveinfinitymedia.googlesheets",
+  "version": "0.0.0",
+  "displayName": "Google Sheets",
+  "description": "A package for Unity that syncs data between a local csv and the Google Sheet",
+  "unity": "2021.1",
+  "documentationUrl": "https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/manual/",
+  "changelogUrl": "https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/CHANGELOG",
+  "licensesUrl": "https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/LICENSE",
+  "author": {
+    "name": "Definitive Infinity Media"
+  },
+  "dependencies": {
+    "com.unity.localization": "1.5.3"
+  }
+}

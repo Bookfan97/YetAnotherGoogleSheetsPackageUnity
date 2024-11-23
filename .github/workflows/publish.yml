@@ -1,0 +1,100 @@
+name: Pull Request
+
+on: 
+  push:
+    branches:
+      - main
+  
+jobs:
+  build:
+    permissions: 
+      repository-projects: write
+      contents: write
+      pull-requests: write
+      packages: write
+      pages: write
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - uses: actions/checkout@v4
+    
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '12.x'
+    
+    # Tag 
+    - name:  'Automated Version Bump'
+      uses:  'phips28/gh-action-bump-version@master'
+      env:
+        GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+
+    - name: 'Get Previous tag'
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"     
+    
+    - name: Update CHANGELOG
+      id: changelog
+      uses: requarks/changelog-action@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ steps.previoustag.outputs.tag }}
+
+    # Commit & push the updated semver number back into the repo. Yes, you have to fetch & pull in your local workstation after this step is done.
+    - name: Push changed files back to repo
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: 'ci: bumps version to ${{ steps.previoustag.outputs.tag }} [skip ci]'
+        commit_options: "--no-verify --signoff"       
+   
+    #Documentation
+    - name: Build
+      uses: CaseyHofland/docfx-unitypackage@v1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: _site
+
+    #Build the Package
+    - name: get version
+      id: version
+      uses: notiz-dev/github-action-json-property@master
+      with: 
+        path: "./package.json"
+        prop_path: "version"
+    
+    - run: echo ${{steps.version.outputs.prop}} 
+
+    - name: Set Environment Variables
+      run: |
+        echo "zipFile=com.definitiveinfinitymedia.googlesheets-${{ steps.version.outputs.prop }}".zip >> $GITHUB_ENV
+        echo "unityPackage=com.definitiveinfinitymedia.googlesheets-${{ steps.version.outputs.prop }}.unitypackage" >> $GITHUB_ENV
+    
+    - name: Create Zip
+      uses: thedoctor0/zip-release@master
+      with:
+        type: "zip"
+        directory: "./"
+        filename: "./${{env.zipFile}}" # make the zip file two directories up, since we start two directories in above
+        
+    - run: find "./" -name \*.meta >> metaList
+        
+    - name: Create UnityPackage
+      uses: pCYSl5EDgo/create-unitypackage@master
+      with:
+        package-path: com.definitiveinfinitymedia.googlesheets
+        include-files: metaList
+    
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        draft: false
+        name: ${{ steps.version.outputs.prop }}
+        body: ${{ steps.changelog.outputs.changes }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ steps.previoustag.outputs.tag }}

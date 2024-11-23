@@ -1,0 +1,23 @@
+{
+  "name": "com.definitiveinfinitymedia.googlesheets.Editor",
+  "rootNamespace": "",
+  "references": [
+    "GUID:f714f5a1a66a44628c69d24d31158ed5",
+    "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+    "GUID:2e77701fe0ceda44fb763f03ee704c37",
+    "GUID:f4dea7fcb51cdfb4aa526b9274bd58f3"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": true,
+  "precompiledReferences": [
+    "Unity.Localization.ThirdParty.Editor.dll"
+  ],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
