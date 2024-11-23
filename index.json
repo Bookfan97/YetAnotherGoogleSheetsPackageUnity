@@ -1,0 +1,82 @@
+{
+  "api/Editor.Google_Sheets.GoogleSheetsConfig.html": {
+    "href": "api/Editor.Google_Sheets.GoogleSheetsConfig.html",
+    "title": "Class GoogleSheetsConfig | Google Sheets | 1.0.0",
+    "keywords": "Class GoogleSheetsConfig Namespace Editor.Google_Sheets Represents the configuration settings for accessing and using the Google Sheets API. public class GoogleSheetsConfig : IGoogleSheetsService Inheritance object GoogleSheetsConfig Properties Service Gets the instance of the SheetsService used for interacting with the Google Sheets API. public SheetsService Service { get; } Property Value SheetsService Remarks This property is initialized via the InitializeGoogleSheetsService() method, which sets up the necessary credentials and scopes required to utilize the Google Sheets API. Methods InitializeGoogleSheetsService() Initializes the Google Sheets service instance with the necessary credentials and scopes. public void InitializeGoogleSheetsService() Remarks This method reads the client secret JSON path from the Google Sheets settings, creates credentials, and assigns them to a new instance of the SheetsService. This service instance is then used for subsequent API interactions such as uploading and downloading data from Google Sheets."
+  },
+  "api/Editor.Google_Sheets.GoogleSheetsDownloader.html": {
+    "href": "api/Editor.Google_Sheets.GoogleSheetsDownloader.html",
+    "title": "Class GoogleSheetsDownloader | Google Sheets | 1.0.0",
+    "keywords": "Class GoogleSheetsDownloader Namespace Editor.Google_Sheets Responsible for downloading data from a specified Google Sheets spreadsheet. public class GoogleSheetsDownloader Inheritance object GoogleSheetsDownloader Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Methods DownloadData() Downloads data from the Google Sheets spreadsheet specified in the project settings. public void DownloadData() Remarks This method initializes the Google Sheets service, retrieves the spreadsheet data, and then generates a CSV file from the downloaded data. If an error occurs during the download, an error message is logged and the exception is rethrown. Exceptions Exception Thrown when an error occurs during the download process."
+  },
+  "api/Editor.Google_Sheets.GoogleSheetsInstance.html": {
+    "href": "api/Editor.Google_Sheets.GoogleSheetsInstance.html",
+    "title": "Class GoogleSheetsInstance | Google Sheets | 1.0.0",
+    "keywords": "Class GoogleSheetsInstance Namespace Editor.Google_Sheets Manages the interactions with Google Sheets by providing functionalities for uploading and downloading data. public class GoogleSheetsInstance Inheritance object GoogleSheetsInstance Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Methods DownloadData() Downloads data from a Google Sheets spreadsheet to a local CSV file. public void DownloadData() UploadData() Uploads data from a local CSV file to a Google Sheets spreadsheet. public void UploadData()"
+  },
+  "api/Editor.Google_Sheets.GoogleSheetsUploader.html": {
+    "href": "api/Editor.Google_Sheets.GoogleSheetsUploader.html",
+    "title": "Class GoogleSheetsUploader | Google Sheets | 1.0.0",
+    "keywords": "Class GoogleSheetsUploader Namespace Editor.Google_Sheets A utility class that handles the uploading of data from a local CSV file to a Google Sheets spreadsheet. This class reads CSV data from a configured file path and uses the Google Sheets API to paste the data into a specified spreadsheet. public class GoogleSheetsUploader Inheritance object GoogleSheetsUploader Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Methods UploadData() Uploads data from a local CSV file to a specified Google Sheets spreadsheet. public void UploadData() Remarks This method reads the contents of a CSV file located at the path specified in the project settings. It then uses the Google Sheets API to paste this data into the first sheet of the spreadsheet. The method logs an error if the update fails."
+  },
+  "api/Editor.Google_Sheets.html": {
+    "href": "api/Editor.Google_Sheets.html",
+    "title": "Namespace Editor.Google_Sheets | Google Sheets | 1.0.0",
+    "keywords": "Namespace Editor.Google_Sheets Classes GoogleSheetsConfig Represents the configuration settings for accessing and using the Google Sheets API. GoogleSheetsDownloader Responsible for downloading data from a specified Google Sheets spreadsheet. GoogleSheetsInstance Manages the interactions with Google Sheets by providing functionalities for uploading and downloading data. GoogleSheetsUploader A utility class that handles the uploading of data from a local CSV file to a Google Sheets spreadsheet. This class reads CSV data from a configured file path and uses the Google Sheets API to paste the data into a specified spreadsheet."
+  },
+  "api/Editor.MenuItems.html": {
+    "href": "api/Editor.MenuItems.html",
+    "title": "Class MenuItems | Google Sheets | 1.0.0",
+    "keywords": "Class MenuItems Namespace Editor Represents a collection of menu items in the editor. This class provides functionality to manage and interact with the menu items. public static class MenuItems Inheritance object MenuItems Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString()"
+  },
+  "api/Editor.Project_Settings.GoogleSheetsEditorUtilities.html": {
+    "href": "api/Editor.Project_Settings.GoogleSheetsEditorUtilities.html",
+    "title": "Class GoogleSheetsEditorUtilities | Google Sheets | 1.0.0",
+    "keywords": "Class GoogleSheetsEditorUtilities Namespace Editor.Project_Settings Provides utility functions for managing Google Sheets integration within the Unity Editor. public static class GoogleSheetsEditorUtilities Inheritance object GoogleSheetsEditorUtilities Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Methods CheckValidInformation() Checks if the Google Sheets configuration contains valid information. Ensures that the Spreadsheet ID, CSV path, and JSON path are correctly set and valid. public static bool CheckValidInformation() Returns bool Returns true if all information is valid, otherwise false. IsValidSpreadsheetID() Validates whether the Spreadsheet ID is correctly set and not empty. public static bool IsValidSpreadsheetID() Returns bool Returns true if the Spreadsheet ID is valid, otherwise false. MissingDataPopup(string) Displays a popup with the specified message indicating missing data for Google Sheets integration. Provides options to open project settings or close the popup. public static void MissingDataPopup(string message) Parameters message string The message to be displayed in the popup."
+  },
+  "api/Editor.Project_Settings.GoogleSheetsSettings.html": {
+    "href": "api/Editor.Project_Settings.GoogleSheetsSettings.html",
+    "title": "Class GoogleSheetsSettings | Google Sheets | 1.0.0",
+    "keywords": "Class GoogleSheetsSettings Namespace Editor.Project_Settings Provides settings related to Google Sheets integration within the Unity Editor. public class GoogleSheetsSettings : ScriptableSingleton<GoogleSheetsSettings> Inheritance object GoogleSheetsSettings Fields k_JSONEditorPref The key used to store and retrieve the Google Sheets Client Secret JSON path in Editor preferences. This key ensures the correct path is stored for accessing Google Sheets API. public string k_JSONEditorPref Field Value string Properties ClientSecretJsonPath The path to the Client Secret JSON file required for Google Sheets API authentication. This path is retrieved from the Editor preferences and is essential for accessing Google Sheets services. public string ClientSecretJsonPath { get; } Property Value string CsvPath The file path to the CSV file generated from the Google Sheet spreadsheet. This path is used to read from and write the CSV file during upload and download operations. public string CsvPath { get; set; } Property Value string SpreadsheetID The unique identifier for the Google Spreadsheet. This ID is needed to access, download, and upload data to the Google Sheets document associated with the project. public string SpreadsheetID { get; set; } Property Value string Methods GetDefaultPath() Returns the default file path used in GoogleSheetsSettings. public string GetDefaultPath() Returns string A string representing the default path, \"Assets/Data\"."
+  },
+  "api/Editor.Project_Settings.GoogleSheetsSettingsProvider.html": {
+    "href": "api/Editor.Project_Settings.GoogleSheetsSettingsProvider.html",
+    "title": "Class GoogleSheetsSettingsProvider | Google Sheets | 1.0.0",
+    "keywords": "Class GoogleSheetsSettingsProvider Namespace Editor.Project_Settings Provides project settings for interacting with Google Sheets within Unity. public class GoogleSheetsSettingsProvider : SettingsProvider Inheritance object GoogleSheetsSettingsProvider Methods CreateSettingsProvider() Creates and returns a settings provider for Google Sheets project settings in Unity Editor. public static SettingsProvider CreateSettingsProvider() Returns SettingsProvider A settings provider configured for Google Sheets project settings. OnGUI(string) Renders the settings user interface for the Google Sheets settings provider in Unity's Project Settings. public override void OnGUI(string searchContext) Parameters searchContext string A search field to filter the settings displayed in the Project Settings window."
+  },
+  "api/Editor.Project_Settings.html": {
+    "href": "api/Editor.Project_Settings.html",
+    "title": "Namespace Editor.Project_Settings | Google Sheets | 1.0.0",
+    "keywords": "Namespace Editor.Project_Settings Classes GoogleSheetsEditorUtilities Provides utility functions for managing Google Sheets integration within the Unity Editor. GoogleSheetsSettings Provides settings related to Google Sheets integration within the Unity Editor. GoogleSheetsSettingsProvider Provides project settings for interacting with Google Sheets within Unity."
+  },
+  "api/Editor.html": {
+    "href": "api/Editor.html",
+    "title": "Namespace Editor | Google Sheets | 1.0.0",
+    "keywords": "Namespace Editor Classes MenuItems Represents a collection of menu items in the editor. This class provides functionality to manage and interact with the menu items."
+  },
+  "api/index.html": {
+    "href": "api/index.html",
+    "title": "| Google Sheets | 1.0.0",
+    "keywords": "This is the documentation for the Scripting APIs of this package."
+  },
+  "changelog/CHANGELOG.html": {
+    "href": "changelog/CHANGELOG.html",
+    "title": "Changelog | Google Sheets | 1.0.0",
+    "keywords": "Changelog All notable changes to this project will be documented in this file. The format is based on Keep a Changelog, and this project adheres to Semantic Versioning. [0.0.0] - 2022-11-23 Added Package Setup"
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "| Google Sheets | 1.0.0",
+    "keywords": "This page redirects to the manual."
+  },
+  "license/LICENSE.html": {
+    "href": "license/LICENSE.html",
+    "title": "| Google Sheets | 1.0.0",
+    "keywords": "MIT License Copyright (c) 2024 Noah Day Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+  },
+  "manual/index.html": {
+    "href": "manual/index.html",
+    "title": "| Google Sheets | 1.0.0",
+    "keywords": "Yet Another Google Sheets Package for Unity A package for Unity that syncs data between a local csv and the Google Sheet Explore the docs » Report Bug · Request Feature Table of Contents About The Project Getting Started Prerequisites Installation Usage Roadmap Contributing License Contact Acknowledgments About The Project This package was inspired by a video from Dan Pos, where he implemented a similar system using the Python Scripting package. However, this package is being deprecated in Unity 6.1. I wanted to use this similar system, but rewrite it using native C# code in the editor. This package uses the .dll from the Localization package for the Google Sheets API. (back to top) Getting Started This is an example of how you may give instructions on setting up your project locally. To get a local copy up and running follow these simple example steps. Prerequisites Create Project: https://console.cloud.google.com/projectcreate Once the project is created, open the project in the dashboard. Then select APIS and Services -> Google Drive API, and enable this permission. While under the API & Services Page, select on the left Credentials->Manage Service Accounts and create a service account. Keep in mind to make this account the owner. Once the account is created, in the dropdown select Manage Keys then Add Key. For the key type, select JSON as this will be used in the Editor to verify the account. Share the spreadsheet to the email address created with the service account, with the editor role. Enable API: https://console.cloud.google.com/apis/api/sheets.googleapis.com Get Spreadsheet ID from the URL: https://docs.google.com/spreadsheets/d/[Your Spreadhseet ID Here]/edit?gid=0#gid=0 Installation Use UPM to install the package via the following git URL: https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity.git or download and import the unity package manually. Set the correct variables in either the project settings or Tools > Google Sheets > Open Preferences (back to top) Usage Syncing Data between Unity Editor and a Google Spreadsheet (back to top) Roadmap [X] Upload/Download Support [ ] CSV -> Scriptable Objects Support [ ] Multiple Sheet Support [ ] Sheet Styling See the open issues for a full list of proposed features (and known issues). (back to top) Contributing Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag \"enhancement\". Don't forget to give the project a star! Thanks again! Fork the Project Create your Feature Branch (git checkout -b feature/AmazingFeature) Commit your Changes (git commit -m 'Add some AmazingFeature') Push to the Branch (git push origin feature/AmazingFeature) Open a Pull Request (back to top) Top contributors: License Distributed under the MIT License. See LICENSE.txt for more information. (back to top) Contact Project Link: https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity (back to top) Acknowledgments Original Video from Dan Pos (back to top)"
+  }
+}
