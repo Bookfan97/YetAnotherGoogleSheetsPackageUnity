@@ -26,7 +26,7 @@ namespace Editor
         private static void OpenSheet()
         {
             if (!GoogleSheetsEditorUtilities.IsValidSpreadsheetID()) return;
-            GoogleSheets.OpenSheetInBrowser(GoogleSheetsSettings.instance.SpreadsheetID);
+            GoogleSheets.OpenSheetInBrowser(GoogleSheetsHelper.GoogleSheetsCustomSettings.MSpreadsheetID);
         }
 
         /// <summary>

@@ -8,8 +8,8 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-
-
+<a href='https://ko-fi.com/U7U2WUGIS' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<a href="https://www.buymeacoffee.com/ndaygamedev" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 36px !important;width: 160px !important;" ></a>
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -85,9 +85,9 @@ Share the spreadsheet to the email address created with the service account, wit
 
 Enable API: https://console.cloud.google.com/apis/api/sheets.googleapis.com
 
-Get Spreadsheet ID from the URL:
+Get Spreadsheet ID and the Sheet IDs from the URL:
   ```
-  https://docs.google.com/spreadsheets/d/[Your Spreadhseet ID Here]/edit?gid=0#gid=0
+  https://docs.google.com/spreadsheets/d/[Your Spreadsheet ID Here]/edit?gid=[Your Sheet ID Here]]#gid=[Your Sheet ID Here]]
   ```
 
 ### Installation
