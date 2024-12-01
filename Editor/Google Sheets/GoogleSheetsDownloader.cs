@@ -26,13 +26,13 @@ namespace Editor.Google_Sheets
             config.InitializeGoogleSheetsService();
             try
             {
-                var spreadsheet = config.Service.Spreadsheets.Get(GoogleSheetsSettings.instance.SpreadsheetID);
+                var spreadsheet = config.Service.Spreadsheets.Get(GoogleSheetsHelper.GoogleSheetsCustomSettings.MSpreadsheetID);
                 spreadsheet.IncludeGridData = true;
                 var spreadsheetData = spreadsheet.Execute();
 
                 if (spreadsheetData == null)
                 {
-                    Debug.LogError($"Failed to download spreadsheet: {GoogleSheetsSettings.instance.SpreadsheetID}");
+                    Debug.LogError($"Failed to download spreadsheet: {GoogleSheetsHelper.GoogleSheetsCustomSettings.MSpreadsheetID}");
                     return;
                 }
 
@@ -62,7 +62,7 @@ namespace Editor.Google_Sheets
                     csvContents += rowContents + "\n";
                 }
 
-                File.WriteAllText(GoogleSheetsSettings.instance.CsvPath, csvContents);
+                File.WriteAllText(GoogleSheetsHelper.GoogleSheetsCustomSettings.CsvPath, csvContents);
             }
             catch (Exception e)
             {

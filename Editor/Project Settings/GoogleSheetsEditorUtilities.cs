@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Editor.Google_Sheets;
 using UnityEditor;
 
 namespace Editor.Project_Settings
@@ -27,7 +28,7 @@ namespace Editor.Project_Settings
         /// <returns>Returns true if the Spreadsheet ID is valid, otherwise false.</returns>
         public static bool IsValidSpreadsheetID()
         {
-            if (!string.IsNullOrEmpty(GoogleSheetsSettings.instance.SpreadsheetID)) return true;
+            if (!string.IsNullOrEmpty(GoogleSheetsHelper.GoogleSheetsCustomSettings.MSpreadsheetID)) return true;
             MissingDataPopup("SpreadsheetID is missing");
             return false;
         }
@@ -39,9 +40,9 @@ namespace Editor.Project_Settings
         /// <returns>Returns true if the CSV path is valid, otherwise false.</returns>
         private static bool IsValidCSV()
         {
-            var ext = Path.GetExtension(GoogleSheetsSettings.instance.CsvPath);
-            if (string.IsNullOrEmpty(GoogleSheetsSettings.instance.CsvPath) ||
-                GoogleSheetsSettings.instance.CsvPath == GoogleSheetsSettings.instance.GetDefaultPath())
+            var ext = Path.GetExtension(GoogleSheetsHelper.GoogleSheetsCustomSettings.CsvPath);
+            if (string.IsNullOrEmpty(GoogleSheetsHelper.GoogleSheetsCustomSettings.CsvPath) ||
+                GoogleSheetsHelper.GoogleSheetsCustomSettings.CsvPath == GoogleSheetsHelper.GoogleSheetsCustomSettings.GetDefaultPath())
             {
                 MissingDataPopup("Data CSV is missing");
                 return false;
@@ -62,9 +63,9 @@ namespace Editor.Project_Settings
         /// <returns>Returns true if the Client Secret JSON path is valid, otherwise false.</returns>
         private static bool IsValidJSON()
         {
-            var ext = Path.GetExtension(GoogleSheetsSettings.instance.ClientSecretJsonPath);
-            if (string.IsNullOrEmpty(GoogleSheetsSettings.instance.ClientSecretJsonPath) ||
-                GoogleSheetsSettings.instance.ClientSecretJsonPath == GoogleSheetsSettings.instance.GetDefaultPath())
+            var ext = Path.GetExtension(GoogleSheetsHelper.GoogleSheetsCustomSettings.ClientSecretJsonPath);
+            if (string.IsNullOrEmpty(GoogleSheetsHelper.GoogleSheetsCustomSettings.ClientSecretJsonPath) ||
+                GoogleSheetsHelper.GoogleSheetsCustomSettings.ClientSecretJsonPath == GoogleSheetsHelper.GoogleSheetsCustomSettings.GetDefaultPath())
             {
                 MissingDataPopup("Client Secret JSON is missing");
                 return false;

@@ -26,7 +26,7 @@ namespace Editor.Google_Sheets
             var config = new GoogleSheetsConfig();
             config.InitializeGoogleSheetsService();
 
-            var csvContents = File.ReadAllText(GoogleSheetsSettings.instance.CsvPath);
+            var csvContents = File.ReadAllText(GoogleSheetsHelper.GoogleSheetsCustomSettings.CsvPath);
 
             var requestBody = new BatchUpdateSpreadsheetRequest
             {
@@ -49,12 +49,12 @@ namespace Editor.Google_Sheets
             };
 
             var batchUpdateReq =
-                config.Service.Spreadsheets.BatchUpdate(requestBody, GoogleSheetsSettings.instance.SpreadsheetID);
+                config.Service.Spreadsheets.BatchUpdate(requestBody, GoogleSheetsHelper.GoogleSheetsCustomSettings.MSpreadsheetID);
             try
             {
                 var batchUpdateSpreadsheetResponse = batchUpdateReq.Execute();
                 if (batchUpdateSpreadsheetResponse == null)
-                    Debug.LogError($"Failed to update spreadsheet: {GoogleSheetsSettings.instance.SpreadsheetID}");
+                    Debug.LogError($"Failed to update spreadsheet: {GoogleSheetsHelper.GoogleSheetsCustomSettings.MSpreadsheetID}");
             }
             catch (Exception e)
             {

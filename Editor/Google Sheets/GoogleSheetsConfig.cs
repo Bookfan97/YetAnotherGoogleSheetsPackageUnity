@@ -48,7 +48,7 @@ namespace Editor.Google_Sheets
         {
             try
             {
-                var credentials = GoogleCredential.FromFile(GoogleSheetsSettings.instance.ClientSecretJsonPath)
+                var credentials = GoogleCredential.FromFile(GoogleSheetsHelper.GoogleSheetsCustomSettings.ClientSecretJsonPath)
                     .CreateScoped(_scopes);
 
                 Service = new SheetsService(new BaseClientService.Initializer
