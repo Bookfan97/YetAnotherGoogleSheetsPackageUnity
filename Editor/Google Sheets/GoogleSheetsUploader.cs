@@ -28,7 +28,7 @@ namespace Editor.Google_Sheets
             config.InitializeGoogleSheetsService();
             List<Request> requests = new List<Request>();
 
-            foreach (DataItem data in GoogleSheetsHelper.GoogleSheetsCustomSettings.m_Data)
+            foreach (DataItem data in GoogleSheetsHelper.GoogleSheetsCustomSettings.Data)
             {
                 var csvContents = File.ReadAllText(GoogleSheetsHelper.GoogleSheetsCustomSettings.GetPathForSheet(data.key));
                 Request request = new Request()
