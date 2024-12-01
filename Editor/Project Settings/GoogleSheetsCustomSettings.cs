@@ -7,7 +7,6 @@ using Object = UnityEngine.Object;
 
 namespace Editor.Project_Settings
 {
-    // Create a new type of Settings Asset.
     public class GoogleSheetsCustomSettings : ScriptableObject
     {
         [SerializeField] public List<DataItem> m_Data;
@@ -18,14 +17,16 @@ namespace Editor.Project_Settings
         public string MSpreadsheetID => m_spreadsheetID;
 
         public string ClientSecretJsonPath => EditorPrefs.GetString(GoogleSheetsHelper.k_JSONEditorPref, "ClientSecret");
+
+        public string GetPathForSheet(int spreadsheetID)
+        {
+            return m_Data.Find(x => x.key == spreadsheetID).value;
+        }
         
         //Temporary 
-        public string CsvPath { get; set; }
+        //public string CsvPath { get; set; }
 
-        public string GetDefaultPath()
-        {
-            throw new NotImplementedException();
-        }
+        public string GetDefaultPath() => "Assets/Data";
     }
 
 // Register a SettingsProvider using IMGUI for the drawing framework:

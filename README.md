@@ -85,9 +85,9 @@ Share the spreadsheet to the email address created with the service account, wit
 
 Enable API: https://console.cloud.google.com/apis/api/sheets.googleapis.com
 
-Get Spreadsheet ID from the URL:
+Get Spreadsheet ID and the Sheet IDs from the URL:
   ```
-  https://docs.google.com/spreadsheets/d/[Your Spreadhseet ID Here]/edit?gid=0#gid=0
+  https://docs.google.com/spreadsheets/d/[Your Spreadsheet ID Here]/edit?gid=[Your Sheet ID Here]]#gid=[Your Sheet ID Here]]
   ```
 
 ### Installation

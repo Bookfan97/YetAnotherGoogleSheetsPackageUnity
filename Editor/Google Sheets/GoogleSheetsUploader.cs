@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Editor.Project_Settings;
 using Google.Apis.Sheets.v4.Data;
@@ -25,27 +26,32 @@ namespace Editor.Google_Sheets
         {
             var config = new GoogleSheetsConfig();
             config.InitializeGoogleSheetsService();
+            List<Request> requests = new List<Request>();
 
-            var csvContents = File.ReadAllText(GoogleSheetsHelper.GoogleSheetsCustomSettings.CsvPath);
+            foreach (DataItem data in GoogleSheetsHelper.GoogleSheetsCustomSettings.m_Data)
+            {
+                var csvContents = File.ReadAllText(GoogleSheetsHelper.GoogleSheetsCustomSettings.GetPathForSheet(data.key));
+                Request request = new Request()
+                {
+                    PasteData = new PasteDataRequest
+                    {
+                        Coordinate = new GridCoordinate
+                        {
+                            SheetId = data.key
+                        },
+                        Data = csvContents,
+                        Type = "PASTE_NORMAL",
+                        Delimiter = ","
+                    }
+                };
+                requests.Add(request);
+            }
+
+            
 
             var requestBody = new BatchUpdateSpreadsheetRequest
             {
-                Requests = new Request[]
-                {
-                    new()
-                    {
-                        PasteData = new PasteDataRequest
-                        {
-                            Coordinate = new GridCoordinate
-                            {
-                                SheetId = 0
-                            },
-                            Data = csvContents,
-                            Type = "PASTE_NORMAL",
-                            Delimiter = ","
-                        }
-                    }
-                }
+                Requests = requests.ToArray()
             };
 
             var batchUpdateReq =

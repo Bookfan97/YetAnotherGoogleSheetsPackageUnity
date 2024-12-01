@@ -40,9 +40,9 @@ namespace Editor.Project_Settings
         /// <returns>Returns true if the CSV path is valid, otherwise false.</returns>
         private static bool IsValidCSV()
         {
-            var ext = Path.GetExtension(GoogleSheetsHelper.GoogleSheetsCustomSettings.CsvPath);
-            if (string.IsNullOrEmpty(GoogleSheetsHelper.GoogleSheetsCustomSettings.CsvPath) ||
-                GoogleSheetsHelper.GoogleSheetsCustomSettings.CsvPath == GoogleSheetsHelper.GoogleSheetsCustomSettings.GetDefaultPath())
+            var ext = Path.GetExtension(GoogleSheetsHelper.GoogleSheetsCustomSettings.GetPathForSheet(0));
+            if (string.IsNullOrEmpty(GoogleSheetsHelper.GoogleSheetsCustomSettings.GetPathForSheet(0)) ||
+                GoogleSheetsHelper.GoogleSheetsCustomSettings.GetPathForSheet(0) == GoogleSheetsHelper.GoogleSheetsCustomSettings.GetDefaultPath())
             {
                 MissingDataPopup("Data CSV is missing");
                 return false;

@@ -25,7 +25,7 @@ namespace Editor.Google_Sheets
         /// <summary>
         ///     Represents a key for localized text.
         /// </summary>
-        public string key;
+        public int key;
 
         /// <summary>
         ///     Represents the value of a localized text item.

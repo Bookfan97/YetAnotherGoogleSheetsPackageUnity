@@ -35,8 +35,7 @@ namespace Editor.Google_Sheets
                     Debug.LogError($"Failed to download spreadsheet: {GoogleSheetsHelper.GoogleSheetsCustomSettings.MSpreadsheetID}");
                     return;
                 }
-
-                GenerateCsvFromSpreadsheet(spreadsheetData);
+                GenerateCsvsFromSpreadsheets(spreadsheetData);
             }
             catch (Exception e)
             {
@@ -50,19 +49,26 @@ namespace Editor.Google_Sheets
         /// </summary>
         /// <param name="spreadsheetData">The Google Sheets spreadsheet data to convert into a CSV file.</param>
         /// <exception cref="Exception">Thrown when an error occurs during the CSV generation process.</exception>
-        private static void GenerateCsvFromSpreadsheet(Spreadsheet spreadsheetData)
+        private static void GenerateCsvsFromSpreadsheets(Spreadsheet spreadsheetData)
         {
             try
             {
-                var csvContents = string.Empty;
-                foreach (var row in spreadsheetData.Sheets[0].Data[0].RowData)
+                foreach (var sheet in spreadsheetData.Sheets)
                 {
-                    var rowContents = string.Empty;
-                    foreach (var value in row.Values) rowContents += value.FormattedValue + ",";
-                    csvContents += rowContents + "\n";
-                }
+                    var csvContents = string.Empty;
+                    if (sheet.Properties.SheetId == null) continue;
+                    var sheetCSVPath =
+                        GoogleSheetsHelper.GoogleSheetsCustomSettings
+                            .GetPathForSheet((int)sheet.Properties.SheetId);
+                    foreach (var row in sheet.Data[0].RowData)
+                    {
+                        var rowContents = string.Empty;
+                        foreach (var value in row.Values) rowContents += value.FormattedValue + ",";
+                        csvContents += rowContents + "\n";
+                    }
 
-                File.WriteAllText(GoogleSheetsHelper.GoogleSheetsCustomSettings.CsvPath, csvContents);
+                    File.WriteAllText(sheetCSVPath, csvContents);
+                }
             }
             catch (Exception e)
             {

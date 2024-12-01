@@ -12,7 +12,7 @@
         {
             var uploader = new GoogleSheetsUploader();
             uploader.UploadData();
-        }
+        } 
 
         /// <summary>
         ///     Downloads data from a Google Sheets spreadsheet to a local CSV file.

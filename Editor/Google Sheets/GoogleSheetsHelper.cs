@@ -7,7 +7,7 @@ namespace Editor.Google_Sheets
 {
     public class GoogleSheetsHelper
     {
-        public const string k_MyCustomSettingsPath = "Assets/GoogleSheetsCustomSettings.asset";
+        private const string k_MyCustomSettingsPath = "Assets/GoogleSheetsCustomSettings.asset";
         public static string k_JSONEditorPref { get; private set; } = "DefinitiveInfinityMediaGoogleSheetsSettings_JSONPath";
 
         public static GoogleSheetsCustomSettings GoogleSheetsCustomSettings => GetOrCreateSettings();
