@@ -5,30 +5,18 @@ using UnityEngine;
 namespace Editor.Google_Sheets
 {
     /// <summary>
-    /// Holds a collection of data items fetched from Google Sheets.
-    /// </summary>
-    [SerializeField]
-    public class GoogleSheetsData
-    {
-        /// <summary>
-        /// Represents a collection of data items.
-        /// </summary>
-        public List<DataItem> items;
-    }
-
-    /// <summary>
-    ///     Represents a key-value pair for localized text.
+    ///     Represents a key-value pair for Google Sheets data.
     /// </summary>
     [Serializable]
     public class DataItem
     {
         /// <summary>
-        ///     Represents a key for localized text.
+        /// Represents the unique identifier or key in a key-value pair for Google Sheets data.
         /// </summary>
         public int key;
 
         /// <summary>
-        ///     Represents the value of a localized text item.
+        /// Represents a value corresponding to a key in a key-value pair for Google Sheets data.
         /// </summary>
         public string value;
     }
