@@ -1,98 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Google_Sheets.DataItem.html</loc>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Google_Sheets.GoogleSheetsConfig.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Google_Sheets.GoogleSheetsDownloader.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Google_Sheets.GoogleSheetsHelper.html</loc>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Google_Sheets.GoogleSheetsInstance.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Google_Sheets.GoogleSheetsUploader.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Google_Sheets.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.MenuItems.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Project_Settings.GoogleSheetsCustomSettings.html</loc>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Project_Settings.GoogleSheetsEditorUtilities.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Project_Settings.GoogleSheetsSettings.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Project_Settings.GoogleSheetsSettingsProvider.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.Project_Settings.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/Editor.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/api/index.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/changelog/CHANGELOG.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/index.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/license/LICENSE.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bookfan97.github.io/YetAnotherGoogleSheetsPackageUnity/manual/index.html</loc>
-    <lastmod>2024-11-23T10:48:44+00:00</lastmod>
+    <lastmod>2024-12-02T12:52:01+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

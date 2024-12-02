@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class GoogleSheetsUploader | Google Sheets | 2.0.0 </title>
+      <title>Class GoogleSheetsHelper | Google Sheets | 2.0.0 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class GoogleSheetsUploader | Google Sheets | 2.0.0 ">
+      <meta name="title" content="Class GoogleSheetsHelper | Google Sheets | 2.0.0 ">
       
-      <meta name="description" content="A utility class that handles the uploading of data from a local CSV file to a Google Sheets spreadsheet. This class reads CSV data from a configured file path and uses the Google Sheets API to paste the data into a specified spreadsheet.">
+      <meta name="description" content="Provides helper methods and properties for managing Google Sheets settings within the editor.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       <meta name="docfx:disablenewtab" content="true">
       
-      <meta name="docfx:docurl" content="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/new/main/apiSpec/new?filename=Editor_Google_Sheets_GoogleSheetsUploader.md&amp;value=---%0Auid%3A%20Editor.Google_Sheets.GoogleSheetsUploader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/new/main/apiSpec/new?filename=Editor_Google_Sheets_GoogleSheetsHelper.md&amp;value=---%0Auid%3A%20Editor.Google_Sheets.GoogleSheetsHelper%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,12 +84,12 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Editor.Google_Sheets.GoogleSheetsUploader">
+        <article data-uid="Editor.Google_Sheets.GoogleSheetsHelper">
 
 
 
-  <h1 id="Editor_Google_Sheets_GoogleSheetsUploader" data-uid="Editor.Google_Sheets.GoogleSheetsUploader" class="text-break">
-Class GoogleSheetsUploader  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsUploader.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <h1 id="Editor_Google_Sheets_GoogleSheetsHelper" data-uid="Editor.Google_Sheets.GoogleSheetsHelper" class="text-break">
+Class GoogleSheetsHelper  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsHelper.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,14 +97,12 @@ Class GoogleSheetsUploader  <a class="header-action link-secondary" title="View 
   
   </div>
 
-  <div class="markdown summary"><p>A utility class that handles the uploading of data from a local CSV file to a Google Sheets spreadsheet.
-This class reads CSV data from a configured file path and uses the Google Sheets API to paste the data into a
-specified spreadsheet.</p>
+  <div class="markdown summary"><p>Provides helper methods and properties for managing Google Sheets settings within the editor.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class GoogleSheetsUploader</code></pre>
+    <pre><code class="lang-csharp hljs">public class GoogleSheetsHelper</code></pre>
   </div>
 
 
@@ -114,7 +112,7 @@ specified spreadsheet.</p>
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">GoogleSheetsUploader</span></div>
+      <div><span class="xref">GoogleSheetsHelper</span></div>
     </dd>
   </dl>
 
@@ -151,38 +149,78 @@ specified spreadsheet.</p>
 
 
 
-  <h2 class="section" id="methods">Methods
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
-  <a id="Editor_Google_Sheets_GoogleSheetsUploader_UploadData_" data-uid="Editor.Google_Sheets.GoogleSheetsUploader.UploadData*"></a>
+  <a id="Editor_Google_Sheets_GoogleSheetsHelper_GoogleSheetsCustomSettings_" data-uid="Editor.Google_Sheets.GoogleSheetsHelper.GoogleSheetsCustomSettings*"></a>
 
-  <h3 id="Editor_Google_Sheets_GoogleSheetsUploader_UploadData" data-uid="Editor.Google_Sheets.GoogleSheetsUploader.UploadData">
-  UploadData()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsUploader.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Editor_Google_Sheets_GoogleSheetsHelper_GoogleSheetsCustomSettings" data-uid="Editor.Google_Sheets.GoogleSheetsHelper.GoogleSheetsCustomSettings">
+  GoogleSheetsCustomSettings
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsHelper.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Uploads data from a local CSV file to a specified Google Sheets spreadsheet.</p>
+  <div class="markdown level1 summary"><p>Property to get the instance of GoogleSheetsCustomSettings.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UploadData()</code></pre>
+    <pre><code class="lang-csharp hljs">public static GoogleSheetsCustomSettings GoogleSheetsCustomSettings { get; }</code></pre>
   </div>
 
 
 
 
 
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Editor.Project_Settings.GoogleSheetsCustomSettings.html">GoogleSheetsCustomSettings</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
 
-  <h4 class="section" id="Editor_Google_Sheets_GoogleSheetsUploader_UploadData_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method reads the contents of a CSV file located at the path specified in the project settings.
-It then uses the Google Sheets API to paste this data into the first sheet of the spreadsheet.
-The method logs an error if the update fails.</p>
+  <h4 class="section" id="Editor_Google_Sheets_GoogleSheetsHelper_GoogleSheetsCustomSettings_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property retrieves or creates an instance of the GoogleSheetsCustomSettings
+which is used to store and manage custom settings related to Google Sheets integration.</p>
 </div>
+
+
+
+
+  <a id="Editor_Google_Sheets_GoogleSheetsHelper_k_JSONEditorPref_" data-uid="Editor.Google_Sheets.GoogleSheetsHelper.k_JSONEditorPref*"></a>
+
+  <h3 id="Editor_Google_Sheets_GoogleSheetsHelper_k_JSONEditorPref" data-uid="Editor.Google_Sheets.GoogleSheetsHelper.k_JSONEditorPref">
+  k_JSONEditorPref
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsHelper.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The <code>k_JSONEditorPref</code> field is used as the key for storing and retrieving
+the file path to the JSON file containing client secret information within
+the Unity Editor preferences. This string acts as an identifier for the
+preference setting, ensuring that the proper file path is maintained
+throughout various editor sessions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string k_JSONEditorPref { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
 
 
 

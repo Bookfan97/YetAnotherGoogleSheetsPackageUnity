@@ -15,6 +15,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Google_Sheets.DataItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Google_Sheets.DataItem.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Editor.Google_Sheets.GoogleSheetsConfig.yml",
       "output": {
         ".html": {
@@ -29,6 +39,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Editor.Google_Sheets.GoogleSheetsDownloader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Google_Sheets.GoogleSheetsHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Google_Sheets.GoogleSheetsHelper.html"
         }
       },
       "version": ""
@@ -75,30 +95,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Project_Settings.GoogleSheetsCustomSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Project_Settings.GoogleSheetsCustomSettings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Editor.Project_Settings.GoogleSheetsEditorUtilities.yml",
       "output": {
         ".html": {
           "relative_path": "api/Editor.Project_Settings.GoogleSheetsEditorUtilities.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Editor.Project_Settings.GoogleSheetsSettings.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Editor.Project_Settings.GoogleSheetsSettings.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Editor.Project_Settings.GoogleSheetsSettingsProvider.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Editor.Project_Settings.GoogleSheetsSettingsProvider.html"
         }
       },
       "version": ""
