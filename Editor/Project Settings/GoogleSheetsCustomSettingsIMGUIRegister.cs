@@ -1,102 +1,103 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Editor.Assemblies;
 using Editor.Google_Sheets;
 using UnityEditor;
 using UnityEngine;
 
 namespace Editor.Project_Settings
 {
-    /// <summary>
-    /// GoogleSheetsCustomSettingsIMGUIRegister is responsible for registering a custom settings provider
-    /// within Unity's Project Settings window specifically for Google Sheets integration.
-    /// It defines the GUI elements and structure using IMGUI to allow users to input and manage
-    /// configuration details such as the Spreadsheet ID and Client JSON Secret for Google Sheets integration.
-    /// </summary>
     static class GoogleSheetsCustomSettingsIMGUIRegister
     {
-        /// <summary>
-        /// A GUIStyle object used for drawing horizontal lines in the Unity Editor's GUI. It is configured
-        /// with specific styling properties such as background texture and margin, and utilized to enhance
-        /// the visual separation of sections within custom editor windows.
-        /// </summary>
-        static GUIStyle horizontalLine;
+        public static SettingsProvider thisSettingsProvider { get; private set; }
+        
+        private static string m_AssembliesToInclude = string.Empty; // Suggest populating dynamically later.
+        public static readonly GUIContent AssembliesToIncludeLabel = EditorGUIUtility.TrTextContent("Included Assemblies", "Specify the assemblies that will be included in the coverage results.\n\nClick the dropdown to view and select or deselect the assemblies.");
+        public static readonly GUIContent AssembliesToIncludeDropdownLabel = EditorGUIUtility.TrTextContent("Assemblies:", "Displays the list of assemblies to include.");
+        public static readonly GUIContent AssembliesToIncludeEmptyDropdownLabel = EditorGUIUtility.TrTextContent("Select", "Click to view and manage assemblies.");
+        private static GUIStyle horizontalLine;
 
-        /// <summary>
-        /// Creates a custom SettingsProvider for Google Sheets settings within Unity's Project Settings window.
-        /// Configures the GUI layout for displaying and modifying Google Sheets related configurations.
-        /// </summary>
-        /// <returns>
-        /// Returns a SettingsProvider object configured to display Google Sheets settings with IMGUI rendering.
-        /// </returns>
         [SettingsProvider]
         public static SettingsProvider CreateGoogleSheetsCustomSettingsProvider()
         {
-            // First parameter is the path in the Settings window.
-            // Second parameter is the scope of this setting: it only appears in the Project Settings window.
             var provider = new SettingsProvider("Project/Google Sheets", SettingsScope.Project)
             {
-                // By default the last token of the path is used as display name if no label is provided.
                 label = "Google Sheets",
-                // Create the SettingsProvider and initialize its drawing (IMGUI) function in place:
                 guiHandler = (searchContext) =>
                 {
                     var settings = GoogleSheetsHelper.GetSerializedSettings();
+                    if (settings == null)
+                    {
+                        EditorGUILayout.HelpBox("Failed to load Google Sheets settings.", MessageType.Error);
+                        return;
+                    }
+
                     GUILayout.Space(20f);
-                    CreateHorizontalLine();
+                    EnsureHorizontalLineStyle();
                     EditorGUILayout.LabelField("Google Sheets Settings", EditorStyles.boldLabel);
-                    CreateHorizontalLine();
-                    EditorGUILayout.PropertyField(settings.FindProperty("m_spreadsheetID"), new GUIContent("Spreadsheet ID"));
-                    GetFilePath("Client JSON Secret", ".json");
+                    DrawHorizontalLine();
+
+                    // Ensure property is valid
+                    DrawPropertyWithValidation(settings, "m_spreadsheetID", "Spreadsheet ID");
+
+                    DrawFilePathField("Client JSON Secret", ".json");
+
                     GUILayout.Space(10f);
-                    EditorGUILayout.PropertyField(settings.FindProperty("m_Data"), new GUIContent("My Data"));
+                    DrawIncludedAssemblies();
+
+                    GUILayout.Space(10f);
+                    DrawPropertyWithValidation(settings, "m_Data", "My Data");
+
                     settings.ApplyModifiedPropertiesWithoutUndo();
                 },
-
-                // Populate the search keywords to enable smart search filtering and label highlighting:
                 keywords = new HashSet<string>(new[] { "CSV", "Google", "Sheets", "JSON" })
             };
 
-        
+            thisSettingsProvider = provider;
             return provider;
         }
 
-        /// <summary>
-        /// Creates and configures a GUIStyle for drawing horizontal lines in the Unity Editor's GUI,
-        /// and invokes a method to draw a horizontal line using the created style.
-        /// </summary>
-        private static void CreateHorizontalLine()
+        private static void DrawIncludedAssemblies()
         {
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel(AssembliesToIncludeLabel);
+
+            Rect buttonRect = EditorGUILayout.GetControlRect(GUILayout.MinWidth(10));
+            string displayText = string.IsNullOrEmpty(m_AssembliesToInclude)
+                            ? AssembliesToIncludeEmptyDropdownLabel.text
+                            : AssembliesToIncludeDropdownLabel.text;
+
+            if (EditorGUI.DropdownButton(buttonRect, new GUIContent(displayText), FocusType.Keyboard, EditorStyles.miniPullDown))
+            {
+                GUI.FocusControl("");
+                PopupWindow.Show(buttonRect, new IncludedAssembliesPopupWindow(new GoogleSheetsDataItemDrawer(), m_AssembliesToInclude));
+            }
+
+            GUILayout.EndHorizontal();
+        }
+
+        private static void DrawHorizontalLine()
+        {
+            var currentColor = GUI.color;
+            GUI.color = EditorGUIUtility.isProSkin ? Color.grey : Color.black;
+            GUILayout.Box(GUIContent.none, horizontalLine);
+            GUI.color = currentColor;
+        }
+
+        private static void EnsureHorizontalLineStyle()
+        {
+            if (horizontalLine != null) return;
+
             horizontalLine = new GUIStyle
             {
-                normal =
-                {
-                    background = EditorGUIUtility.whiteTexture
-                },
+                normal = { background = EditorGUIUtility.whiteTexture },
                 margin = new RectOffset(0, 0, 4, 4),
                 fixedHeight = 3
             };
-
-            HorizontalLine(Color.grey);
         }
 
-        /// <summary>
-        /// Draws a horizontal line with the specified color in the Unity Editor's GUI.
-        /// </summary>
-        /// <param name="color">The color to use for the horizontal line.</param>
-        private static void HorizontalLine(Color color)
-        {
-            var c = GUI.color;
-            GUI.color = color;
-            GUILayout.Box(GUIContent.none, horizontalLine);
-            GUI.color = c;
-        }
-
-        /// <summary>
-        /// Displays a text field for file path input and buttons for browsing and resetting the file path associated with the specified JSON file.
-        /// </summary>
-        /// <param name="title">The label to display next to the file path text field.</param>
-        /// <param name="extension">The file extension filter to use when browsing for a file.</param>
-        private static void GetFilePath(string title, string extension)
+        private static void DrawFilePathField(string title, string extension)
         {
             EditorGUILayout.BeginHorizontal();
 
@@ -106,83 +107,85 @@ namespace Editor.Project_Settings
                 jsonPath = GoogleSheetsHelper.GoogleSheetsCustomSettings.GetDefaultPath();
             }
 
-            string changedPath = EditorGUILayout.TextField(title,jsonPath);
+            string newPath = EditorGUILayout.TextField(title, jsonPath);
 
-            if (String.CompareOrdinal(jsonPath, changedPath) != 0)
+            if (!string.Equals(jsonPath, newPath, StringComparison.Ordinal))
             {
-                EditorPrefs.SetString(GoogleSheetsHelper.k_JSONEditorPref, changedPath);
+                EditorPrefs.SetString(GoogleSheetsHelper.k_JSONEditorPref, newPath);
             }
 
-            GUILayout.Space(10f);
             if (GUILayout.Button("Browse", GUILayout.Width(75)))
             {
-                var jsonFilePath = EditorUtility.OpenFilePanel(
-                    "Save Screenshots Directory", 
-                    GoogleSheetsHelper.GoogleSheetsCustomSettings.GetDefaultPath(), 
-                    extension
-                );
-                if (String.CompareOrdinal(jsonPath, jsonFilePath) != 0)
+                var jsonFilePath = EditorUtility.OpenFilePanel("Select JSON File", jsonPath, extension);
+                if (!string.IsNullOrEmpty(jsonFilePath) && Path.GetExtension(jsonFilePath) == extension)
                 {
                     EditorPrefs.SetString(GoogleSheetsHelper.k_JSONEditorPref, jsonFilePath);
                 }
+                else if (!string.IsNullOrEmpty(jsonFilePath))
+                {
+                    Debug.LogError($"Please select a valid {extension} file.");
+                }
             }
-            
-            
-            GUILayout.Space(10f);
+
             if (GUILayout.Button("Reset", GUILayout.Width(75)))
             {
                 EditorPrefs.DeleteKey(GoogleSheetsHelper.k_JSONEditorPref);
             }
-            
+
             EditorGUILayout.EndHorizontal();
         }
 
-        /// <summary>
-        /// GoogleSheetsDataItemDrawer is a custom property drawer for DataItem objects, used within Unity's Editor.
-        /// This drawer allows for customized GUI elements to be drawn in the Inspector window for properties of type DataItem.
-        /// </summary>
+        private static void DrawPropertyWithValidation(SerializedObject settings, string propertyName, string label)
+        {
+            var property = settings.FindProperty(propertyName);
+            if (property != null)
+            {
+                EditorGUILayout.PropertyField(property, new GUIContent(label));
+            }
+            else
+            {
+                EditorGUILayout.HelpBox($"Property '{propertyName}' was not found in the serialized settings.", MessageType.Error);
+            }
+        }
+
         [CustomPropertyDrawer(typeof(DataItem))]
         public class GoogleSheetsDataItemDrawer : PropertyDrawer
         {
-            /// <summary>
-            /// Overrides the default GUI rendering for the DataItem property, providing custom layout and functionality
-            /// within the Unity Editor.
-            /// </summary>
-            /// <param name="position">The rectangle on the screen to use for rendering the property.</param>
-            /// <param name="property">The SerializedProperty representing the DataItem being drawn in the inspector.</param>
-            /// <param name="label">The label of the property field being rendered.</param>
             public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
             {
                 EditorGUI.BeginProperty(position, label, property);
-
                 EditorGUILayout.BeginHorizontal();
-                var keyRect = new Rect(position.x + 30, position.y, 100, position.height);
-                var labelRect = new Rect(position.x + 165, position.y, 60, position.height);
-                var valueRect = new Rect(position.x + 205, position.y, 240, position.height);
-                var browseButtonRext = new Rect(position.x + 205 + 240, position.y, 75, position.height);
-                var resetButtonRext = new Rect(position.x + 205 + 240 + 75, position.y, 75, position.height);
 
-                EditorGUI.LabelField(position, "Key", "");
+                float fieldWidth = position.width / 5;
+
+                Rect keyRect = new Rect(position.x, position.y, fieldWidth, position.height);
+                Rect valueRect = new Rect(position.x + fieldWidth + 5, position.y, fieldWidth, position.height);
+                Rect dropdownRect = new Rect(position.x + 2 * (fieldWidth + 5), position.y, fieldWidth, position.height);
+                Rect browseRect = new Rect(position.x + 3 * (fieldWidth + 5), position.y, fieldWidth / 2, position.height);
+                Rect resetRect = new Rect(position.x + 3.5f * (fieldWidth + 5), position.y, fieldWidth / 2, position.height);
+
                 EditorGUI.PropertyField(keyRect, property.FindPropertyRelative("key"), GUIContent.none);
-                EditorGUI.LabelField(labelRect, "Value", "");
                 EditorGUI.PropertyField(valueRect, property.FindPropertyRelative("value"), GUIContent.none);
-                if (GUI.Button(browseButtonRext, "Browse"))
+
+                var dropdownLabel = new GUIContent("Scriptable Object");
+                int dropdownIndex = property.FindPropertyRelative("index").intValue;
+                string[] dropdownOptions = { "Option1", "Option2" }; // Replace dynamic SO population
+                property.FindPropertyRelative("index").intValue = EditorGUI.Popup(dropdownRect, dropdownIndex, dropdownOptions);
+
+                if (GUI.Button(browseRect, "Browse"))
                 {
-                    var jsonFilePath = EditorUtility.OpenFilePanel(
-                        "Save Screenshots Directory", 
-                        GoogleSheetsHelper.GoogleSheetsCustomSettings.GetDefaultPath(), 
-                        ".csv"
-                    );
-                    if (String.CompareOrdinal("jsonPath", jsonFilePath) != 0)
+                    string jsonFilePath = EditorUtility.OpenFilePanel("Select File", "", "json");
+                    if (!string.IsNullOrEmpty(jsonFilePath))
                     {
                         property.FindPropertyRelative("value").stringValue = jsonFilePath;
                     }
                 }
 
-                if (GUI.Button(resetButtonRext, "Reset"))
+                if (GUI.Button(resetRect, "Reset"))
                 {
-                    EditorPrefs.DeleteKey(GoogleSheetsHelper.k_JSONEditorPref);
+                    property.FindPropertyRelative("value").stringValue = string.Empty;
                 }
+
                 EditorGUILayout.EndHorizontal();
                 EditorGUI.EndProperty();
             }

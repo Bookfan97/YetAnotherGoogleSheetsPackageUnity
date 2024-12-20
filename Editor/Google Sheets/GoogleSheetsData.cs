@@ -14,10 +14,13 @@ namespace Editor.Google_Sheets
         /// Represents the unique identifier or key in a key-value pair for Google Sheets data.
         /// </summary>
         public int key;
+        public int index;
 
         /// <summary>
         /// Represents a value corresponding to a key in a key-value pair for Google Sheets data.
         /// </summary>
         public string value;
+        
+        public ScriptableObject scriptableObject;
     }
 }
