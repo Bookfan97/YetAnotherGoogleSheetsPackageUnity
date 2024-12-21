@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Editor.Google_Sheets;
 using Editor.Utilities;
 using Mono.Cecil;
 using UnityEditor;
@@ -89,9 +90,10 @@ namespace Editor.Utilities
                     // Check if the type is a class, not abstract, and derives from ScriptableObject
                     if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(ScriptableObject)))// && type.Assembly.FullName.Equals("Assembly-CSharp"))
                     {
-                        Debug.Log(type.Assembly);
-                        scriptableObjectClasses.Add(type);
-                        Debug.Log(type.FullName);
+                        if (GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude.Contains(type.Assembly.GetName().Name))
+                        {
+                            scriptableObjectClasses.Add(type);
+                        }
                     }
                 }
             }
@@ -130,7 +132,7 @@ public class ScriptableObjectClassFinderEditor : EditorWindow
 
         foreach (var scriptableObjectClass in _scriptableObjectClasses)
         {
-            GUILayout.Label(scriptableObjectClass.FullName);
+            GUILayout.Label(scriptableObjectClass.ToString());
         }
     }
 }

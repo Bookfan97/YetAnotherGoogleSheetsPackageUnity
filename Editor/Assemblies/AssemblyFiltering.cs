@@ -1,3 +1,6 @@
+/*
+ * Taken from com.unity.testtools.codecoverage v. 1.2.6
+ */
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +9,7 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEditor.Compilation;
 
-namespace Editor.Project_Settings
+namespace Editor.Assemblies
 {
     internal class AssemblyFiltering
     {

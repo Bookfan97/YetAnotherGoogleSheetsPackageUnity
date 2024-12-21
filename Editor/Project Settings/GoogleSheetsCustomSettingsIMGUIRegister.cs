@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Editor.Assemblies;
 using Editor.Google_Sheets;
+using Editor.Utilities;
 using UnityEditor;
 using UnityEngine;
 
@@ -64,14 +66,14 @@ namespace Editor.Project_Settings
             EditorGUILayout.PrefixLabel(AssembliesToIncludeLabel);
 
             Rect buttonRect = EditorGUILayout.GetControlRect(GUILayout.MinWidth(10));
-            string displayText = string.IsNullOrEmpty(m_AssembliesToInclude)
+            string displayText = string.IsNullOrEmpty(GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude)
                             ? AssembliesToIncludeEmptyDropdownLabel.text
-                            : AssembliesToIncludeDropdownLabel.text;
+                            : $"{AssembliesToIncludeDropdownLabel.text}{GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude}";
 
             if (EditorGUI.DropdownButton(buttonRect, new GUIContent(displayText), FocusType.Keyboard, EditorStyles.miniPullDown))
             {
                 GUI.FocusControl("");
-                PopupWindow.Show(buttonRect, new IncludedAssembliesPopupWindow(new GoogleSheetsDataItemDrawer(), m_AssembliesToInclude));
+                PopupWindow.Show(buttonRect, new IncludedAssembliesPopupWindow(new GoogleSheetsDataItemDrawer()));
             }
 
             GUILayout.EndHorizontal();
@@ -169,15 +171,21 @@ namespace Editor.Project_Settings
 
                 var dropdownLabel = new GUIContent("Scriptable Object");
                 int dropdownIndex = property.FindPropertyRelative("index").intValue;
-                string[] dropdownOptions = { "Option1", "Option2" }; // Replace dynamic SO population
+                List<Type> temp = GetAllScriptableObjects.GetAllScriptableObjectClasses();
+                List<string> temp2 = new List<string>();
+                foreach (var VARIABLE in temp)
+                {
+                    temp2.Add(VARIABLE.Name);
+                }
+                string[] dropdownOptions = temp2.ToArray();
                 property.FindPropertyRelative("index").intValue = EditorGUI.Popup(dropdownRect, dropdownIndex, dropdownOptions);
 
                 if (GUI.Button(browseRect, "Browse"))
                 {
-                    string jsonFilePath = EditorUtility.OpenFilePanel("Select File", "", "json");
-                    if (!string.IsNullOrEmpty(jsonFilePath))
+                    string csvFilePath = EditorUtility.OpenFilePanel("Select File", "", "csv");
+                    if (!string.IsNullOrEmpty(csvFilePath))
                     {
-                        property.FindPropertyRelative("value").stringValue = jsonFilePath;
+                        property.FindPropertyRelative("value").stringValue = csvFilePath;
                     }
                 }
 

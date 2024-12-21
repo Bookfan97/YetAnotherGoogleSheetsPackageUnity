@@ -1,4 +1,8 @@
-﻿using Editor.Project_Settings;
+﻿/*
+ * Taken from com.unity.testtools.codecoverage v. 1.2.6
+ */
+using Editor.Google_Sheets;
+using Editor.Project_Settings;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
@@ -23,10 +27,10 @@ namespace Editor.Assemblies
             public static readonly GUIContent DeselectAllButtonLabel = EditorGUIUtility.TrTextContent("Deselect All", "Click this to deselect and exclude all the assemblies.\n\nIf searching, it will apply only to the assemblies visible in the list.");
         }
 
-        public IncludedAssembliesPopupWindow(GoogleSheetsCustomSettingsIMGUIRegister.GoogleSheetsDataItemDrawer parent, string assembliesToInclude)
+        public IncludedAssembliesPopupWindow(GoogleSheetsCustomSettingsIMGUIRegister.GoogleSheetsDataItemDrawer parent)
         {
             m_SearchField = new SearchField();
-            m_TreeView = new IncludedAssembliesTreeView(parent, assembliesToInclude);
+            m_TreeView = new IncludedAssembliesTreeView(parent, GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude);
         }
 
         public override void OnGUI(Rect rect)

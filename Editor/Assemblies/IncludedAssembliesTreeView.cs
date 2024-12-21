@@ -1,7 +1,11 @@
-﻿using System;
+﻿/*
+ * Taken from com.unity.testtools.codecoverage v. 1.2.6
+ */
+using System;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Editor.Google_Sheets;
 using Editor.Project_Settings;
 using UnityEditor;
 using UnityEditor.Compilation;
@@ -12,7 +16,6 @@ namespace Editor.Assemblies
 {
     class IncludedAssembliesTreeView : TreeView
     {
-        string m_AssembliesToInclude;
         readonly GoogleSheetsCustomSettingsIMGUIRegister.GoogleSheetsDataItemDrawer m_Parent;
         const float kCheckBoxWidth = 42f;
 
@@ -21,7 +24,6 @@ namespace Editor.Assemblies
         public IncludedAssembliesTreeView(GoogleSheetsCustomSettingsIMGUIRegister.GoogleSheetsDataItemDrawer parent, string assembliesToInclude)
             : base(new TreeViewState())
         {
-            m_AssembliesToInclude = assembliesToInclude;
             m_Parent = parent;
             showAlternatingRowBackgrounds = true;
             showBorder = true;
@@ -35,7 +37,7 @@ namespace Editor.Assemblies
 
         protected override TreeViewItem BuildRoot()
         {
-            string[] includeAssemblyFilters = m_AssembliesToInclude.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] includeAssemblyFilters = GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
             Regex[] includeAssemblies = includeAssemblyFilters
                 .Select(f => AssemblyFiltering.CreateFilterRegex(f))
@@ -110,14 +112,14 @@ namespace Editor.Assemblies
 
         public void SelectAssets()
         {
-            m_AssembliesToInclude = AssemblyFiltering.GetUserOnlyAssembliesString();
-            SelectFromString(m_AssembliesToInclude);
+            GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude = AssemblyFiltering.GetUserOnlyAssembliesString();
+            SelectFromString(GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude);
         }
 
         public void SelectPackages()
         {
-            m_AssembliesToInclude = AssemblyFiltering.GetPackagesOnlyAssembliesString();
-            SelectFromString(m_AssembliesToInclude);
+            GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude = AssemblyFiltering.GetPackagesOnlyAssembliesString();
+            SelectFromString(GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude);
         }
 
         private void SelectFromString(string assembliesToInclude)
@@ -171,8 +173,7 @@ namespace Editor.Assemblies
                 }
             }
 
-            /*m_Parent.AssembliesToInclude = sb.ToString();
-            m_Parent.Repaint();*/
+            GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude = sb.ToString();
         }
     }
 
