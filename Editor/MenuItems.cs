@@ -108,7 +108,7 @@ namespace Editor
         /// Opens the Google Sheets documentation URL in the default web browser.
         /// This method is accessible via the Tools > Google Sheets > Documentation menu item in the Unity Editor.
         /// </summary>
-        /*[MenuItem("Tools/Google Sheets/ConvertSOtoCSV", false, 7)]
+        [MenuItem("Tools/Google Sheets/ConvertSOtoCSV", false, 7)]
         private static void ConvertSOtoCSV()
         {
             try
@@ -117,7 +117,6 @@ namespace Editor
                 {
                     SOtoCSV converter = new SOtoCSV();
                     converter.CSVtoScriptableObjects(dataItem);
-                    ConvertSOtoCSV();
                 }
             }
             catch (Exception e)
@@ -125,6 +124,6 @@ namespace Editor
                 Debug.LogError(e);
                 throw;
             }
-        }*/
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace Editor.Assemblies
 
         protected override TreeViewItem BuildRoot()
         {
-            string[] includeAssemblyFilters = GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] includeAssemblyFilters = GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
             Regex[] includeAssemblies = includeAssemblyFilters
                 .Select(f => AssemblyFiltering.CreateFilterRegex(f))
