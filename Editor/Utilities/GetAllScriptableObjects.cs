@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Editor.Google_Sheets;
-using Editor.Utilities;
 using Mono.Cecil;
 using UnityEditor;
 using UnityEngine;
@@ -12,127 +12,179 @@ namespace Editor.Utilities
 {
     public class GetAllScriptableObjects
     {
+        /// <summary>
+        /// Finds all ScriptableObject assets in the project and returns their paths.
+        /// </summary>
+        /// <returns>List of paths to ScriptableObject assets</returns>
         public List<string> GetAllNames()
         {
+            // Safely retrieve ScriptableObject GUIDs using AssetDatabase
             string[] options = AssetDatabase.FindAssets("t:ScriptableObject");
             return options.Select(option => AssetDatabase.GUIDToAssetPath(option)).ToList();
         }
-        
-        
+
+        /// <summary>
+        /// Reads all DLL files in the project and extracts class names, filtering out system or generated classes.
+        /// </summary>
+        /// <param name="projectPath">Root project path</param>
+        /// <returns>List of class names with namespaces</returns>
         public static List<string> GetAllClasses(string projectPath)
         {
-            // List to store class names
             List<string> classNames = new List<string>();
 
-            // Get all script files in the project
-            string[] scriptFiles = Directory.GetFiles(projectPath, "*.dll", SearchOption.TopDirectoryOnly);
+            // Get all .dll files in project directories (including subdirectories)
+            string[] scriptFiles = Directory.GetFiles(projectPath, "*.dll", SearchOption.AllDirectories);
 
             foreach (string dllFile in scriptFiles)
             {
                 try
                 {
-                    // Use Mono.Cecil to read the assembly
+                    // Use Mono.Cecil to safely and efficiently parse assemblies
                     var assembly = AssemblyDefinition.ReadAssembly(dllFile);
 
-                    // Iterate through all types in the assembly
                     foreach (TypeDefinition type in assembly.MainModule.Types)
                     {
-                        // Skip system or generated classes
-                        if (type.Name.StartsWith("<") || type.Namespace == null) continue;
+                        // Skip generated/system classes or those without a namespace
+                        if (type.Name.StartsWith("<") || string.IsNullOrEmpty(type.Namespace)) continue;
 
-                        // Add the class name to the list
-                        classNames.Add($"{type.Namespace} - {type.Name}");
+                        // Safeguard against null/empty namespaces and use structured naming
+                        classNames.Add($"{type.Namespace}.{type.Name}");
                     }
                 }
                 catch (Exception ex)
                 {
-                    Debug.Log($"Failed to analyze {dllFile}: {ex.Message}");
+                    // Handle potential Mono.Cecil issues systematically and log meaningful messages
+                    Debug.LogError($"Failed to analyze {dllFile}: {ex.Message}");
                 }
             }
 
             return classNames;
         }
-        
+
+        /// <summary>
+        /// Editor menu function to list all class names from project assemblies.
+        /// </summary>
         [MenuItem("Tools/List All Classes")]
         public static void ListClasses()
         {
-            string projectPath = Application.dataPath; // Adjust path as necessary
+            string projectPath = Path.Combine(Application.dataPath, ".."); // Safely set root project path
             var classes = GetAllClasses(projectPath);
 
             foreach (var className in classes)
             {
                 Debug.Log($"Class: {className}");
             }
-        
+
             Debug.Log($"Total Classes Found: {classes.Count}");
         }
-        
-        
+
         /// <summary>
-        /// Finds all classes that inherit from ScriptableObject in the project.
+        /// Finds all classes derived from ScriptableObject across all project assemblies.
         /// </summary>
-        /// <returns>A list of names of all ScriptableObject-derived classes in the project.</returns>
+        /// <returns>List of ScriptableObject class types</returns>
         public static List<Type> GetAllScriptableObjectClasses()
         {
-            // Store all relevant classes
             List<Type> scriptableObjectClasses = new List<Type>();
 
-            // Get all assemblies loaded in the current domain
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-
-            foreach (var assembly in assemblies)
+            try
             {
-                // Get all types in the assembly
-                var types = assembly.GetTypes();
+                // Filter and load only relevant assemblies
+                var assemblies = AppDomain.CurrentDomain.GetAssemblies()
+                    .Where(assembly =>
+                        assembly.GetName().Name.StartsWith("Assembly-CSharp")); // Avoid irrelevant assemblies
 
-                foreach (var type in types)
+                foreach (var assembly in assemblies)
                 {
-                    // Check if the type is a class, not abstract, and derives from ScriptableObject
-                    if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(ScriptableObject)))// && type.Assembly.FullName.Equals("Assembly-CSharp"))
+                    try
                     {
-                        if (GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude.Contains(type.Assembly.GetName().Name))
+                        var types = assembly.GetTypes();
+
+                        foreach (var type in types)
                         {
-                            scriptableObjectClasses.Add(type);
+                            // Check for non-abstract, ScriptableObject-derived classes
+                            if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(ScriptableObject)))
+                            {
+                                // Verify inclusion in relevant assemblies through GoogleSheets settings
+                                if (GoogleSheetsHelper.GoogleSheetsCustomSettings?.assembliesToInclude?
+                                        .Contains(type.Assembly.GetName().Name) == true)
+                                {
+                                    scriptableObjectClasses.Add(type);
+                                }
+                            }
                         }
                     }
+                    catch (ReflectionTypeLoadException ex)
+                    {
+                        // Handle type reflection errors
+                        Debug.LogWarning($"Failed to load types from assembly {assembly.GetName().Name}: {ex.Message}");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                // General safeguard for AppDomain assembly retrieval and error logging
+                Debug.LogError($"Failed to retrieve ScriptableObject classes: {ex.Message}");
             }
 
             return scriptableObjectClasses;
         }
     }
-}
 
-public class ScriptableObjectClassFinderEditor : EditorWindow
-{
-    private List<Type> _scriptableObjectClasses;
-
-    [MenuItem("Tools/Find ScriptableObject Classes")]
-    public static void ShowWindow()
+    public class ScriptableObjectClassFinderEditor : EditorWindow
     {
-        GetWindow<ScriptableObjectClassFinderEditor>("Scriptable Object Finder");
-    }
+        private List<Type> _scriptableObjectClasses;
+        private Vector2 _scrollPosition; // Required for enabling scrollable GUI
 
-    private void OnEnable()
-    {
-        // Get all ScriptableObject classes when the window is opened
-        _scriptableObjectClasses = GetAllScriptableObjects.GetAllScriptableObjectClasses();
-    }
-
-    private void OnGUI()
-    {
-        // Display the list of ScriptableObject-derived classes
-        GUILayout.Label("ScriptableObject Classes in Project", EditorStyles.boldLabel);
-
-        if (_scriptableObjectClasses == null || _scriptableObjectClasses.Count == 0)
+        [MenuItem("Tools/Find ScriptableObject Classes")]
+        public static void ShowWindow()
         {
-            GUILayout.Label("No ScriptableObject classes found.");
-            return;
+            GetWindow<ScriptableObjectClassFinderEditor>("Scriptable Object Finder");
         }
 
-        foreach (var scriptableObjectClass in _scriptableObjectClasses)
+        /*private void OnEnable()
         {
-            GUILayout.Label(scriptableObjectClass.ToString());
+            try
+            {
+                // Load relevant classes when the window is opened
+                _scriptableObjectClasses = GetAllScriptableObjects.GetAllScriptableObjectClasses();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error loading ScriptableObject classes: {ex.Message}");
+                _scriptableObjectClasses = new List<Type>();
+            }
+        }*/
+
+        private void OnGUI()
+        {
+            GUILayout.Label("ScriptableObject Classes in Project", EditorStyles.boldLabel);
+
+            if (_scriptableObjectClasses == null || _scriptableObjectClasses.Count == 0)
+            {
+                GUILayout.Label("No ScriptableObject classes found.");
+                return;
+            }
+
+            // Enable scrolling for large lists
+            _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
+
+            foreach (var scriptableObjectClass in _scriptableObjectClasses)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(scriptableObjectClass.ToString());
+
+                // Add an interactive Ping button for each class
+                if (GUILayout.Button("Ping", GUILayout.Width(50)))
+                {
+                    // Load and ping the relevant asset (if paths are linked)
+                    Selection.activeObject = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(
+                        scriptableObjectClass.ToString()); // Replace with valid asset paths if applicable
+                }
+
+                GUILayout.EndHorizontal();
+            }
+
+            EditorGUILayout.EndScrollView();
         }
     }
 }

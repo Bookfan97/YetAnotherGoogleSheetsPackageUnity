@@ -15,6 +15,7 @@ namespace Editor.Google_Sheets
         /// </summary>
         public int key;
         public int index;
+        public string scriptableObjectType;
 
         /// <summary>
         /// Represents a value corresponding to a key in a key-value pair for Google Sheets data.

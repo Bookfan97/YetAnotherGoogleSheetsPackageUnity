@@ -13,11 +13,25 @@ namespace Editor.Project_Settings
     static class GoogleSheetsCustomSettingsIMGUIRegister
     {
         public static SettingsProvider thisSettingsProvider { get; private set; }
-        
-        private static string m_AssembliesToInclude = string.Empty; // Suggest populating dynamically later.
-        public static readonly GUIContent AssembliesToIncludeLabel = EditorGUIUtility.TrTextContent("Included Assemblies", "Specify the assemblies that will be included in the coverage results.\n\nClick the dropdown to view and select or deselect the assemblies.");
-        public static readonly GUIContent AssembliesToIncludeDropdownLabel = EditorGUIUtility.TrTextContent("Assemblies:", "Displays the list of assemblies to include.");
-        public static readonly GUIContent AssembliesToIncludeEmptyDropdownLabel = EditorGUIUtility.TrTextContent("Select", "Click to view and manage assemblies.");
+
+        // Constants to avoid hardcoding strings
+        private const string SPREADSHEET_ID_PROP = "m_spreadsheetID";
+        private const string SERIALIZED_DATA_PROP = "m_Data";
+        private const string JSON_FILE_EXTENSION = ".json";
+        private const string PREFS_KEY = "Client JSON Secret";
+
+        // GUIContent can remain static, as it does not change
+        private static readonly GUIContent AssembliesToIncludeLabel =
+            EditorGUIUtility.TrTextContent("Included Assemblies",
+                "Specify the assemblies that will be included in the coverage results.\n\nClick the dropdown to view and select or deselect the assemblies.");
+
+        private static readonly GUIContent AssembliesToIncludeDropdownLabel =
+            EditorGUIUtility.TrTextContent("Assemblies:", "Displays the list of assemblies to include.");
+
+        private static readonly GUIContent AssembliesToIncludeEmptyDropdownLabel =
+            EditorGUIUtility.TrTextContent("Select", "Click to view and manage assemblies.");
+
+        // Store style privately, initialize dynamically
         private static GUIStyle horizontalLine;
 
         [SettingsProvider]
@@ -31,7 +45,10 @@ namespace Editor.Project_Settings
                     var settings = GoogleSheetsHelper.GetSerializedSettings();
                     if (settings == null)
                     {
-                        EditorGUILayout.HelpBox("Failed to load Google Sheets settings.", MessageType.Error);
+                        // Provide clear feedback if settings are missing
+                        EditorGUILayout.HelpBox(
+                            "Failed to load Google Sheets settings. Ensure it is properly configured.",
+                            MessageType.Error);
                         return;
                     }
 
@@ -40,18 +57,24 @@ namespace Editor.Project_Settings
                     EditorGUILayout.LabelField("Google Sheets Settings", EditorStyles.boldLabel);
                     DrawHorizontalLine();
 
-                    // Ensure property is valid
-                    DrawPropertyWithValidation(settings, "m_spreadsheetID", "Spreadsheet ID");
+                    // Drawing serialized properties with validation
+                    DrawPropertyWithValidation(settings, SPREADSHEET_ID_PROP, "Spreadsheet ID");
 
-                    DrawFilePathField("Client JSON Secret", ".json");
+                    // File path field that handles file-browsing with validation
+                    DrawFilePathField(PREFS_KEY, JSON_FILE_EXTENSION);
 
                     GUILayout.Space(10f);
+
+                    // Included assemblies dropdown with validation
                     DrawIncludedAssemblies();
 
                     GUILayout.Space(10f);
-                    DrawPropertyWithValidation(settings, "m_Data", "My Data");
 
-                    settings.ApplyModifiedPropertiesWithoutUndo();
+                    // Drawing additional properties with validation
+                    DrawPropertyWithValidation(settings, SERIALIZED_DATA_PROP, "My Data");
+
+                    // Apply changes without undo history
+                    settings.ApplyModifiedProperties();
                 },
                 keywords = new HashSet<string>(new[] { "CSV", "Google", "Sheets", "JSON" })
             };
@@ -65,14 +88,18 @@ namespace Editor.Project_Settings
             GUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel(AssembliesToIncludeLabel);
 
-            Rect buttonRect = EditorGUILayout.GetControlRect(GUILayout.MinWidth(10));
-            string displayText = string.IsNullOrEmpty(GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude)
-                            ? AssembliesToIncludeEmptyDropdownLabel.text
-                            : $"{AssembliesToIncludeDropdownLabel.text}{GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude}";
+            // Safely retrieve the assemblies string
+            var assembliesToInclude =
+                GoogleSheetsHelper.GoogleSheetsCustomSettings?.assembliesToInclude ?? string.Empty;
+            string displayText = string.IsNullOrEmpty(assembliesToInclude)
+                ? AssembliesToIncludeEmptyDropdownLabel.text
+                : $"{AssembliesToIncludeDropdownLabel.text}{assembliesToInclude}";
 
-            if (EditorGUI.DropdownButton(buttonRect, new GUIContent(displayText), FocusType.Keyboard, EditorStyles.miniPullDown))
+            Rect buttonRect = EditorGUILayout.GetControlRect(GUILayout.MinWidth(10));
+            if (EditorGUI.DropdownButton(buttonRect, new GUIContent(displayText), FocusType.Keyboard,
+                    EditorStyles.miniPullDown))
             {
-                GUI.FocusControl("");
+                GUI.FocusControl(""); // Reset focus for better UX
                 PopupWindow.Show(buttonRect, new IncludedAssembliesPopupWindow(new GoogleSheetsDataItemDrawer()));
             }
 
@@ -103,35 +130,40 @@ namespace Editor.Project_Settings
         {
             EditorGUILayout.BeginHorizontal();
 
+            // Safely retrieve the JSON path and its default fallback
             string jsonPath = EditorPrefs.GetString(GoogleSheetsHelper.k_JSONEditorPref);
             if (string.IsNullOrWhiteSpace(jsonPath))
             {
-                jsonPath = GoogleSheetsHelper.GoogleSheetsCustomSettings.GetDefaultPath();
+                jsonPath = GoogleSheetsHelper.GoogleSheetsCustomSettings?.GetDefaultPath() ?? "Path unavailable";
             }
 
+            // Text field validation and update logic
             string newPath = EditorGUILayout.TextField(title, jsonPath);
-
             if (!string.Equals(jsonPath, newPath, StringComparison.Ordinal))
             {
                 EditorPrefs.SetString(GoogleSheetsHelper.k_JSONEditorPref, newPath);
             }
 
+            // File browsing with extension validation
             if (GUILayout.Button("Browse", GUILayout.Width(75)))
             {
-                var jsonFilePath = EditorUtility.OpenFilePanel("Select JSON File", jsonPath, extension);
-                if (!string.IsNullOrEmpty(jsonFilePath) && Path.GetExtension(jsonFilePath) == extension)
+                string jsonFilePath = EditorUtility.OpenFilePanel("Select JSON File", jsonPath, extension);
+                if (!string.IsNullOrEmpty(jsonFilePath) && Path.GetExtension(jsonFilePath)
+                        .Equals(extension, StringComparison.OrdinalIgnoreCase))
                 {
                     EditorPrefs.SetString(GoogleSheetsHelper.k_JSONEditorPref, jsonFilePath);
                 }
                 else if (!string.IsNullOrEmpty(jsonFilePath))
                 {
-                    Debug.LogError($"Please select a valid {extension} file.");
+                    Debug.LogError("Invalid file selected. Please select a valid JSON file.");
                 }
             }
 
+            // Reset settings, with user feedback
             if (GUILayout.Button("Reset", GUILayout.Width(75)))
             {
                 EditorPrefs.DeleteKey(GoogleSheetsHelper.k_JSONEditorPref);
+                Debug.Log("Settings have been reset to default.");
             }
 
             EditorGUILayout.EndHorizontal();
@@ -139,6 +171,7 @@ namespace Editor.Project_Settings
 
         private static void DrawPropertyWithValidation(SerializedObject settings, string propertyName, string label)
         {
+            // Ensure property exists in serialized object
             var property = settings.FindProperty(propertyName);
             if (property != null)
             {
@@ -146,7 +179,8 @@ namespace Editor.Project_Settings
             }
             else
             {
-                EditorGUILayout.HelpBox($"Property '{propertyName}' was not found in the serialized settings.", MessageType.Error);
+                EditorGUILayout.HelpBox($"Property '{propertyName}' not found. Verify settings are correct.",
+                    MessageType.Warning);
             }
         }
 
@@ -156,45 +190,53 @@ namespace Editor.Project_Settings
             public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
             {
                 EditorGUI.BeginProperty(position, label, property);
-                EditorGUILayout.BeginHorizontal();
 
                 float fieldWidth = position.width / 5;
 
+                // Rects for nested fields
                 Rect keyRect = new Rect(position.x, position.y, fieldWidth, position.height);
                 Rect valueRect = new Rect(position.x + fieldWidth + 5, position.y, fieldWidth, position.height);
-                Rect dropdownRect = new Rect(position.x + 2 * (fieldWidth + 5), position.y, fieldWidth, position.height);
-                Rect browseRect = new Rect(position.x + 3 * (fieldWidth + 5), position.y, fieldWidth / 2, position.height);
-                Rect resetRect = new Rect(position.x + 3.5f * (fieldWidth + 5), position.y, fieldWidth / 2, position.height);
+                Rect dropdownRect = new Rect(position.x + 2 * (fieldWidth + 5), position.y, fieldWidth,
+                    position.height);
+                Rect browseRect = new Rect(position.x + 3 * (fieldWidth + 5), position.y, fieldWidth / 2,
+                    position.height);
+                Rect resetRect = new Rect(position.x + 3.5f * (fieldWidth + 5), position.y, fieldWidth / 2,
+                    position.height);
 
-                EditorGUI.PropertyField(keyRect, property.FindPropertyRelative("key"), GUIContent.none);
-                EditorGUI.PropertyField(valueRect, property.FindPropertyRelative("value"), GUIContent.none);
+                // Ensure valid properties
+                var keyProp = property.FindPropertyRelative("key");
+                var valueProp = property.FindPropertyRelative("value");
+                var indexProp = property.FindPropertyRelative("index");
 
-                var dropdownLabel = new GUIContent("Scriptable Object");
-                int dropdownIndex = property.FindPropertyRelative("index").intValue;
-                List<Type> temp = GetAllScriptableObjects.GetAllScriptableObjectClasses();
-                List<string> temp2 = new List<string>();
-                foreach (var VARIABLE in temp)
+                if (keyProp != null && valueProp != null && indexProp != null)
                 {
-                    temp2.Add(VARIABLE.Name);
-                }
-                string[] dropdownOptions = temp2.ToArray();
-                property.FindPropertyRelative("index").intValue = EditorGUI.Popup(dropdownRect, dropdownIndex, dropdownOptions);
+                    // Draw fields
+                    EditorGUI.PropertyField(keyRect, keyProp, GUIContent.none);
+                    EditorGUI.PropertyField(valueRect, valueProp, GUIContent.none);
 
-                if (GUI.Button(browseRect, "Browse"))
-                {
-                    string csvFilePath = EditorUtility.OpenFilePanel("Select File", "", "csv");
-                    if (!string.IsNullOrEmpty(csvFilePath))
+                    // Populate dropdown menu
+                    List<Type> scriptableObjects = GetAllScriptableObjects.GetAllScriptableObjectClasses();
+                    string[] dropdownOptions = scriptableObjects.Select(obj => obj.Name).ToArray();
+
+                    indexProp.intValue = EditorGUI.Popup(dropdownRect, indexProp.intValue, dropdownOptions);
+
+                    // Browse button for file selection
+                    if (GUI.Button(browseRect, "Browse"))
                     {
-                        property.FindPropertyRelative("value").stringValue = csvFilePath;
+                        string filePath = EditorUtility.OpenFilePanel("Select File", "", "csv");
+                        if (!string.IsNullOrEmpty(filePath))
+                        {
+                            valueProp.stringValue = filePath;
+                        }
+                    }
+
+                    // Reset button to clear value
+                    if (GUI.Button(resetRect, "Reset"))
+                    {
+                        valueProp.stringValue = string.Empty;
                     }
                 }
 
-                if (GUI.Button(resetRect, "Reset"))
-                {
-                    property.FindPropertyRelative("value").stringValue = string.Empty;
-                }
-
-                EditorGUILayout.EndHorizontal();
                 EditorGUI.EndProperty();
             }
         }

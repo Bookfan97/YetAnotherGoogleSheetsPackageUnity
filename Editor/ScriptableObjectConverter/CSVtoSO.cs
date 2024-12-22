@@ -1,188 +1,210 @@
-/*
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
+using Editor.Google_Sheets;
 using UnityEditor;
+using UnityEngine;
 
-public class CSVtoSO
+namespace Editor.ScriptableObjectConverter
 {
-    public Dictionary<string, string> AddedIDs { get; set; }
-    private char lineSeparator = '\n';
-    private char surround = '"';
-    Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
-    public bool Success { get; private set; }
-
-    /*
-     * A generic function that creates scriptable objects based on the type T that is passed through
-     * to the class
-     #1#
-    public void GenerateScriptableObjects<T>(TextAsset csvFile, bool? skipPopups = false) where T : ScriptableObject
+    public class CSVtoSO
     {
-        string[] lines = csvFile.text.Split(lineSeparator);
-        AddedIDs = new Dictionary<string, string>();
-        int counter = 0, successCounter = 0;
-        //string[] allLines = File.ReadAllLines(Application.dataPath + csvPath);
-        
-        //TODO: This section needs to be removed from this class
-        Resources.LoadAll<DialogueSO>($"{Application.dataPath}\\Resources\\Dialogues");
-        DialogueSO[] dialogues = (DialogueSO[])Resources.FindObjectsOfTypeAll(typeof(DialogueSO));
-        foreach (var dialogue in dialogues)
+        public Dictionary<string, string> AddedIDs { get; private set; }
+        private const int ValidGuidLength = 32;
+        private const string DefaultDataFolderPath = "Assets/Data";
+        private static readonly Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+
+        public bool Success { get; private set; }
+
+        private void GenerateScriptableObjects(Type type, string csvFile)
         {
-            if (AddedIDs.ContainsKey(dialogue.id))
-            {
-                continue;
-            }
-            AddedIDs.Add(dialogue.id, dialogue.id);
-        }
-        
-        foreach (string s in lines)
-        {
-            if ((bool)!skipPopups)
-            {
-                counter++;
-                EditorUtility.DisplayProgressBar($"Creating {typeof(T)}",
-                    $"Loading {typeof(T)} {counter} / {lines.Length - 1}",
-                    counter / (lines.Length - 1));
-            }
-            
-            //Assumes there is a header line, skips over this for data
-            if (s.Equals(lines[0]))
-            {
-                counter--;
-                continue;
-            }
-            
-            string[] splitData = CSVParser.Split(s);
+            string[] lines = File.ReadAllText(csvFile).Split("\n");
 
-            for (int f = 0; f < splitData.Length; f++)
+            if (lines.Length <= 1)
             {
-                splitData[f] = splitData[f].TrimStart(' ', surround);
-                splitData[f] = splitData[f].TrimEnd(surround);
+                Debug.LogError("CSV file does not contain any valid data.");
+                return;
             }
 
-            //Checks if the data is blank
-            if (splitData.Length == 1)
+            AddedIDs = new Dictionary<string, string>();
+            int counter = 0, successCounter = 0;
+
+            // Detect existing instances of the type
+            var existingItems = Resources.FindObjectsOfTypeAll(type);
+            Debug.Log($"Found {existingItems.Length} existing objects of type {type.Name}.");
+
+            string header = lines[0];
+            string[] headerData = header.Split(',');
+
+            // Reflection: Map CSV fields to ScriptableObject fields or properties
+            var fields = type.GetFields();
+            var properties = type.GetProperties();
+            var fieldMap = new Dictionary<int, string>();
+
+            for (int i = 0; i < headerData.Length; i++)
             {
-                counter--;
-                break;
-            }
-            
-            var scriptableObject = ScriptableObject.CreateInstance<T>();
+                string columnName = headerData[i].Trim();
+                var matchingField =
+                    fields.FirstOrDefault(f => f.Name.Equals(columnName, StringComparison.OrdinalIgnoreCase));
+                var matchingProperty =
+                    properties.FirstOrDefault(p => p.Name.Equals(columnName, StringComparison.OrdinalIgnoreCase));
 
-            switch (scriptableObject)
-            {
-                case DialogueSO:
-                    Success = CreateDialogueSO(scriptableObject as DialogueSO, splitData);
-                    break;
-            }
-
-            if (Success)
-            {
-                successCounter++;
-            }
-        }
-
-        AssetDatabase.SaveAssets();
-        if (skipPopups != null && (bool)!skipPopups)
-        {
-            EditorUtility.ClearProgressBar();
-            EditorUtility.DisplayDialog("Creating Dialogues", $"Created {successCounter} of {counter} {typeof(T)}",
-                "OK", "");
-        }
-    }
-
-    /*
-     * Creates a DialogueSO based on the line passed through, and stores in the passed through scriptableObject.
-     * This method is specific to this type of scriptableObject
-     #1#
-    private bool CreateDialogueSO(DialogueSO scriptableObject, string[] splitData)
-    { 
-        string folder = "Assets/Resources/Dialogues";
-        if (splitData.Length <= 1)
-        {
-            Debug.LogError($"No data was found");
-            return false;
-        }
-                
-        scriptableObject.id = GetGuid(splitData[0]);
-        scriptableObject.speaker = splitData[1];
-        scriptableObject.scene = splitData[2];
-        scriptableObject.singleUse = CheckForBool(splitData[3]);
-        scriptableObject.hasChoices = CheckForBool(splitData[4]);
-        scriptableObject.choices = new SerializableDictionary<string, string>();
-
-        /* Splits the choices cells#1#
-        if (scriptableObject.hasChoices)
-        {
-            for (int i = 0; i < 8; i += 2)
-            {
-                string id = splitData[i + 6];
-                string text = splitData[i + 5];
-                if (!id.Equals("") || !text.Equals(""))
+                if (matchingField != null)
                 {
-                    id = GetGuid(id);
-                    scriptableObject.choices.Add(id, text);
+                    fieldMap.Add(i, matchingField.Name);
+                    Debug.Log($"Matched field: {matchingField.Name}");
+                }
+                else if (matchingProperty != null)
+                {
+                    fieldMap.Add(i, matchingProperty.Name);
+                    Debug.Log($"Matched property: {matchingProperty.Name}");
+                }
+                else
+                {
+                    Debug.LogWarning($"No matching field or property found for column: {headerData[i]}");
                 }
             }
-        }
 
-        /* Splits the dialogue cells#1#
-        scriptableObject.dialogue = new List<string>();
-        for (int i = 13; i < splitData.Length; i++)
-        {
-            if (!splitData[i].Equals(""))// || !splitData[i].Equals("\"\r\""))
+            try
             {
-                scriptableObject.dialogue.Add(splitData[i]);
-            }
-            else
-            {
-                i = splitData.Length;
-            }
-        }
-
-        var folderPath = $"{folder}/{scriptableObject.speaker}/{scriptableObject.scene}";
-        if(!Directory.Exists(folderPath))
-        {
-            Directory.CreateDirectory(folderPath);
-        }
-        AssetDatabase.CreateAsset(scriptableObject, $"{folderPath}/{scriptableObject.id}.asset");
-        return true;
-    }
-    
-    /*Creates a GUID for a Scriptable Object#1#
-    public string GetGuid(string splitData)
-    {
-        if (AddedIDs.ContainsKey(splitData))
-        {
-            foreach (var id in AddedIDs)
-            {
-                if (id.Key.Equals(splitData))
+                for (int i = 1; i < lines.Length; i++)
                 {
-                    splitData = id.Value;
-                    break;
+                    string line = lines[i].Trim();
+
+                    counter++;
+#if UNITY_EDITOR
+                    EditorUtility.DisplayProgressBar($"Creating {type.Name}",
+                        $"Processing line {counter} of {lines.Length - 1}",
+                        (float)counter / (lines.Length - 1));
+#endif
+
+                    string[] splitData = CSVParser.Split(line).Select(field => field.Trim('\"')).ToArray();
+
+                    if (splitData.Length != headerData.Length)
+                    {
+                        Debug.LogWarning(
+                            $"Line {i} has mismatched column count. Expected {headerData.Length}, got {splitData.Length}. Skipping...");
+                        continue;
+                    }
+
+                    var scriptableObject = ScriptableObject.CreateInstance(type);
+
+                    for (int columnIndex = 0; columnIndex < splitData.Length; columnIndex++)
+                    {
+                        if (!fieldMap.TryGetValue(columnIndex, out string mappedField))
+                        {
+                            Debug.LogWarning(
+                                $"Skipping unmapped column at index {columnIndex}: {headerData[columnIndex]}");
+                            continue;
+                        }
+
+                        try
+                        {
+                            var field = type.GetField(mappedField);
+                            var property = type.GetProperty(mappedField);
+
+                            if (field != null)
+                            {
+                                object value = Convert.ChangeType(splitData[columnIndex], field.FieldType);
+                                field.SetValue(scriptableObject, value);
+                            }
+                            else if (property != null && property.CanWrite)
+                            {
+                                object value = Convert.ChangeType(splitData[columnIndex], property.PropertyType);
+                                property.SetValue(scriptableObject, value);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.LogError(
+                                $"Error setting value for field/property {mappedField} on line {i}: {ex.Message}");
+                        }
+                    }
+
+                    Success = true;
+                    successCounter++;
+
+                    if (!AssetDatabase.IsValidFolder(DefaultDataFolderPath))
+                    {
+                        string parentFolder = Path.GetDirectoryName(DefaultDataFolderPath);
+                        AssetDatabase.CreateFolder(parentFolder, Path.GetFileName(DefaultDataFolderPath));
+                    }
+
+                    string assetPath = $"{DefaultDataFolderPath}/{type}_{i}.asset";
+                    AssetDatabase.CreateAsset(scriptableObject, assetPath);
+
+                    Debug.Log($"Created ScriptableObject: {scriptableObject.name} at {assetPath}");
                 }
+
+                AssetDatabase.SaveAssets();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error generating ScriptableObjects: {ex.Message}");
+            }
+            finally
+            {
+#if UNITY_EDITOR
+                EditorUtility.ClearProgressBar();
+                EditorUtility.DisplayDialog("ScriptableObjects Creation Complete",
+                    $"Successfully created {successCounter} out of {counter} objects.", "OK");
+#endif
+                AssetDatabase.SaveAssets();
             }
         }
-        //Checks that the ID number both does not exist, and is a valid number
-        else if (splitData == "" || splitData.Length != 32)
-        {
-            string newID = Guid.NewGuid().ToString("N");
-            AddedIDs.Add(splitData, newID);
-            splitData = newID;
-        }
-        return splitData;
-    }
 
-    /*Logic for converting a string into a boolean#1#
-    public bool CheckForBool(string inputString)
-    {
-        if (inputString.ToLower() == "true")
+        private string GetGuid(string id)
         {
-            return true;
+            if (AddedIDs.TryGetValue(id, out string existing))
+                return existing;
+
+            if (string.IsNullOrWhiteSpace(id) || id.Length != ValidGuidLength)
+            {
+                string newGuid = Guid.NewGuid().ToString("N");
+                AddedIDs[id] = newGuid;
+                return newGuid;
+            }
+
+            return id;
         }
-        return false;
+
+        public void Generate(DataItem dataItem)
+        {
+            if (string.IsNullOrEmpty(dataItem.scriptableObjectType))
+            {
+                Debug.LogError("scriptableObjectType is null or empty.");
+                return;
+            }
+
+            // Attempt to resolve the type
+            Type scriptableObjectType = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .FirstOrDefault(t => t.Name == dataItem.scriptableObjectType);
+
+            if (scriptableObjectType == null)
+            {
+                Debug.LogError(
+                    $"Failed to resolve scriptableObjectType: {dataItem.scriptableObjectType}. Make sure the type name is fully qualified and the assembly is loaded.");
+                return;
+            }
+
+            // Check if the resolved type is a ScriptableObject
+            if (!typeof(ScriptableObject).IsAssignableFrom(scriptableObjectType))
+            {
+                Debug.LogError($"Resolved type {scriptableObjectType} is not a ScriptableObject.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(dataItem.value) || !File.Exists(dataItem.value))
+            {
+                Debug.LogError("Invalid file path provided for CSV generation.");
+                return;
+            }
+
+            Debug.Log($"Generating {scriptableObjectType.Name} objects...");
+            GenerateScriptableObjects(scriptableObjectType, dataItem.value);
+        }
     }
 }
-*/
