@@ -39,9 +39,13 @@ namespace Editor.Assemblies
         {
             string[] includeAssemblyFilters = GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-            Regex[] includeAssemblies = includeAssemblyFilters
-                .Select(f => AssemblyFiltering.CreateFilterRegex(f))
-                .ToArray();
+            Regex[] includeAssemblies = new Regex[] { };
+            if (includeAssemblyFilters.Any())
+            {
+                includeAssemblies = includeAssemblyFilters
+                    .Select(f => AssemblyFiltering.CreateFilterRegex(f))
+                    .ToArray();
+            }
 
             TreeViewItem root = new TreeViewItem(-1, -1);
 
@@ -75,7 +79,7 @@ namespace Editor.Assemblies
                 for (int i = 0; i < assembliesLength; ++i)
                 {
                     Assembly assembly = assemblies[i];
-                    bool enabled = includeAssemblies.Any(f => f.IsMatch(assembly.name.ToLowerInvariant()));
+                    bool enabled = (bool)includeAssemblies?.Any(f => f.IsMatch(assembly.name.ToLowerInvariant()));
                     root.AddChild(new AssembliesTreeViewItem() { id = i + 1, displayName = assembly.name, Enabled = enabled });
 
                     textContent.text = assembly.name;

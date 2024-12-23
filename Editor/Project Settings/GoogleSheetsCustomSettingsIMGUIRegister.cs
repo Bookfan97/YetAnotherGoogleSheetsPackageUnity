@@ -207,8 +207,9 @@ namespace Editor.Project_Settings
                 var keyProp = property.FindPropertyRelative("key");
                 var valueProp = property.FindPropertyRelative("value");
                 var indexProp = property.FindPropertyRelative("index");
+                var typeProp = property.FindPropertyRelative("scriptableObjectType");
 
-                if (keyProp != null && valueProp != null && indexProp != null)
+                if (keyProp != null && valueProp != null && indexProp != null && typeProp != null)
                 {
                     // Draw fields
                     EditorGUI.PropertyField(keyRect, keyProp, GUIContent.none);
@@ -216,10 +217,14 @@ namespace Editor.Project_Settings
 
                     // Populate dropdown menu
                     List<Type> scriptableObjects = GetAllScriptableObjects.GetAllScriptableObjectClasses();
-                    string[] dropdownOptions = scriptableObjects.Select(obj => obj.Name).ToArray();
-
-                    indexProp.intValue = EditorGUI.Popup(dropdownRect, indexProp.intValue, dropdownOptions);
-
+                    string[] dropdownOptions = Array.Empty<string>();
+                    if (scriptableObjects.Count != 0)
+                    {
+                        dropdownOptions = scriptableObjects.Select(obj => obj.Name).ToArray();
+                        indexProp.intValue = EditorGUI.Popup(dropdownRect, indexProp.intValue, dropdownOptions);
+                        typeProp.stringValue = scriptableObjects[indexProp.intValue].ToString();
+                    }
+                    
                     // Browse button for file selection
                     if (GUI.Button(browseRect, "Browse"))
                     {
