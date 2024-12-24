@@ -26,6 +26,14 @@ namespace Editor.Project_Settings
         [SerializeField] private string m_spreadsheetID;
 
         /// <summary>
+        /// Specifies a semicolon-separated list of assembly names to be included
+        /// during the runtime compilation or evaluation process of the Google Sheets integration.
+        /// This setting allows for dynamic referencing of specific assemblies required for
+        /// the tailored handling of spreadsheet data within the Unity project.
+        /// </summary>
+        public string assembliesToInclude { get; set; }
+
+        /// <summary>
         /// Provides access to the collection of data items utilized for Google Sheets operations
         /// within the Unity project. Each item in the list represents a key-value pair that
         /// facilitates the interaction and data exchange between the application and the Google Sheets.
@@ -51,6 +59,14 @@ namespace Editor.Project_Settings
         /// </summary>
         public string ClientSecretJsonPath =>
             EditorPrefs.GetString(GoogleSheetsHelper.k_JSONEditorPref, "ClientSecret");
+
+        /// <summary>
+        /// Determines whether debug logs for Google Sheets operations are enabled within the Unity editor.
+        /// When set to true, additional diagnostic information is logged to assist with troubleshooting
+        /// or verifying functionality.
+        /// </summary>
+        public bool ShowDebugLogs =>
+            EditorPrefs.GetBool(GoogleSheetsHelper.k_debugLogEditorPref, false);
 
         /// <summary>
         /// Retrieves the file path associated with the specified spreadsheet ID.

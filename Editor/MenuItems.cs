@@ -1,5 +1,7 @@
-﻿using Editor.Google_Sheets;
+﻿using System;
+using Editor.Google_Sheets;
 using Editor.Project_Settings;
+using Editor.ScriptableObjectConverter;
 using UnityEditor;
 using UnityEditor.Localization.Plugins.Google;
 using UnityEngine;
@@ -12,6 +14,10 @@ namespace Editor
     /// </summary>
     public static class MenuItems
     {
+        //static CSVtoSO CSVconverter;
+        //static SOtoCSV SOconverter;
+        public static string csvPath = "";
+        
         /// <summary>
         /// Stores an instance of the GoogleSheetsInstance class, which manages
         /// interactions with Google Sheets, such as uploading and downloading data.
@@ -74,6 +80,50 @@ namespace Editor
         {
             Application.OpenURL(
                 "https://definitive-infinity-media.github.io/com.definitiveinfinitymedia.googlesheets/api/index.html");
+        }
+        
+        /// <summary>
+        /// Opens the Google Sheets documentation URL in the default web browser.
+        /// This method is accessible via the Tools > Google Sheets > Documentation menu item in the Unity Editor.
+        /// </summary>
+        [MenuItem("Tools/Google Sheets/ConvertCSVtoSO", false, 6)]
+        private static void ConvertCSVtoSO()
+        {
+            try
+            {
+                foreach (var dataItem in GoogleSheetsHelper.GoogleSheetsCustomSettings.Data)
+                {
+                    CSVtoSO converter = new CSVtoSO();
+                    converter.Generate(dataItem);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                throw;
+            }
+        }
+        
+        /// <summary>
+        /// Opens the Google Sheets documentation URL in the default web browser.
+        /// This method is accessible via the Tools > Google Sheets > Documentation menu item in the Unity Editor.
+        /// </summary>
+        [MenuItem("Tools/Google Sheets/ConvertSOtoCSV", false, 7)]
+        private static void ConvertSOtoCSV()
+        {
+            try
+            {
+                foreach (var dataItem in GoogleSheetsHelper.GoogleSheetsCustomSettings.Data)
+                {
+                    SOtoCSV converter = new SOtoCSV();
+                    converter.CSVtoScriptableObjects(dataItem);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                throw;
+            }
         }
     }
 }
