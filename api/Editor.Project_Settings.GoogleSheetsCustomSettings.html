@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class GoogleSheetsCustomSettings | Google Sheets | 2.0.0 </title>
+      <title>Class GoogleSheetsCustomSettings | Google Sheets | 2.1.0 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class GoogleSheetsCustomSettings | Google Sheets | 2.0.0 ">
+      <meta name="title" content="Class GoogleSheetsCustomSettings | Google Sheets | 2.1.0 ">
       
       <meta name="description" content="Represents the configuration settings necessary for integrating Google Sheets within a Unity project. Manages various parameters like spreadsheet ID and data items required for handling Google Sheets operations.">
       <link rel="icon" href="../favicon.ico">
@@ -133,7 +133,7 @@ Manages various parameters like spreadsheet ID and data items required for handl
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_ClientSecretJsonPath" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.ClientSecretJsonPath">
   ClientSecretJsonPath
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Specifies the file path to the JSON file containing the client secret credentials
@@ -168,7 +168,7 @@ access from the Unity editor or application.</p>
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_Data" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.Data">
   Data
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Provides access to the collection of data items utilized for Google Sheets operations
@@ -202,7 +202,7 @@ facilitates the interaction and data exchange between the application and the Go
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_MSpreadsheetID" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.MSpreadsheetID">
   MSpreadsheetID
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Provides access to the unique identifier of the current Google Spreadsheet.
@@ -232,6 +232,75 @@ or downloading data from the spreadsheet within the Unity editor environment.</p
 
 
 
+  <a id="Editor_Project_Settings_GoogleSheetsCustomSettings_ShowDebugLogs_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs*"></a>
+
+  <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_ShowDebugLogs" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs">
+  ShowDebugLogs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether debug logs for Google Sheets operations are enabled within the Unity editor.
+When set to true, additional diagnostic information is logged to assist with troubleshooting
+or verifying functionality.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShowDebugLogs { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Editor_Project_Settings_GoogleSheetsCustomSettings_assembliesToInclude_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude*"></a>
+
+  <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_assembliesToInclude" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude">
+  assembliesToInclude
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Specifies a semicolon-separated list of assembly names to be included
+during the runtime compilation or evaluation process of the Google Sheets integration.
+This setting allows for dynamic referencing of specific assemblies required for
+the tailored handling of spreadsheet data within the Unity project.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string assembliesToInclude { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -240,7 +309,7 @@ or downloading data from the spreadsheet within the Unity editor environment.</p
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_GetDefaultPath" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.GetDefaultPath">
   GetDefaultPath()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the default file path used for storing data.</p>
@@ -273,7 +342,7 @@ or downloading data from the spreadsheet within the Unity editor environment.</p
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_GetPathForSheet_System_Int32_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.GetPathForSheet(System.Int32)">
   GetPathForSheet(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the file path associated with the specified spreadsheet ID.</p>

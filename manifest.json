@@ -125,6 +125,56 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Editor.ScriptableObjectConverter.CSVtoSO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.ScriptableObjectConverter.CSVtoSO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.ScriptableObjectConverter.SOtoCSV.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.ScriptableObjectConverter.SOtoCSV.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.ScriptableObjectConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.ScriptableObjectConverter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Utilities.GetAllScriptableObjects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Utilities.GetAllScriptableObjects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Utilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Utilities.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Editor.yml",
       "output": {
         ".html": {

@@ -19,12 +19,30 @@ references:
   commentId: T:Editor.Google_Sheets.DataItem
   fullName: Editor.Google_Sheets.DataItem
   nameWithType: DataItem
+- uid: Editor.Google_Sheets.DataItem.index
+  name: index
+  href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_index
+  commentId: F:Editor.Google_Sheets.DataItem.index
+  fullName: Editor.Google_Sheets.DataItem.index
+  nameWithType: DataItem.index
 - uid: Editor.Google_Sheets.DataItem.key
   name: key
   href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_key
   commentId: F:Editor.Google_Sheets.DataItem.key
   fullName: Editor.Google_Sheets.DataItem.key
   nameWithType: DataItem.key
+- uid: Editor.Google_Sheets.DataItem.scriptableObject
+  name: scriptableObject
+  href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_scriptableObject
+  commentId: F:Editor.Google_Sheets.DataItem.scriptableObject
+  fullName: Editor.Google_Sheets.DataItem.scriptableObject
+  nameWithType: DataItem.scriptableObject
+- uid: Editor.Google_Sheets.DataItem.scriptableObjectType
+  name: scriptableObjectType
+  href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_scriptableObjectType
+  commentId: F:Editor.Google_Sheets.DataItem.scriptableObjectType
+  fullName: Editor.Google_Sheets.DataItem.scriptableObjectType
+  nameWithType: DataItem.scriptableObjectType
 - uid: Editor.Google_Sheets.DataItem.value
   name: value
   href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_value
@@ -114,6 +132,19 @@ references:
   isSpec: "True"
   fullName: Editor.Google_Sheets.GoogleSheetsHelper.k_JSONEditorPref
   nameWithType: GoogleSheetsHelper.k_JSONEditorPref
+- uid: Editor.Google_Sheets.GoogleSheetsHelper.k_debugLogEditorPref
+  name: k_debugLogEditorPref
+  href: api/Editor.Google_Sheets.GoogleSheetsHelper.html#Editor_Google_Sheets_GoogleSheetsHelper_k_debugLogEditorPref
+  commentId: P:Editor.Google_Sheets.GoogleSheetsHelper.k_debugLogEditorPref
+  fullName: Editor.Google_Sheets.GoogleSheetsHelper.k_debugLogEditorPref
+  nameWithType: GoogleSheetsHelper.k_debugLogEditorPref
+- uid: Editor.Google_Sheets.GoogleSheetsHelper.k_debugLogEditorPref*
+  name: k_debugLogEditorPref
+  href: api/Editor.Google_Sheets.GoogleSheetsHelper.html#Editor_Google_Sheets_GoogleSheetsHelper_k_debugLogEditorPref_
+  commentId: Overload:Editor.Google_Sheets.GoogleSheetsHelper.k_debugLogEditorPref
+  isSpec: "True"
+  fullName: Editor.Google_Sheets.GoogleSheetsHelper.k_debugLogEditorPref
+  nameWithType: GoogleSheetsHelper.k_debugLogEditorPref
 - uid: Editor.Google_Sheets.GoogleSheetsInstance
   name: GoogleSheetsInstance
   href: api/Editor.Google_Sheets.GoogleSheetsInstance.html
@@ -171,6 +202,12 @@ references:
   commentId: T:Editor.MenuItems
   fullName: Editor.MenuItems
   nameWithType: MenuItems
+- uid: Editor.MenuItems.csvPath
+  name: csvPath
+  href: api/Editor.MenuItems.html#Editor_MenuItems_csvPath
+  commentId: F:Editor.MenuItems.csvPath
+  fullName: Editor.MenuItems.csvPath
+  nameWithType: MenuItems.csvPath
 - uid: Editor.Project_Settings
   name: Editor.Project_Settings
   href: api/Editor.Project_Settings.html
@@ -251,6 +288,32 @@ references:
   isSpec: "True"
   fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.MSpreadsheetID
   nameWithType: GoogleSheetsCustomSettings.MSpreadsheetID
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs
+  name: ShowDebugLogs
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_ShowDebugLogs
+  commentId: P:Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs
+  nameWithType: GoogleSheetsCustomSettings.ShowDebugLogs
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs*
+  name: ShowDebugLogs
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_ShowDebugLogs_
+  commentId: Overload:Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs
+  isSpec: "True"
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs
+  nameWithType: GoogleSheetsCustomSettings.ShowDebugLogs
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude
+  name: assembliesToInclude
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_assembliesToInclude
+  commentId: P:Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude
+  nameWithType: GoogleSheetsCustomSettings.assembliesToInclude
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude*
+  name: assembliesToInclude
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_assembliesToInclude_
+  commentId: Overload:Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude
+  isSpec: "True"
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude
+  nameWithType: GoogleSheetsCustomSettings.assembliesToInclude
 - uid: Editor.Project_Settings.GoogleSheetsEditorUtilities
   name: GoogleSheetsEditorUtilities
   href: api/Editor.Project_Settings.GoogleSheetsEditorUtilities.html
@@ -299,3 +362,168 @@ references:
   isSpec: "True"
   fullName: Editor.Project_Settings.GoogleSheetsEditorUtilities.MissingDataPopup
   nameWithType: GoogleSheetsEditorUtilities.MissingDataPopup
+- uid: Editor.ScriptableObjectConverter
+  name: Editor.ScriptableObjectConverter
+  href: api/Editor.ScriptableObjectConverter.html
+  commentId: N:Editor.ScriptableObjectConverter
+  fullName: Editor.ScriptableObjectConverter
+  nameWithType: Editor.ScriptableObjectConverter
+- uid: Editor.ScriptableObjectConverter.CSVtoSO
+  name: CSVtoSO
+  href: api/Editor.ScriptableObjectConverter.CSVtoSO.html
+  commentId: T:Editor.ScriptableObjectConverter.CSVtoSO
+  fullName: Editor.ScriptableObjectConverter.CSVtoSO
+  nameWithType: CSVtoSO
+- uid: Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs
+  name: AddedIDs
+  href: api/Editor.ScriptableObjectConverter.CSVtoSO.html#Editor_ScriptableObjectConverter_CSVtoSO_AddedIDs
+  commentId: P:Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs
+  fullName: Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs
+  nameWithType: CSVtoSO.AddedIDs
+- uid: Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs*
+  name: AddedIDs
+  href: api/Editor.ScriptableObjectConverter.CSVtoSO.html#Editor_ScriptableObjectConverter_CSVtoSO_AddedIDs_
+  commentId: Overload:Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs
+  isSpec: "True"
+  fullName: Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs
+  nameWithType: CSVtoSO.AddedIDs
+- uid: Editor.ScriptableObjectConverter.CSVtoSO.Generate(Editor.Google_Sheets.DataItem)
+  name: Generate(DataItem)
+  href: api/Editor.ScriptableObjectConverter.CSVtoSO.html#Editor_ScriptableObjectConverter_CSVtoSO_Generate_Editor_Google_Sheets_DataItem_
+  commentId: M:Editor.ScriptableObjectConverter.CSVtoSO.Generate(Editor.Google_Sheets.DataItem)
+  fullName: Editor.ScriptableObjectConverter.CSVtoSO.Generate(Editor.Google_Sheets.DataItem)
+  nameWithType: CSVtoSO.Generate(DataItem)
+- uid: Editor.ScriptableObjectConverter.CSVtoSO.Generate*
+  name: Generate
+  href: api/Editor.ScriptableObjectConverter.CSVtoSO.html#Editor_ScriptableObjectConverter_CSVtoSO_Generate_
+  commentId: Overload:Editor.ScriptableObjectConverter.CSVtoSO.Generate
+  isSpec: "True"
+  fullName: Editor.ScriptableObjectConverter.CSVtoSO.Generate
+  nameWithType: CSVtoSO.Generate
+- uid: Editor.ScriptableObjectConverter.CSVtoSO.Success
+  name: Success
+  href: api/Editor.ScriptableObjectConverter.CSVtoSO.html#Editor_ScriptableObjectConverter_CSVtoSO_Success
+  commentId: P:Editor.ScriptableObjectConverter.CSVtoSO.Success
+  fullName: Editor.ScriptableObjectConverter.CSVtoSO.Success
+  nameWithType: CSVtoSO.Success
+- uid: Editor.ScriptableObjectConverter.CSVtoSO.Success*
+  name: Success
+  href: api/Editor.ScriptableObjectConverter.CSVtoSO.html#Editor_ScriptableObjectConverter_CSVtoSO_Success_
+  commentId: Overload:Editor.ScriptableObjectConverter.CSVtoSO.Success
+  isSpec: "True"
+  fullName: Editor.ScriptableObjectConverter.CSVtoSO.Success
+  nameWithType: CSVtoSO.Success
+- uid: Editor.ScriptableObjectConverter.SOtoCSV
+  name: SOtoCSV
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html
+  commentId: T:Editor.ScriptableObjectConverter.SOtoCSV
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV
+  nameWithType: SOtoCSV
+- uid: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(Editor.Google_Sheets.DataItem)
+  name: CSVtoScriptableObjects(DataItem)
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_CSVtoScriptableObjects_Editor_Google_Sheets_DataItem_
+  commentId: M:Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(Editor.Google_Sheets.DataItem)
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(Editor.Google_Sheets.DataItem)
+  nameWithType: SOtoCSV.CSVtoScriptableObjects(DataItem)
+- uid: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(System.Type,System.String,System.Nullable{System.Boolean})
+  name: CSVtoScriptableObjects(Type, string, bool?)
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_CSVtoScriptableObjects_System_Type_System_String_System_Nullable_System_Boolean__
+  commentId: M:Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(System.Type,System.String,System.Nullable{System.Boolean})
+  name.vb: CSVtoScriptableObjects(Type, String, Boolean?)
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(System.Type, string, bool?)
+  fullName.vb: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(System.Type, String, Boolean?)
+  nameWithType: SOtoCSV.CSVtoScriptableObjects(Type, string, bool?)
+  nameWithType.vb: SOtoCSV.CSVtoScriptableObjects(Type, String, Boolean?)
+- uid: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects*
+  name: CSVtoScriptableObjects
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_CSVtoScriptableObjects_
+  commentId: Overload:Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects
+  isSpec: "True"
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects
+  nameWithType: SOtoCSV.CSVtoScriptableObjects
+- uid: Editor.ScriptableObjectConverter.SOtoCSV.SaveToFile(System.String,System.Collections.Generic.List{System.String},System.String)
+  name: SaveToFile(string, List<string>, string)
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_SaveToFile_System_String_System_Collections_Generic_List_System_String__System_String_
+  commentId: M:Editor.ScriptableObjectConverter.SOtoCSV.SaveToFile(System.String,System.Collections.Generic.List{System.String},System.String)
+  name.vb: SaveToFile(String, List(Of String), String)
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV.SaveToFile(string, System.Collections.Generic.List<string>, string)
+  fullName.vb: Editor.ScriptableObjectConverter.SOtoCSV.SaveToFile(String, System.Collections.Generic.List(Of String), String)
+  nameWithType: SOtoCSV.SaveToFile(string, List<string>, string)
+  nameWithType.vb: SOtoCSV.SaveToFile(String, List(Of String), String)
+- uid: Editor.ScriptableObjectConverter.SOtoCSV.SaveToFile*
+  name: SaveToFile
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_SaveToFile_
+  commentId: Overload:Editor.ScriptableObjectConverter.SOtoCSV.SaveToFile
+  isSpec: "True"
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV.SaveToFile
+  nameWithType: SOtoCSV.SaveToFile
+- uid: Editor.ScriptableObjectConverter.SOtoCSV.ToCSV(System.String,System.Collections.Generic.List{System.String})
+  name: ToCSV(string, List<string>)
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_ToCSV_System_String_System_Collections_Generic_List_System_String__
+  commentId: M:Editor.ScriptableObjectConverter.SOtoCSV.ToCSV(System.String,System.Collections.Generic.List{System.String})
+  name.vb: ToCSV(String, List(Of String))
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV.ToCSV(string, System.Collections.Generic.List<string>)
+  fullName.vb: Editor.ScriptableObjectConverter.SOtoCSV.ToCSV(String, System.Collections.Generic.List(Of String))
+  nameWithType: SOtoCSV.ToCSV(string, List<string>)
+  nameWithType.vb: SOtoCSV.ToCSV(String, List(Of String))
+- uid: Editor.ScriptableObjectConverter.SOtoCSV.ToCSV*
+  name: ToCSV
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_ToCSV_
+  commentId: Overload:Editor.ScriptableObjectConverter.SOtoCSV.ToCSV
+  isSpec: "True"
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV.ToCSV
+  nameWithType: SOtoCSV.ToCSV
+- uid: Editor.Utilities
+  name: Editor.Utilities
+  href: api/Editor.Utilities.html
+  commentId: N:Editor.Utilities
+  fullName: Editor.Utilities
+  nameWithType: Editor.Utilities
+- uid: Editor.Utilities.GetAllScriptableObjects
+  name: GetAllScriptableObjects
+  href: api/Editor.Utilities.GetAllScriptableObjects.html
+  commentId: T:Editor.Utilities.GetAllScriptableObjects
+  fullName: Editor.Utilities.GetAllScriptableObjects
+  nameWithType: GetAllScriptableObjects
+- uid: Editor.Utilities.GetAllScriptableObjects.GetAllClasses(System.String)
+  name: GetAllClasses(string)
+  href: api/Editor.Utilities.GetAllScriptableObjects.html#Editor_Utilities_GetAllScriptableObjects_GetAllClasses_System_String_
+  commentId: M:Editor.Utilities.GetAllScriptableObjects.GetAllClasses(System.String)
+  name.vb: GetAllClasses(String)
+  fullName: Editor.Utilities.GetAllScriptableObjects.GetAllClasses(string)
+  fullName.vb: Editor.Utilities.GetAllScriptableObjects.GetAllClasses(String)
+  nameWithType: GetAllScriptableObjects.GetAllClasses(string)
+  nameWithType.vb: GetAllScriptableObjects.GetAllClasses(String)
+- uid: Editor.Utilities.GetAllScriptableObjects.GetAllClasses*
+  name: GetAllClasses
+  href: api/Editor.Utilities.GetAllScriptableObjects.html#Editor_Utilities_GetAllScriptableObjects_GetAllClasses_
+  commentId: Overload:Editor.Utilities.GetAllScriptableObjects.GetAllClasses
+  isSpec: "True"
+  fullName: Editor.Utilities.GetAllScriptableObjects.GetAllClasses
+  nameWithType: GetAllScriptableObjects.GetAllClasses
+- uid: Editor.Utilities.GetAllScriptableObjects.GetAllNames
+  name: GetAllNames()
+  href: api/Editor.Utilities.GetAllScriptableObjects.html#Editor_Utilities_GetAllScriptableObjects_GetAllNames
+  commentId: M:Editor.Utilities.GetAllScriptableObjects.GetAllNames
+  fullName: Editor.Utilities.GetAllScriptableObjects.GetAllNames()
+  nameWithType: GetAllScriptableObjects.GetAllNames()
+- uid: Editor.Utilities.GetAllScriptableObjects.GetAllNames*
+  name: GetAllNames
+  href: api/Editor.Utilities.GetAllScriptableObjects.html#Editor_Utilities_GetAllScriptableObjects_GetAllNames_
+  commentId: Overload:Editor.Utilities.GetAllScriptableObjects.GetAllNames
+  isSpec: "True"
+  fullName: Editor.Utilities.GetAllScriptableObjects.GetAllNames
+  nameWithType: GetAllScriptableObjects.GetAllNames
+- uid: Editor.Utilities.GetAllScriptableObjects.GetAllScriptableObjectClasses
+  name: GetAllScriptableObjectClasses()
+  href: api/Editor.Utilities.GetAllScriptableObjects.html#Editor_Utilities_GetAllScriptableObjects_GetAllScriptableObjectClasses
+  commentId: M:Editor.Utilities.GetAllScriptableObjects.GetAllScriptableObjectClasses
+  fullName: Editor.Utilities.GetAllScriptableObjects.GetAllScriptableObjectClasses()
+  nameWithType: GetAllScriptableObjects.GetAllScriptableObjectClasses()
+- uid: Editor.Utilities.GetAllScriptableObjects.GetAllScriptableObjectClasses*
+  name: GetAllScriptableObjectClasses
+  href: api/Editor.Utilities.GetAllScriptableObjects.html#Editor_Utilities_GetAllScriptableObjects_GetAllScriptableObjectClasses_
+  commentId: Overload:Editor.Utilities.GetAllScriptableObjects.GetAllScriptableObjectClasses
+  isSpec: "True"
+  fullName: Editor.Utilities.GetAllScriptableObjects.GetAllScriptableObjectClasses
+  nameWithType: GetAllScriptableObjects.GetAllScriptableObjectClasses

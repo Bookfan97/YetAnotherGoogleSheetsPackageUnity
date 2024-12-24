@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class GoogleSheetsHelper | Google Sheets | 2.1.0 </title>
+      <title>Class CSVtoSO | Google Sheets | 2.1.0 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class GoogleSheetsHelper | Google Sheets | 2.1.0 ">
+      <meta name="title" content="Class CSVtoSO | Google Sheets | 2.1.0 ">
       
-      <meta name="description" content="Provides helper methods and properties for managing Google Sheets settings within the editor.">
+      <meta name="description" content="A utility class for converting CSV data into Unity ScriptableObjects.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       <meta name="docfx:disablenewtab" content="true">
       
-      <meta name="docfx:docurl" content="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/new/main/apiSpec/new?filename=Editor_Google_Sheets_GoogleSheetsHelper.md&amp;value=---%0Auid%3A%20Editor.Google_Sheets.GoogleSheetsHelper%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/new/main/apiSpec/new?filename=Editor_ScriptableObjectConverter_CSVtoSO.md&amp;value=---%0Auid%3A%20Editor.ScriptableObjectConverter.CSVtoSO%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,25 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Editor.Google_Sheets.GoogleSheetsHelper">
+        <article data-uid="Editor.ScriptableObjectConverter.CSVtoSO">
 
 
 
-  <h1 id="Editor_Google_Sheets_GoogleSheetsHelper" data-uid="Editor.Google_Sheets.GoogleSheetsHelper" class="text-break">
-Class GoogleSheetsHelper  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsHelper.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <h1 id="Editor_ScriptableObjectConverter_CSVtoSO" data-uid="Editor.ScriptableObjectConverter.CSVtoSO" class="text-break">
+Class CSVtoSO  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Editor.html">Editor</a>.<a class="xref" href="Editor.Google_Sheets.html">Google_Sheets</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Editor.html">Editor</a>.<a class="xref" href="Editor.ScriptableObjectConverter.html">ScriptableObjectConverter</a></dd></dl>
   
   </div>
 
-  <div class="markdown summary"><p>Provides helper methods and properties for managing Google Sheets settings within the editor.</p>
+  <div class="markdown summary"><p>A utility class for converting CSV data into Unity ScriptableObjects.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class GoogleSheetsHelper</code></pre>
+    <pre><code class="lang-csharp hljs">public class CSVtoSO</code></pre>
   </div>
 
 
@@ -112,7 +112,7 @@ Class GoogleSheetsHelper  <a class="header-action link-secondary" title="View so
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">GoogleSheetsHelper</span></div>
+      <div><span class="xref">CSVtoSO</span></div>
     </dd>
   </dl>
 
@@ -147,25 +147,29 @@ Class GoogleSheetsHelper  <a class="header-action link-secondary" title="View so
 
 
 
+  <h2 id="Editor_ScriptableObjectConverter_CSVtoSO_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This class reads CSV files and creates instances of the specified ScriptableObject type based on the data in the file.
+It provides functionality to handle the conversion process, ensuring that types and file paths are correctly validated.</p>
+</div>
 
 
   <h2 class="section" id="properties">Properties
 </h2>
 
 
-  <a id="Editor_Google_Sheets_GoogleSheetsHelper_GoogleSheetsCustomSettings_" data-uid="Editor.Google_Sheets.GoogleSheetsHelper.GoogleSheetsCustomSettings*"></a>
+  <a id="Editor_ScriptableObjectConverter_CSVtoSO_AddedIDs_" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs*"></a>
 
-  <h3 id="Editor_Google_Sheets_GoogleSheetsHelper_GoogleSheetsCustomSettings" data-uid="Editor.Google_Sheets.GoogleSheetsHelper.GoogleSheetsCustomSettings">
-  GoogleSheetsCustomSettings
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsHelper.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Editor_ScriptableObjectConverter_CSVtoSO_AddedIDs" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs">
+  AddedIDs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Property to get the instance of GoogleSheetsCustomSettings.</p>
+  <div class="markdown level1 summary"><p>A dictionary that stores mapping between original identifiers and their corresponding unique GUIDs.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GoogleSheetsCustomSettings GoogleSheetsCustomSettings { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string&gt; AddedIDs { get; }</code></pre>
   </div>
 
 
@@ -174,38 +178,35 @@ Class GoogleSheetsHelper  <a class="header-action link-secondary" title="View so
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Editor.Project_Settings.GoogleSheetsCustomSettings.html">GoogleSheetsCustomSettings</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd></dd>
   </dl>
 
 
 
 
-  <h4 class="section" id="Editor_Google_Sheets_GoogleSheetsHelper_GoogleSheetsCustomSettings_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This property retrieves or creates an instance of the GoogleSheetsCustomSettings
-which is used to store and manage custom settings related to Google Sheets integration.</p>
+  <h4 class="section" id="Editor_ScriptableObjectConverter_CSVtoSO_AddedIDs_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property is used during the conversion process to ensure each generated ScriptableObject has a unique identifier.
+The key represents the original identifier (e.g., from the CSV data), and the value is the assigned GUID.
+These mappings are preserved for potential reuse during subsequent operations or validations.</p>
 </div>
 
 
 
 
-  <a id="Editor_Google_Sheets_GoogleSheetsHelper_k_JSONEditorPref_" data-uid="Editor.Google_Sheets.GoogleSheetsHelper.k_JSONEditorPref*"></a>
+  <a id="Editor_ScriptableObjectConverter_CSVtoSO_Success_" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.Success*"></a>
 
-  <h3 id="Editor_Google_Sheets_GoogleSheetsHelper_k_JSONEditorPref" data-uid="Editor.Google_Sheets.GoogleSheetsHelper.k_JSONEditorPref">
-  k_JSONEditorPref
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsHelper.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Editor_ScriptableObjectConverter_CSVtoSO_Success" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.Success">
+  Success
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The <code>k_JSONEditorPref</code> field is used as the key for storing and retrieving
-the file path to the JSON file containing client secret information within
-the Unity Editor preferences. This string acts as an identifier for the
-preference setting, ensuring that the proper file path is maintained
-throughout various editor sessions.</p>
+  <div class="markdown level1 summary"><p>Indicates whether the CSV to ScriptableObject conversion process was successful.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string k_JSONEditorPref { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Success { get; }</code></pre>
   </div>
 
 
@@ -214,49 +215,56 @@ throughout various editor sessions.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
 
 
 
+  <h4 class="section" id="Editor_ScriptableObjectConverter_CSVtoSO_Success_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property reflects the outcome of the most recent conversion operation.
+It is set to true if the conversion completes at least one ScriptableObject creation successfully,
+even if there are warnings or skipped rows due to mismatched data. A value of false usually indicates
+either a failure to create any ScriptableObjects or errors that interrupted the process.</p>
+</div>
 
 
 
 
-  <a id="Editor_Google_Sheets_GoogleSheetsHelper_k_debugLogEditorPref_" data-uid="Editor.Google_Sheets.GoogleSheetsHelper.k_debugLogEditorPref*"></a>
+  <h2 class="section" id="methods">Methods
+</h2>
 
-  <h3 id="Editor_Google_Sheets_GoogleSheetsHelper_k_debugLogEditorPref" data-uid="Editor.Google_Sheets.GoogleSheetsHelper.k_debugLogEditorPref">
-  k_debugLogEditorPref
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsHelper.cs/#L39"><i class="bi bi-code-slash"></i></a>
+
+  <a id="Editor_ScriptableObjectConverter_CSVtoSO_Generate_" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.Generate*"></a>
+
+  <h3 id="Editor_ScriptableObjectConverter_CSVtoSO_Generate_Editor_Google_Sheets_DataItem_" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.Generate(Editor.Google_Sheets.DataItem)">
+  Generate(DataItem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L224"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Constant string representing the preference key for enabling or disabling debug logs related to Google Sheets settings in the editor.</p>
+  <div class="markdown level1 summary"><p>Generates ScriptableObject instances using the specified data item information.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string k_debugLogEditorPref { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public void Generate(DataItem dataItem)</code></pre>
   </div>
 
-
-
-
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dt><code>dataItem</code> <a class="xref" href="Editor.Google_Sheets.DataItem.html">DataItem</a></dt>
+    <dd><p>The data item containing the scriptableObjectType and CSV file path required for generating the ScriptableObjects.</p>
+</dd>
   </dl>
 
 
 
 
-  <h4 class="section" id="Editor_Google_Sheets_GoogleSheetsHelper_k_debugLogEditorPref_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This key is used to store and retrieve the user preference for logging debug information in the Unity editor
-while working with Google Sheets integrations. It ensures consistent behavior and settings across editor sessions.</p>
-</div>
+
+
+
+
 
 
 
