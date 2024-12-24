@@ -10,6 +10,11 @@ using UnityEngine;
 
 namespace Editor.Utilities
 {
+    /// <summary>
+    /// Provides utility methods for working with ScriptableObjects in Unity projects.
+    /// Includes functionality for retrieving all ScriptableObject assets, discovering
+    /// classes in assemblies, and listing ScriptableObject types.
+    /// </summary>
     public class GetAllScriptableObjects
     {
         /// <summary>
@@ -62,23 +67,6 @@ namespace Editor.Utilities
         }
 
         /// <summary>
-        /// Editor menu function to list all class names from project assemblies.
-        /// </summary>
-        [MenuItem("Tools/List All Classes")]
-        public static void ListClasses()
-        {
-            string projectPath = Path.Combine(Application.dataPath, ".."); // Safely set root project path
-            var classes = GetAllClasses(projectPath);
-
-            foreach (var className in classes)
-            {
-                Debug.Log($"Class: {className}");
-            }
-
-            Debug.Log($"Total Classes Found: {classes.Count}");
-        }
-
-        /// <summary>
         /// Finds all classes derived from ScriptableObject across all project assemblies.
         /// </summary>
         /// <returns>List of ScriptableObject class types</returns>
@@ -127,64 +115,6 @@ namespace Editor.Utilities
             }
 
             return scriptableObjectClasses;
-        }
-    }
-
-    public class ScriptableObjectClassFinderEditor : EditorWindow
-    {
-        private List<Type> _scriptableObjectClasses;
-        private Vector2 _scrollPosition; // Required for enabling scrollable GUI
-
-        [MenuItem("Tools/Find ScriptableObject Classes")]
-        public static void ShowWindow()
-        {
-            GetWindow<ScriptableObjectClassFinderEditor>("Scriptable Object Finder");
-        }
-
-        /*private void OnEnable()
-        {
-            try
-            {
-                // Load relevant classes when the window is opened
-                _scriptableObjectClasses = GetAllScriptableObjects.GetAllScriptableObjectClasses();
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Error loading ScriptableObject classes: {ex.Message}");
-                _scriptableObjectClasses = new List<Type>();
-            }
-        }*/
-
-        private void OnGUI()
-        {
-            GUILayout.Label("ScriptableObject Classes in Project", EditorStyles.boldLabel);
-
-            if (_scriptableObjectClasses == null || _scriptableObjectClasses.Count == 0)
-            {
-                GUILayout.Label("No ScriptableObject classes found.");
-                return;
-            }
-
-            // Enable scrolling for large lists
-            _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
-
-            foreach (var scriptableObjectClass in _scriptableObjectClasses)
-            {
-                GUILayout.BeginHorizontal();
-                GUILayout.Label(scriptableObjectClass.ToString());
-
-                // Add an interactive Ping button for each class
-                if (GUILayout.Button("Ping", GUILayout.Width(50)))
-                {
-                    // Load and ping the relevant asset (if paths are linked)
-                    Selection.activeObject = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(
-                        scriptableObjectClass.ToString()); // Replace with valid asset paths if applicable
-                }
-
-                GUILayout.EndHorizontal();
-            }
-
-            EditorGUILayout.EndScrollView();
         }
     }
 }

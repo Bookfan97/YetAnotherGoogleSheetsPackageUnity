@@ -54,9 +54,10 @@ namespace Editor.Project_Settings
 
                     GUILayout.Space(20f);
                     EnsureHorizontalLineStyle();
-                    EditorGUILayout.LabelField("Google Sheets Settings", EditorStyles.boldLabel);
                     DrawHorizontalLine();
-
+                    GUILayout.Space(10f);
+                    EditorPrefs.SetBool(GoogleSheetsHelper.k_debugLogEditorPref, EditorGUILayout.Toggle("Show Debug Logs", EditorPrefs.GetBool(GoogleSheetsHelper.k_debugLogEditorPref, false)));
+                    GUILayout.Space(10f);
                     // Drawing serialized properties with validation
                     DrawPropertyWithValidation(settings, SPREADSHEET_ID_PROP, "Spreadsheet ID");
 

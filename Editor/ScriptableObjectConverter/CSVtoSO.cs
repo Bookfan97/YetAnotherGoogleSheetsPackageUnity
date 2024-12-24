@@ -9,15 +9,44 @@ using UnityEngine;
 
 namespace Editor.ScriptableObjectConverter
 {
+    /// <summary>
+    /// A utility class for converting CSV data into Unity ScriptableObjects.
+    /// </summary>
+    /// <remarks>
+    /// This class reads CSV files and creates instances of the specified ScriptableObject type based on the data in the file.
+    /// It provides functionality to handle the conversion process, ensuring that types and file paths are correctly validated.
+    /// </remarks>
     public class CSVtoSO
     {
+        /// <summary>
+        /// A dictionary that stores mapping between original identifiers and their corresponding unique GUIDs.
+        /// </summary>
+        /// <remarks>
+        /// This property is used during the conversion process to ensure each generated ScriptableObject has a unique identifier.
+        /// The key represents the original identifier (e.g., from the CSV data), and the value is the assigned GUID.
+        /// These mappings are preserved for potential reuse during subsequent operations or validations.
+        /// </remarks>
         public Dictionary<string, string> AddedIDs { get; private set; }
         private const int ValidGuidLength = 32;
         private const string DefaultDataFolderPath = "Assets/Data";
         private static readonly Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
 
+        /// <summary>
+        /// Indicates whether the CSV to ScriptableObject conversion process was successful.
+        /// </summary>
+        /// <remarks>
+        /// This property reflects the outcome of the most recent conversion operation.
+        /// It is set to true if the conversion completes at least one ScriptableObject creation successfully,
+        /// even if there are warnings or skipped rows due to mismatched data. A value of false usually indicates
+        /// either a failure to create any ScriptableObjects or errors that interrupted the process.
+        /// </remarks>
         public bool Success { get; private set; }
 
+        /// <summary>
+        /// Generates ScriptableObject instances from data stored in a CSV file.
+        /// </summary>
+        /// <param name="type">The type of ScriptableObject to create. Must inherit from ScriptableObject.</param>
+        /// <param name="csvFile">The file path of the CSV file containing the data to populate the ScriptableObjects.</param>
         private void GenerateScriptableObjects(Type type, string csvFile)
         {
             string[] lines = File.ReadAllText(csvFile).Split("\n");
@@ -33,7 +62,10 @@ namespace Editor.ScriptableObjectConverter
 
             // Detect existing instances of the type
             var existingItems = Resources.FindObjectsOfTypeAll(type);
-            Debug.Log($"Found {existingItems.Length} existing objects of type {type.Name}.");
+            if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
+            {
+                Debug.Log($"Found {existingItems.Length} existing objects of type {type.Name}.");
+            }
 
             string header = lines[0];
             string[] headerData = header.Split(',');
@@ -54,12 +86,18 @@ namespace Editor.ScriptableObjectConverter
                 if (matchingField != null)
                 {
                     fieldMap.Add(i, matchingField.Name);
-                    Debug.Log($"Matched field: {matchingField.Name}");
+                    if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
+                    {
+                        Debug.Log($"Matched field: {matchingField.Name}");
+                    }
                 }
                 else if (matchingProperty != null)
                 {
                     fieldMap.Add(i, matchingProperty.Name);
-                    Debug.Log($"Matched property: {matchingProperty.Name}");
+                    if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
+                    {
+                        Debug.Log($"Matched property: {matchingProperty.Name}");
+                    }
                 }
                 else
                 {
@@ -91,6 +129,7 @@ namespace Editor.ScriptableObjectConverter
 
                     var scriptableObject = ScriptableObject.CreateInstance(type);
 
+                    
                     for (int columnIndex = 0; columnIndex < splitData.Length; columnIndex++)
                     {
                         if (!fieldMap.TryGetValue(columnIndex, out string mappedField))
@@ -134,8 +173,10 @@ namespace Editor.ScriptableObjectConverter
 
                     string assetPath = $"{DefaultDataFolderPath}/{type}_{i}.asset";
                     AssetDatabase.CreateAsset(scriptableObject, assetPath);
-
-                    Debug.Log($"Created ScriptableObject: {scriptableObject.name} at {assetPath}");
+                    if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
+                    {
+                        Debug.Log($"Created ScriptableObject: {scriptableObject.name} at {assetPath}");
+                    }
                 }
 
                 AssetDatabase.SaveAssets();
@@ -155,6 +196,12 @@ namespace Editor.ScriptableObjectConverter
             }
         }
 
+        /// <summary>
+        /// Retrieves a global unique identifier (GUID) for the given ID.
+        /// If the ID is not valid or does not exist in the dictionary, a new GUID is generated and stored.
+        /// </summary>
+        /// <param name="id">The input string ID for which a GUID is to be retrieved or generated.</param>
+        /// <returns>The existing or newly generated GUID corresponding to the provided ID.</returns>
         private string GetGuid(string id)
         {
             if (AddedIDs.TryGetValue(id, out string existing))
@@ -170,6 +217,10 @@ namespace Editor.ScriptableObjectConverter
             return id;
         }
 
+        /// <summary>
+        /// Generates ScriptableObject instances using the specified data item information.
+        /// </summary>
+        /// <param name="dataItem">The data item containing the scriptableObjectType and CSV file path required for generating the ScriptableObjects.</param>
         public void Generate(DataItem dataItem)
         {
             if (string.IsNullOrEmpty(dataItem.scriptableObjectType))

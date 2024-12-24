@@ -30,6 +30,15 @@ namespace Editor.Google_Sheets
         public static string k_JSONEditorPref { get; private set; } = "DefinitiveInfinityMediaGoogleSheetsSettings_JSONPath";
 
         /// <summary>
+        /// Constant string representing the preference key for enabling or disabling debug logs related to Google Sheets settings in the editor.
+        /// </summary>
+        /// <remarks>
+        /// This key is used to store and retrieve the user preference for logging debug information in the Unity editor
+        /// while working with Google Sheets integrations. It ensures consistent behavior and settings across editor sessions.
+        /// </remarks>
+        public static string k_debugLogEditorPref { get; private set; } = "DefinitiveInfinityMediaGoogleSheetsSettings_DebugLogs";
+
+        /// <summary>
         /// Property to get the instance of GoogleSheetsCustomSettings.
         /// </summary>
         /// <remarks>

@@ -61,6 +61,14 @@ namespace Editor.Project_Settings
             EditorPrefs.GetString(GoogleSheetsHelper.k_JSONEditorPref, "ClientSecret");
 
         /// <summary>
+        /// Determines whether debug logs for Google Sheets operations are enabled within the Unity editor.
+        /// When set to true, additional diagnostic information is logged to assist with troubleshooting
+        /// or verifying functionality.
+        /// </summary>
+        public bool ShowDebugLogs =>
+            EditorPrefs.GetBool(GoogleSheetsHelper.k_debugLogEditorPref, false);
+
+        /// <summary>
         /// Retrieves the file path associated with the specified spreadsheet ID.
         /// </summary>
         /// <param name="spreadsheetID">The unique identifier of the spreadsheet.</param>

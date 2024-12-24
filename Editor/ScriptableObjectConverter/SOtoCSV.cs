@@ -9,18 +9,29 @@ using UnityEngine;
 
 namespace Editor.ScriptableObjectConverter
 {
+    /// <summary>
+    /// The SOtoCSV class provides functionality to convert ScriptableObject data
+    /// to CSV format and save it to a file. It also supports creating ScriptableObject
+    /// instances from CSV data.
+    /// </summary>
     public class SOtoCSV
     {
-        /*
-     * Gets all DialogueSO objects and converts data to CSV format
-     */
+        /// <summary>
+        /// Converts CSV data into ScriptableObjects and populates their fields based on the CSV content.
+        /// </summary>
+        /// <param name="scriptableObjectType">The type of ScriptableObject to create and populate.</param>
+        /// <param name="csvPath">The file path to the CSV file containing the data.</param>
+        /// <param name="skipPopups">Determines if popups (e.g., progress bars or dialog messages) should be skipped during the operation. Defaults to false.</param>
         public void CSVtoScriptableObjects(Type scriptableObjectType, string csvPath, bool? skipPopups = false)
         {
             int counter = 0;
             List<string> lines = new List<string>();
             List<string> ids = new List<string>();
             var existingItems = Resources.FindObjectsOfTypeAll(scriptableObjectType);
-            Debug.Log($"Found {existingItems.Length} existing objects of type {scriptableObjectType.Name}.");
+            if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
+            {
+                Debug.Log($"Found {existingItems.Length} existing objects of type {scriptableObjectType.Name}.");
+            }
             Dictionary<int, string> headers = GetHeaders(scriptableObjectType);
             string headerString = "";
             
@@ -55,6 +66,13 @@ namespace Editor.ScriptableObjectConverter
             }
         }
 
+        /// <summary>
+        /// Extracts values from a given ScriptableObject based on a dictionary of header mappings and
+        /// returns them as a list of strings, representing its fields or properties.
+        /// </summary>
+        /// <param name="soName">The ScriptableObject instance from which to extract values.</param>
+        /// <param name="headers">A dictionary mapping header indices to field or property names in the ScriptableObject.</param>
+        /// <returns>A list of string values corresponding to the specified fields or properties in the ScriptableObject. Returns null if the input is invalid.</returns>
         private List<string> GetValuesFromScriptableObject(ScriptableObject soName, Dictionary<int, string> headers)
         {
             if (soName == null || headers == null || headers.Count == 0)
@@ -92,6 +110,11 @@ namespace Editor.ScriptableObjectConverter
             return values;
         }
 
+        /// <summary>
+        /// Retrieves the headers (fields) of a specified ScriptableObject type and maps them to their respective indices.
+        /// </summary>
+        /// <param name="scriptableObjectType">The type of ScriptableObject to analyze and retrieve the headers from.</param>
+        /// <returns>A dictionary where the keys are indices and the values are the names of the fields of the ScriptableObject.</returns>
         private Dictionary<int, string> GetHeaders(Type scriptableObjectType)
         {
             // Dictionary to hold index and names
@@ -118,24 +141,30 @@ namespace Editor.ScriptableObjectConverter
             return headers;
         }
 
-        /*
-         * Converts data passed through to CSV formatting and returns the modified string
-         */
+        /// <summary>
+        /// Converts a collection of data lines and a set of headers into a single CSV-formatted string.
+        /// </summary>
+        /// <param name="headers">A string representing the headers for the CSV file, usually separated by a delimiter such as a comma.</param>
+        /// <param name="data">A list of data lines where each line corresponds to a row of the CSV file.</param>
+        /// <returns>A string containing the headers followed by the data rows, formatted as a CSV.</returns>
         public string ToCSV(string headers, List<string> data)
         {
             var sb = new StringBuilder(headers);
-            foreach(var line in data)
+            foreach (var line in data)
             {
                 sb.Append('\n').Append(line);
             }
 
             return sb.ToString();
         }
-    
-        /*
-     * Saves the converted data back out to the CSV file path passed through
-     */
-        public void SaveToFile (string filePath, List<string> data, string headers)
+
+        /// <summary>
+        /// Saves data to a specified file in CSV format using the provided headers and data content.
+        /// </summary>
+        /// <param name="filePath">The full file path where the CSV content will be saved.</param>
+        /// <param name="data">A list of strings representing the data rows to be saved in the file.</param>
+        /// <param name="headers">A string representing the headers for the CSV file.</param>
+        public void SaveToFile(string filePath, List<string> data, string headers)
         {
             try
             {
@@ -166,6 +195,10 @@ namespace Editor.ScriptableObjectConverter
             }
         }
 
+        /// <summary>
+        /// Converts data from a CSV file into ScriptableObjects and populates their fields based on the provided data item.
+        /// </summary>
+        /// <param name="dataItem">An instance of DataItem containing information about the ScriptableObject type and the path to the CSV file.</param>
         public void CSVtoScriptableObjects(DataItem dataItem)
         {
             if (string.IsNullOrEmpty(dataItem.scriptableObjectType))
@@ -199,7 +232,11 @@ namespace Editor.ScriptableObjectConverter
                 return;
             }
 
-            Debug.Log($"Generating {scriptableObjectType.Name} objects...");
+            if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
+            {
+                Debug.Log($"Generating {scriptableObjectType.Name} objects...");
+            }
+
             CSVtoScriptableObjects(scriptableObjectType, dataItem.value);
         }
     }

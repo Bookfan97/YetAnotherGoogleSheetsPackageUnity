@@ -112,9 +112,11 @@ Syncing Data between Unity Editor and a Google Spreadsheet
 ## Roadmap
 
 - [X] Upload/Download Support
-- [ ] CSV -> Scriptable Objects Support
+- [X] CSV -> Scriptable Objects Support
 - [X] Multiple Sheet Support
 - [ ] Sheet Styling
+- [ ] Logic For Updating Exisiting CSV and Scriptable Objects
+- [ ] Editor Window
 
 See the [open issues](https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/issues) for a full list of proposed features (and known issues).
 

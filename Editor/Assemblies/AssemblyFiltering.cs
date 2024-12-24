@@ -11,70 +11,72 @@ using UnityEditor.Compilation;
 
 namespace Editor.Assemblies
 {
+    /// <summary>
+    /// Provides functionality for filtering assemblies based on inclusion and exclusion criteria.
+    /// </summary>
+    /// <remarks>
+    /// This class supports operations to include or exclude assemblies using glob-style patterns
+    /// and provides methods to retrieve and parse assembly information. It is designed for use
+    /// in workflows related to assembly management and filtering within the Unity Editor context.
+    /// </remarks>
     internal class AssemblyFiltering
     {
-        public const string kCoreAssemblies = "unityeditor*,unityengine*";
-        public const string kAssetsAlias = "<assets>";
-        public const string kPackagesAlias = "<packages>";
-        public const string kAllAlias = "<all>";
-        public const string kCoreAlias = "<core>";
-
+        /// <summary>
+        /// Gets the string of included assemblies used in the assembly filtering process.
+        /// </summary>
+        /// <remarks>
+        /// This property holds a comma-separated list of assembly names or patterns that are explicitly marked for inclusion.
+        /// The patterns are used to determine which assemblies should pass the inclusion filter during operations like loading
+        /// or filtering project assemblies.
+        /// </remarks>
         public string includedAssemblies
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets the string of excluded assemblies used in the assembly filtering process.
+        /// </summary>
+        /// <remarks>
+        /// This property holds a comma-separated list of assembly names or patterns explicitly marked for exclusion.
+        /// The patterns are applied to determine which assemblies should be omitted during operations such as filtering
+        /// or loading project assemblies.
+        /// </remarks>
         public string excludedAssemblies
         {
             get;
             private set;
         }
-
+        
         private Regex[] m_IncludeAssemblies;
         private Regex[] m_ExcludeAssemblies;
         private static HashSet<char> regexSpecialChars = new HashSet<char>(new[] { '[', '\\', '^', '$', '.', '|', '?', '*', '+', '(', ')' });
 
+        /// <summary>
+        /// Represents a utility class for filtering assemblies based on specified inclusion and exclusion patterns.
+        /// </summary>
+        /// <remarks>
+        /// This class provides methods to parse and manage assembly filters and determine inclusion or exclusion of specific assemblies.
+        /// It is useful in scenarios involving filtering of project assemblies in the Unity Editor environment.
+        /// </remarks>
         public AssemblyFiltering()
         {
             m_IncludeAssemblies = new Regex[] { };
             m_ExcludeAssemblies = new Regex[] { };
         }
 
-        public void Parse(string includeAssemblies, string excludeAssemblies)
-        {
-            includedAssemblies = includeAssemblies;
-            excludedAssemblies = excludeAssemblies;
-
-            string[] includeAssemblyFilters = includeAssemblies.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToArray();
-            string[] excludeAssemblyFilters = excludeAssemblies.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToArray();
-            
-            //CoverageAnalytics.instance.CurrentCoverageEvent.includedAssemblies = includeAssemblyFilters;
-            //CoverageAnalytics.instance.CurrentCoverageEvent.excludedAssemblies = excludeAssemblyFilters;
-
-            m_IncludeAssemblies = includeAssemblyFilters
-                .Select(f => CreateFilterRegex(f))
-                .ToArray();
-
-            m_ExcludeAssemblies = excludeAssemblyFilters
-                .Select(f => CreateFilterRegex(f))
-                .ToArray();
-        }
-
-        public bool IsAssemblyIncluded(string name)
-        {
-            name = name.ToLowerInvariant();
-
-            if (m_ExcludeAssemblies.Any(f => f.IsMatch(name)))
-            {
-                return false;
-            }
-            else
-            {
-                return m_IncludeAssemblies.Any(f => f.IsMatch(name));
-            }
-        }
-
+        /// <summary>
+        /// Retrieves all project assemblies filtered by glob-style patterns for inclusion and exclusion.
+        /// </summary>
+        /// <returns>
+        /// An array of assemblies that match the specified inclusion and exclusion patterns.
+        /// </returns>
+        /// <remarks>
+        /// This method collects all assemblies loaded in the current application domain,
+        /// applies sorting for deterministic results, and filters assemblies based on predefined glob-style rules.
+        /// It is intended for internal usage in tools or environments where precise assembly filtering is necessary, such as in Unity Editor workflows.
+        /// </remarks>
         public static System.Reflection.Assembly[] GetAllProjectAssembliesInternal()
         {
             System.Reflection.Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
@@ -92,6 +94,15 @@ namespace Editor.Assemblies
             return filteredAssemblies;
         }
 
+        /// <summary>
+        /// Retrieves all assemblies included in the current Unity project.
+        /// </summary>
+        /// <remarks>
+        /// This method fetches and returns an array of assemblies associated with the current Unity project,
+        /// sorted alphabetically by their names. It is useful for obtaining a comprehensive list of project
+        /// assemblies for further analysis or processing within the Unity Editor environment.
+        /// </remarks>
+        /// <returns>An array of Assembly objects representing all project assemblies.</returns>
         public static Assembly[] GetAllProjectAssemblies()
         {
             Assembly[] assemblies = CompilationPipeline.GetAssemblies();
@@ -99,6 +110,16 @@ namespace Editor.Assemblies
             return assemblies;
         }
 
+        /// <summary>
+        /// Retrieves a comma-separated string representation of all project assemblies' names.
+        /// </summary>
+        /// <remarks>
+        /// This method gathers all project assemblies, sorts them by name, and formats their names into a single string
+        /// for further usage, such as filtering or processing assembly-related data within the Unity Editor context.
+        /// </remarks>
+        /// <returns>
+        /// A string containing the names of all project assemblies, separated by commas.
+        /// </returns>
         public static string GetAllProjectAssembliesString()
         {
             Assembly[] assemblies = GetAllProjectAssemblies();
@@ -115,16 +136,43 @@ namespace Editor.Assemblies
             return assembliesString;
         }
 
+        /// <summary>
+        /// Retrieves a string representation of assemblies that are specifically part of the user's project assets.
+        /// </summary>
+        /// <remarks>
+        /// This method filters assemblies based on a specified prefix ("Assets") and constructs a string containing
+        /// the names of those assemblies. It is primarily used to identify assemblies directly related to project-specific
+        /// content within the Unity Editor.
+        /// </remarks>
+        /// <returns>
+        /// A string containing the names of assemblies that belong exclusively to the user's project assets.
+        /// </returns>
         public static string GetUserOnlyAssembliesString()
         {
             return GetStartsWithAssembliesString("Assets");
         }
 
+        /// <summary>
+        /// Retrieves a concatenated string of assembly names that are located within the "Packages" directory.
+        /// </summary>
+        /// <remarks>
+        /// This method filters assemblies based on their location, specifically targeting those
+        /// that originate from the "Packages" directory within a Unity project. It is particularly
+        /// useful for assembly inclusion processes that require segmentation by source.
+        /// </remarks>
+        /// <returns>
+        /// A string containing the names of assemblies found in the "Packages" directory, separated by a delimiter.
+        /// </returns>
         public static string GetPackagesOnlyAssembliesString()
         {
             return GetStartsWithAssembliesString("Packages");
         }
 
+        /// <summary>
+        /// Retrieves a comma-separated string of assembly names whose source files start with the specified string.
+        /// </summary>
+        /// <param name="startsWithStr">The prefix string to match against the source files of the assemblies.</param>
+        /// <returns>A comma-separated string of matching assembly names. Returns an empty string if no matches are found.</returns>
         private static string GetStartsWithAssembliesString(string startsWithStr)
         {
             Assembly[] assemblies = GetAllProjectAssemblies();
@@ -156,6 +204,11 @@ namespace Editor.Assemblies
             return assembliesString;
         }
 
+        /// <summary>
+        /// Converts a filter string into a compiled regular expression for matching assembly names.
+        /// </summary>
+        /// <param name="filter">The filter string, typically in glob format, to be converted into a regular expression.</param>
+        /// <returns>A compiled <see cref="Regex"/> object representing the equivalent of the provided filter.</returns>
         public static Regex CreateFilterRegex(string filter)
         {
             filter = filter.ToLowerInvariant();
@@ -163,6 +216,17 @@ namespace Editor.Assemblies
             return new Regex(GlobToRegex(filter), RegexOptions.Compiled);
         }
 
+        /// <summary>
+        /// Converts a glob pattern into a regular expression string that can be used for pattern matching.
+        /// </summary>
+        /// <param name="glob">The glob pattern to convert. Glob patterns may include wildcards such as '*' and '?'.</param>
+        /// <param name="startEndConstrains">
+        /// A boolean indicating whether the resulting regular expression should constrain the pattern to match from the start to the end of the input string.
+        /// If true, the pattern will be anchored with '^' at the beginning and '$' at the end.
+        /// </param>
+        /// <returns>
+        /// A string representing the equivalent regular expression that matches the input glob pattern.
+        /// </returns>
         public static string GlobToRegex(string glob, bool startEndConstrains = true)
         {
             var regex = new StringBuilder();
@@ -211,26 +275,6 @@ namespace Editor.Assemblies
             if (startEndConstrains)
                 regex.Append("$");
             return regex.ToString();
-        }
-
-        public static string RemoveAssembliesThatNoLongerExist(string assembliesString)
-        {
-            IEnumerable<string> currentAssemblies;
-
-            bool developerMode = EditorPrefs.GetBool("DeveloperMode", false);
-            if (developerMode)
-            {
-                currentAssemblies = GetAllProjectAssembliesInternal().Select(x => x.GetName().Name);
-            }
-            else
-            {
-                currentAssemblies = GetAllProjectAssemblies().Select(x => x.name);
-            }
-
-            string[] assemblyNames = assembliesString.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            IEnumerable<string> filteredAssemblyNames = assemblyNames.Where(x => currentAssemblies.Contains(x));
-
-            return string.Join(",", filteredAssemblyNames);
         }
     }
 }
