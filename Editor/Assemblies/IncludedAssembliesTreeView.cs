@@ -73,7 +73,7 @@ namespace Editor.Assemblies
             string[] includeAssemblyFilters = GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
             Regex[] includeAssemblies = new Regex[] { };
-            if (includeAssemblyFilters.Any())
+            if (includeAssemblyFilters != null && includeAssemblyFilters.Any())
             {
                 includeAssemblies = includeAssemblyFilters
                     .Select(f => AssemblyFiltering.CreateFilterRegex(f))
