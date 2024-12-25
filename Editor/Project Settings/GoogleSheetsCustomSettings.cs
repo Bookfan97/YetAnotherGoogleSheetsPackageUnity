@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Editor.Google_Sheets;
+using Editor.Utilities;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -25,13 +28,23 @@ namespace Editor.Project_Settings
         /// </summary>
         [SerializeField] private string m_spreadsheetID;
 
+        private string assembliesToInclude;
         /// <summary>
         /// Specifies a semicolon-separated list of assembly names to be included
         /// during the runtime compilation or evaluation process of the Google Sheets integration.
         /// This setting allows for dynamic referencing of specific assemblies required for
         /// the tailored handling of spreadsheet data within the Unity project.
         /// </summary>
-        public string assembliesToInclude { get; set; }
+        public string AssembliesToInclude   
+        {
+            get => assembliesToInclude;
+            set
+            {
+                assembliesToInclude = value; 
+                scriptableObjects = GetAllScriptableObjects.GetAllScriptableObjectClasses();
+                allTypes = scriptableObjects.Select(obj => obj.Key).ToList();
+            }
+        }
 
         /// <summary>
         /// Provides access to the collection of data items utilized for Google Sheets operations
@@ -80,5 +93,12 @@ namespace Editor.Project_Settings
         /// </summary>
         /// <returns>The string representing the default path for data assets.</returns>
         public string GetDefaultPath() => "Assets/Data";
+        
+        public Dictionary<Type, string> scriptableObjects {get; private set;}
+        public List<Type> allTypes { get; private set; }
+            
+            //= GetAllScriptableObjects.GetAllScriptableObjectClasses();
+        
+        // = GetAllScriptableObjects.GetAllScriptableObjectClasses().Select(obj => obj.Key).ToList();
     }
 }

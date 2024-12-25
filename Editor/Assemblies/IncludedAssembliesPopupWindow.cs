@@ -78,7 +78,7 @@ namespace Editor.Assemblies
         public IncludedAssembliesPopupWindow(GoogleSheetsCustomSettingsIMGUIRegister.GoogleSheetsDataItemDrawer parent)
         {
             m_SearchField = new SearchField();
-            m_TreeView = new IncludedAssembliesTreeView(parent, GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude);
+            m_TreeView = new IncludedAssembliesTreeView(parent, GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude);
         }
 
         /// <summary>

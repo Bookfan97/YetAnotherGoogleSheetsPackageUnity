@@ -70,7 +70,7 @@ namespace Editor.Assemblies
         /// </returns>
         protected override TreeViewItem BuildRoot()
         {
-            string[] includeAssemblyFilters = GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] includeAssemblyFilters = GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
             Regex[] includeAssemblies = new Regex[] { };
             if (includeAssemblyFilters != null && includeAssemblyFilters.Any())
@@ -169,8 +169,8 @@ namespace Editor.Assemblies
         /// </summary>
         public void SelectAssets()
         {
-            GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude = AssemblyFiltering.GetUserOnlyAssembliesString();
-            SelectFromString(GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude);
+            GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude = AssemblyFiltering.GetUserOnlyAssembliesString();
+            SelectFromString(GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude);
         }
 
         /// <summary>
@@ -181,8 +181,8 @@ namespace Editor.Assemblies
         /// </summary>
         public void SelectPackages()
         {
-            GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude = AssemblyFiltering.GetPackagesOnlyAssembliesString();
-            SelectFromString(GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude);
+            GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude = AssemblyFiltering.GetPackagesOnlyAssembliesString();
+            SelectFromString(GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude);
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace Editor.Assemblies
                 }
             }
 
-            GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude = sb.ToString();
+            GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude = sb.ToString();
         }
     }
 }

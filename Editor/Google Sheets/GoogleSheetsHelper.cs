@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Editor.Project_Settings;
 using UnityEditor;
 using UnityEngine;
@@ -79,5 +81,10 @@ namespace Editor.Google_Sheets
         /// </summary>
         /// <returns>A SerializedObject representing the Google Sheets custom settings.</returns>
         internal static SerializedObject GetSerializedSettings() => new(GetOrCreateSettings());
+
+        public static Type CheckType(string typeName)
+        {
+            return (from typePair in GoogleSheetsCustomSettings.scriptableObjects where typePair.Key.Name.Contains(typeName) select typePair.Key).FirstOrDefault();
+        }
     }
 }

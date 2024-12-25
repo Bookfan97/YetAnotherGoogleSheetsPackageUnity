@@ -31,8 +31,11 @@ namespace Editor.Google_Sheets
         public string value;
 
         /// <summary>
-        /// Holds a reference to a Unity ScriptableObject, enabling enhanced data organization, management, and integration within the Google Sheets data workflow.
+        /// 
         /// </summary>
-        public ScriptableObject scriptableObject;
+        public string assemblyName;
+
+        public Type type;
+        public Type GetSOType() => Type.GetType($"{scriptableObjectType}, {assemblyName}");
     }
 }

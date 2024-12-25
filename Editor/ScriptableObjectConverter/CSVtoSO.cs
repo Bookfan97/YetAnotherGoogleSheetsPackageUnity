@@ -228,12 +228,9 @@ namespace Editor.ScriptableObjectConverter
                 Debug.LogError("scriptableObjectType is null or empty.");
                 return;
             }
-
-            // Attempt to resolve the type
-            Type scriptableObjectType = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(assembly => assembly.GetTypes())
-                .FirstOrDefault(t => t.Name == dataItem.scriptableObjectType);
-
+            
+            Type scriptableObjectType = GoogleSheetsHelper.CheckType(dataItem.scriptableObjectType);
+            
             if (scriptableObjectType == null)
             {
                 Debug.LogError(

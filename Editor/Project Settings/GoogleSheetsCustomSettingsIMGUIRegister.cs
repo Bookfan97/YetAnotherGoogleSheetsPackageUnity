@@ -91,7 +91,7 @@ namespace Editor.Project_Settings
 
             // Safely retrieve the assemblies string
             var assembliesToInclude =
-                GoogleSheetsHelper.GoogleSheetsCustomSettings?.assembliesToInclude ?? string.Empty;
+                GoogleSheetsHelper.GoogleSheetsCustomSettings?.AssembliesToInclude ?? string.Empty;
             string displayText = string.IsNullOrEmpty(assembliesToInclude)
                 ? AssembliesToIncludeEmptyDropdownLabel.text
                 : $"{AssembliesToIncludeDropdownLabel.text}{assembliesToInclude}";
@@ -209,7 +209,8 @@ namespace Editor.Project_Settings
                 var valueProp = property.FindPropertyRelative("value");
                 var indexProp = property.FindPropertyRelative("index");
                 var typeProp = property.FindPropertyRelative("scriptableObjectType");
-
+                var assemblyProp = property.FindPropertyRelative("assemblyName");
+                var typeValueProp = property.FindPropertyRelative("type");
                 if (keyProp != null && valueProp != null && indexProp != null && typeProp != null)
                 {
                     // Draw fields
@@ -217,13 +218,13 @@ namespace Editor.Project_Settings
                     EditorGUI.PropertyField(valueRect, valueProp, GUIContent.none);
 
                     // Populate dropdown menu
-                    List<Type> scriptableObjects = GetAllScriptableObjects.GetAllScriptableObjectClasses();
                     string[] dropdownOptions = Array.Empty<string>();
-                    if (scriptableObjects.Count != 0)
+                    if (GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes.Count != 0)
                     {
-                        dropdownOptions = scriptableObjects.Select(obj => obj.Name).ToArray();
+                        dropdownOptions = GoogleSheetsHelper.GoogleSheetsCustomSettings.scriptableObjects.Select(obj => obj.Key.Name).ToArray();
                         indexProp.intValue = EditorGUI.Popup(dropdownRect, indexProp.intValue, dropdownOptions);
-                        typeProp.stringValue = scriptableObjects[indexProp.intValue].ToString();
+                        typeProp.stringValue = GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes[indexProp.intValue].Name;
+                        assemblyProp.stringValue = GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes[indexProp.intValue].Assembly.GetName().Name;
                     }
                     
                     // Browse button for file selection

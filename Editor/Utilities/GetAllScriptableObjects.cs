@@ -69,10 +69,10 @@ namespace Editor.Utilities
         /// <summary>
         /// Finds all classes derived from ScriptableObject across all project assemblies.
         /// </summary>
-        /// <returns>List of ScriptableObject class types</returns>
-        public static List<Type> GetAllScriptableObjectClasses()
+        /// <returns>Dictionary of ScriptableObject class types</returns>
+        public static Dictionary<Type, string> GetAllScriptableObjectClasses()
         {
-            List<Type> scriptableObjectClasses = new List<Type>();
+            Dictionary<Type, string> scriptableObjectClasses = new Dictionary<Type, string>();
 
             try
             {
@@ -93,10 +93,10 @@ namespace Editor.Utilities
                             if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(ScriptableObject)))
                             {
                                 // Verify inclusion in relevant assemblies through GoogleSheets settings
-                                if (GoogleSheetsHelper.GoogleSheetsCustomSettings?.assembliesToInclude?
+                                if (GoogleSheetsHelper.GoogleSheetsCustomSettings?.AssembliesToInclude?
                                         .Contains(type.Assembly.GetName().Name) == true)
                                 {
-                                    scriptableObjectClasses.Add(type);
+                                    scriptableObjectClasses.Add(type, type.Assembly.GetName().Name);
                                 }
                             }
                         }
