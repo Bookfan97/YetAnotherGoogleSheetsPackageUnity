@@ -219,7 +219,8 @@ namespace Editor.Project_Settings
 
                     // Populate dropdown menu
                     string[] dropdownOptions = Array.Empty<string>();
-                    if (GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes.Count != 0)
+                    if (GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes != null && 
+                        GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes.Count != 0)
                     {
                         dropdownOptions = GoogleSheetsHelper.GoogleSheetsCustomSettings.scriptableObjects.Select(obj => obj.Key.Name).ToArray();
                         indexProp.intValue = EditorGUI.Popup(dropdownRect, indexProp.intValue, dropdownOptions);

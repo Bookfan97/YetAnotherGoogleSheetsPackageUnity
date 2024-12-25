@@ -169,6 +169,7 @@ Project Link: [https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity](
 ## Acknowledgments
 
 * [Original Video from Dan Pos](https://www.youtube.com/watch?v=QFTyDsEDsBI)
+* [Google Sheets Icon](https://www.flaticon.com/free-icons/google-sheets)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
