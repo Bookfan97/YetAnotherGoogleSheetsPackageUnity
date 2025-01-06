@@ -75,6 +75,8 @@ namespace Editor.Data
                 return;
             }
         }
+
+        public bool CheckSheetIDInSheets(int? propertiesSheetId) => propertiesSheetId != null && sheets.Any(sheet => sheet.GetKey() == propertiesSheetId);
     }
 
     [System.Serializable]

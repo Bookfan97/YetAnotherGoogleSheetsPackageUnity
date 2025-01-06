@@ -21,14 +21,23 @@ namespace Editor.ScriptableObjectConverter
         /// Converts CSV data into ScriptableObjects and populates their fields based on the CSV content.
         /// </summary>
         /// <param name="scriptableObjectType">The type of ScriptableObject to create and populate.</param>
-        /// <param name="csvPath">The file path to the CSV file containing the data.</param>
+        /// <param name="dataItem">The file path to the CSV file containing the data.</param>
         /// <param name="skipPopups">Determines if popups (e.g., progress bars or dialog messages) should be skipped during the operation. Defaults to false.</param>
-        public void CSVtoScriptableObjects(Type scriptableObjectType, string csvPath, bool? skipPopups = false)
+        public void ScriptableObjectsToCSV(Type scriptableObjectType, DataItem dataItem, bool? skipPopups = false)
         {
             int counter = 0;
-            List<string> lines = new List<string>();
             List<string> ids = new List<string>();
+            List<string> lines = new List<string>();
             var existingItems = Resources.FindObjectsOfTypeAll(scriptableObjectType);
+            string[] orderedLines = new string[existingItems.Length];
+            JSONUtility.LoadData();
+            SheetData sheetData = JSONUtility.GoogleSheetsJsonData.GetSheetData(dataItem.index);
+            if(sheetData == null)
+            {
+                sheetData = new SheetData(dataItem.key, dataItem.assemblyName, scriptableObjectType.Name, "");
+                JSONUtility.GoogleSheetsJsonData.AddSheetData(sheetData);
+            }
+            
             if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
             {
                 Debug.Log($"Found {existingItems.Length} existing objects of type {scriptableObjectType.Name}.");
@@ -41,6 +50,8 @@ namespace Editor.ScriptableObjectConverter
                 headerString += header.Value + ",";
             }
             
+            orderedLines[0] = headerString;
+            
             foreach (ScriptableObject SOName in existingItems)
             {
                 var values = GetValuesFromScriptableObject(SOName, headers);
@@ -48,7 +59,7 @@ namespace Editor.ScriptableObjectConverter
                 string csvRow = string.Join(",", values);
 
                 // Add the row to the output list (assuming `lines` is accessible here)
-                lines.Add(csvRow);
+                orderedLines[counter] = csvRow;
                 
                 if ((bool)!skipPopups)
                 {
@@ -58,7 +69,9 @@ namespace Editor.ScriptableObjectConverter
                 }
             }
             
-            SaveToFile(csvPath, lines, headerString);
+            lines = new List<string>(orderedLines.ToArray());
+            SaveToFile(dataItem.value, lines, headerString);
+            
             if ((bool)!skipPopups)
             {
                 EditorUtility.ClearProgressBar();
@@ -202,7 +215,7 @@ namespace Editor.ScriptableObjectConverter
         /// Converts data from a CSV file into ScriptableObjects and populates their fields based on the provided data item.
         /// </summary>
         /// <param name="dataItem">An instance of DataItem containing information about the ScriptableObject type and the path to the CSV file.</param>
-        public void CSVtoScriptableObjects(DataItem dataItem)
+        public void ScriptableObjectsToCSV(DataItem dataItem)
         {
             if (string.IsNullOrEmpty(dataItem.scriptableObjectType))
             {
@@ -240,7 +253,7 @@ namespace Editor.ScriptableObjectConverter
                 Debug.Log($"Generating {scriptableObjectType.Name} objects...");
             }
 
-            CSVtoScriptableObjects(scriptableObjectType, dataItem.value);
+            ScriptableObjectsToCSV(scriptableObjectType, dataItem);
         }
     }
 }

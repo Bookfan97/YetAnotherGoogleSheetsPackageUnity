@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Editor.Data;
 using Editor.Project_Settings;
 using Google.Apis.Sheets.v4.Data;
 using UnityEngine;
@@ -53,12 +54,17 @@ namespace Editor.Google_Sheets
         {
             try
             {
+                int index = 0;
                 foreach (var sheet in spreadsheetData.Sheets)
                 {
+                    if(index < GoogleSheetsHelper.GoogleSheetsCustomSettings.Data.Count) break;
+                    if (sheet == null) continue;
+                    if (JSONUtility.GoogleSheetsJsonData.CheckSheetIDInSheets(sheet.Properties.SheetId)) continue;
                     var csvContents = string.Empty;
                     if (sheet.Properties.SheetId == null) continue;
-                    var sheetCSVPath =
-                        GoogleSheetsHelper.GoogleSheetsCustomSettings
+                    string sheetCSVPath = String.Empty;
+                    
+                    sheetCSVPath = GoogleSheetsHelper.GoogleSheetsCustomSettings
                             .GetPathForSheet((int)sheet.Properties.SheetId);
                     foreach (var row in sheet.Data[0].RowData)
                     {
@@ -68,6 +74,7 @@ namespace Editor.Google_Sheets
                     }
 
                     File.WriteAllText(sheetCSVPath, csvContents);
+                    index++;
                 }
             }
             catch (Exception e)
