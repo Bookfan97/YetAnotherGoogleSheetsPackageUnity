@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Editor.Data;
 using Editor.Google_Sheets;
 using UnityEditor;
 using UnityEngine;
@@ -64,6 +65,8 @@ namespace Editor.ScriptableObjectConverter
                 EditorUtility.DisplayDialog("Creating Dialogues", $"Saved {counter} of {existingItems.Length} dialogues",
                     "OK", "");
             }
+            
+            JSONUtility.SaveData();
         }
 
         /// <summary>

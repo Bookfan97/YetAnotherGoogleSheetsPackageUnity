@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Editor.Data;
 using Editor.Google_Sheets;
 using Editor.Utilities;
 using UnityEditor;
@@ -15,6 +16,21 @@ namespace Editor.Project_Settings
     /// </summary>
     public class GoogleSheetsCustomSettings : ScriptableObject
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dictionary<Type, string> scriptableObjects {get; private set;}
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dictionary<int, Dictionary<int, string>> scriptableObjectDB {get; private set;}
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<Type> allTypes { get; private set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -43,6 +59,8 @@ namespace Editor.Project_Settings
                 assembliesToInclude = value; 
                 scriptableObjects = GetAllScriptableObjects.GetAllScriptableObjectClasses();
                 allTypes = scriptableObjects.Select(obj => obj.Key).ToList();
+                JSONUtility.GoogleSheetsJsonData.assembliesToInclude = value;
+                //JSONUtility.SaveData();
             }
         }
 
@@ -94,11 +112,33 @@ namespace Editor.Project_Settings
         /// <returns>The string representing the default path for data assets.</returns>
         public string GetDefaultPath() => "Assets/Data";
         
-        public Dictionary<Type, string> scriptableObjects {get; private set;}
-        public List<Type> allTypes { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dataItemKey"></param>
+        /// <returns></returns>
+        public Dictionary<int, string> GetScriptableObjectforSheet(int dataItemKey)
+        {
+            scriptableObjectDB ??= new Dictionary<int, Dictionary<int, string>>();
             
-            //= GetAllScriptableObjects.GetAllScriptableObjectClasses();
+            foreach (var pair in scriptableObjectDB.Where(pair => pair.Key == dataItemKey))
+            {
+                return pair.Value;
+            }
+            return new Dictionary<int, string>();
+        }
         
-        // = GetAllScriptableObjects.GetAllScriptableObjectClasses().Select(obj => obj.Key).ToList();
+        public void SetScriptableObjectforSheet(int dataItemKey, Dictionary<int, string> values)
+        {
+            scriptableObjectDB ??= new Dictionary<int, Dictionary<int, string>>();
+            
+            foreach (var pair in scriptableObjectDB)
+            {
+                if (pair.Key == dataItemKey)
+                {
+                    scriptableObjectDB[pair.Key] = values;
+                }
+            }
+        }
     }
 }

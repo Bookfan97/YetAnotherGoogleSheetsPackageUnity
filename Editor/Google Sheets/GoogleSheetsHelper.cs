@@ -84,6 +84,11 @@ namespace Editor.Google_Sheets
 
         public static Type CheckType(string typeName)
         {
+            if (GoogleSheetsCustomSettings.scriptableObjects == null)
+            {
+                Debug.LogError("GoogleSheetsCustomSettings.scriptableObjects is null");
+                return null;
+            }
             return (from typePair in GoogleSheetsCustomSettings.scriptableObjects where typePair.Key.Name.Contains(typeName) select typePair.Key).FirstOrDefault();
         }
     }

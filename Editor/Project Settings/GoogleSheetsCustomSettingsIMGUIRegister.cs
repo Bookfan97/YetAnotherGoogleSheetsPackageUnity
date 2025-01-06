@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Editor.Assemblies;
+using Editor.Data;
 using Editor.Google_Sheets;
 using Editor.Utilities;
 using UnityEditor;
@@ -72,7 +73,7 @@ namespace Editor.Project_Settings
                     GUILayout.Space(10f);
 
                     // Drawing additional properties with validation
-                    DrawPropertyWithValidation(settings, SERIALIZED_DATA_PROP, "My Data");
+                    DrawPropertyWithValidation(settings, SERIALIZED_DATA_PROP, "Sheet Data");
 
                     // Apply changes without undo history
                     settings.ApplyModifiedProperties();
@@ -191,7 +192,7 @@ namespace Editor.Project_Settings
             public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
             {
                 EditorGUI.BeginProperty(position, label, property);
-
+                
                 float fieldWidth = position.width / 5;
 
                 // Rects for nested fields
@@ -216,6 +217,7 @@ namespace Editor.Project_Settings
                     // Draw fields
                     EditorGUI.PropertyField(keyRect, keyProp, GUIContent.none);
                     EditorGUI.PropertyField(valueRect, valueProp, GUIContent.none);
+                    //UpdateJSON(keyProp, assemblyProp, typeProp);
 
                     // Populate dropdown menu
                     string[] dropdownOptions = Array.Empty<string>();
@@ -226,6 +228,7 @@ namespace Editor.Project_Settings
                         indexProp.intValue = EditorGUI.Popup(dropdownRect, indexProp.intValue, dropdownOptions);
                         typeProp.stringValue = GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes[indexProp.intValue].Name;
                         assemblyProp.stringValue = GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes[indexProp.intValue].Assembly.GetName().Name;
+                        UpdateJSON(keyProp, assemblyProp, typeProp);
                     }
                     
                     // Browse button for file selection
@@ -246,6 +249,14 @@ namespace Editor.Project_Settings
                 }
 
                 EditorGUI.EndProperty();
+            }
+
+            private static void UpdateJSON(SerializedProperty keyProp, SerializedProperty assemblyProp, SerializedProperty typeProp)
+            {
+                JSONUtility.GoogleSheetsJsonData.Add(new KeyValuePair<int, SheetData>(
+                    keyProp.intValue, new SheetData(keyProp.intValue, assemblyProp.stringValue, typeProp.stringValue, "")
+                    ));
+                //JSONUtility.SaveData();
             }
         }
     }
