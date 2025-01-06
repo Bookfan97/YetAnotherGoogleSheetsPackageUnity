@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -106,6 +107,20 @@ namespace Editor.Data
             className = value.className;
             headers = value.headers;
             csvDatas = value.csvDatas;
+        }
+
+        public bool CheckGUID(int i) => csvDatas.Any(data => data.line == i);
+
+        public string CheckSavedGUID(int i)
+        {
+            foreach (var data in csvDatas)
+            {
+                if (data.line == i)
+                {
+                    return data.guid;
+                }
+            }
+            return string.Empty;
         }
     }
 

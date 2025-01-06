@@ -21,7 +21,7 @@ namespace Editor.Data
             LoadData();
         }
 
-        private static void LoadData()
+        public static void LoadData()
         {
             if (!Directory.Exists($"{rootPath}/Packages")) 
             {
@@ -46,13 +46,12 @@ namespace Editor.Data
                 fs.Write(worldDataBytes);
 
                 fs.Close();
+                GoogleSheetsJsonData.Initialize();
             }
             else
             {
                 string data = File.ReadAllText(filePath);
                 GoogleSheetsJsonData = JsonUtility.FromJson<GoogleSheetsJSONData>(data);
-
-                GoogleSheetsJsonData.Initialize();
             }
         }
         

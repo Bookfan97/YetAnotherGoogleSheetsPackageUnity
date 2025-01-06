@@ -53,6 +53,7 @@ namespace Editor.ScriptableObjectConverter
         /// <param name="dataItemKey"></param>
         private void GenerateScriptableObjects(Type type, string csvFile, int dataItemKey)
         {
+            JSONUtility.LoadData();
             Dictionary<ScriptableObject, CSVData> dataItems = new Dictionary<ScriptableObject, CSVData>();
             SheetData sheetData = JSONUtility.GoogleSheetsJsonData.GetSheetData(dataItemKey);
             if(sheetData == null)
@@ -130,7 +131,7 @@ namespace Editor.ScriptableObjectConverter
             {
                 for (int i = 1; i < lines.Length; i++)
                 {
-                    
+                    bool isNewSO = false;
                     string line = lines[i].Trim();
 
                     counter++;
@@ -148,10 +149,12 @@ namespace Editor.ScriptableObjectConverter
                             $"Line {i} has mismatched column count. Expected {headerData.Length}, got {splitData.Length}. Skipping...");
                         continue;
                     }
-                    
-                    ScriptableObject scriptableObject = scriptableObjectforSheet.ContainsKey(i) ? AddedIDs[i.ToString()] : ScriptableObject.CreateInstance(type);
-                    var guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(scriptableObject));
-                    CSVData csvData = guid == string.Empty ? new CSVData() : csvDatas.FirstOrDefault(data => data.GetGUID() == guid);
+
+                    string loadedGUID = sheetData.CheckSavedGUID(i);
+                    isNewSO = loadedGUID == string.Empty;
+                    ScriptableObject scriptableObject = loadedGUID != string.Empty ?  AssetDatabase.LoadAssetAtPath<ScriptableObject>(AssetDatabase.GUIDToAssetPath(loadedGUID)) : ScriptableObject.CreateInstance(type);
+                    //var guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(scriptableObject));
+                    CSVData csvData = loadedGUID == string.Empty ? new CSVData() : csvDatas.FirstOrDefault(data => data.GetGUID() == loadedGUID);
                     csvData.line = i;
                     dataItems.Add(scriptableObject, csvData);
                     
@@ -197,13 +200,17 @@ namespace Editor.ScriptableObjectConverter
                         AssetDatabase.CreateFolder(parentFolder, Path.GetFileName(DefaultDataFolderPath));
                     }
 
-                    string assetPath = $"{DefaultDataFolderPath}/{type}_{i}.asset";
-                    AssetDatabase.CreateAsset(scriptableObject, assetPath);
-                    csvDatas.Add(csvData);
-                    if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
+                    if (isNewSO)
                     {
-                        Debug.Log($"Created ScriptableObject: {scriptableObject.name} at {assetPath}");
+                        string assetPath = $"{DefaultDataFolderPath}/{type}_{i}.asset";
+                        AssetDatabase.CreateAsset(scriptableObject, assetPath);
+                        if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
+                        {
+                            Debug.Log($"Created ScriptableObject: {scriptableObject.name} at {assetPath}");
+                        }
                     }
+                    
+                    csvDatas.Add(csvData);
                 }
 
                 AssetDatabase.SaveAssets();
