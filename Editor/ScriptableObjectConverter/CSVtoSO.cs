@@ -200,9 +200,16 @@ namespace Editor.ScriptableObjectConverter
                         AssetDatabase.CreateFolder(parentFolder, Path.GetFileName(DefaultDataFolderPath));
                     }
 
+                    string subfolder = type.Name;
+                    if (!AssetDatabase.IsValidFolder($"{DefaultDataFolderPath}/{subfolder}"))
+                    {
+                        string parentFolder = Path.GetDirectoryName($"{DefaultDataFolderPath}/{subfolder}");
+                        AssetDatabase.CreateFolder(parentFolder, Path.GetFileName($"{DefaultDataFolderPath}/{subfolder}"));
+                    }
+
                     if (isNewSO)
                     {
-                        string assetPath = $"{DefaultDataFolderPath}/{type}_{i}.asset";
+                        string assetPath = $"{DefaultDataFolderPath}/{subfolder}/{type.Name}_{i + 1}.asset";
                         AssetDatabase.CreateAsset(scriptableObject, assetPath);
                         if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
                         {
