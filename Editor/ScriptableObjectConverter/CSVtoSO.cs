@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Editor.Data;
 using Editor.Google_Sheets;
+using Editor.Utilities;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Editor.ScriptableObjectConverter
 {
@@ -26,10 +29,10 @@ namespace Editor.ScriptableObjectConverter
         /// The key represents the original identifier (e.g., from the CSV data), and the value is the assigned GUID.
         /// These mappings are preserved for potential reuse during subsequent operations or validations.
         /// </remarks>
-        public Dictionary<string, string> AddedIDs { get; private set; }
         private const int ValidGuidLength = 32;
         private const string DefaultDataFolderPath = "Assets/Data";
         private static readonly Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+        private Dictionary<string, ScriptableObject> AddedIDs { get; set; } // GUID, SO
 
         /// <summary>
         /// Indicates whether the CSV to ScriptableObject conversion process was successful.
@@ -47,8 +50,19 @@ namespace Editor.ScriptableObjectConverter
         /// </summary>
         /// <param name="type">The type of ScriptableObject to create. Must inherit from ScriptableObject.</param>
         /// <param name="csvFile">The file path of the CSV file containing the data to populate the ScriptableObjects.</param>
-        private void GenerateScriptableObjects(Type type, string csvFile)
+        /// <param name="dataItemKey"></param>
+        private void GenerateScriptableObjects(Type type, string csvFile, int dataItemKey)
         {
+            JSONUtility.LoadData();
+            Dictionary<ScriptableObject, CSVData> dataItems = new Dictionary<ScriptableObject, CSVData>();
+            SheetData sheetData = JSONUtility.GoogleSheetsJsonData.GetSheetData(dataItemKey);
+            if(sheetData == null)
+            {
+                sheetData = new SheetData(dataItemKey, type.AssemblyQualifiedName, type.Name, "");
+                JSONUtility.GoogleSheetsJsonData.AddSheetData(sheetData);
+            }
+            List<CSVData> csvDatas = JSONUtility.GoogleSheetsJsonData.GetExistingScriptableObjectforSheet(dataItemKey);
+            Dictionary<int, string> scriptableObjectforSheet = GoogleSheetsHelper.GoogleSheetsCustomSettings.GetScriptableObjectforSheet(dataItemKey);
             string[] lines = File.ReadAllText(csvFile).Split("\n");
 
             if (lines.Length <= 1)
@@ -57,17 +71,25 @@ namespace Editor.ScriptableObjectConverter
                 return;
             }
 
-            AddedIDs = new Dictionary<string, string>();
             int counter = 0, successCounter = 0;
 
             // Detect existing instances of the type
             var existingItems = Resources.FindObjectsOfTypeAll(type);
+
+            /*foreach (var existingItem in existingItems)
+            {
+                string assetPath = AssetDatabase.GetAssetPath(existingItem);
+                var guid = AssetDatabase.AssetPathToGUID(assetPath);
+                AddedIDs.Add(guid, (ScriptableObject) existingItem);
+            }*/
+            
             if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
             {
                 Debug.Log($"Found {existingItems.Length} existing objects of type {type.Name}.");
             }
 
             string header = lines[0];
+            sheetData.headers = header;
             string[] headerData = header.Split(',');
 
             // Reflection: Map CSV fields to ScriptableObject fields or properties
@@ -109,6 +131,7 @@ namespace Editor.ScriptableObjectConverter
             {
                 for (int i = 1; i < lines.Length; i++)
                 {
+                    bool isNewSO = false;
                     string line = lines[i].Trim();
 
                     counter++;
@@ -127,9 +150,15 @@ namespace Editor.ScriptableObjectConverter
                         continue;
                     }
 
-                    var scriptableObject = ScriptableObject.CreateInstance(type);
-
+                    string loadedGUID = sheetData.CheckSavedGUID(i);
+                    isNewSO = loadedGUID == string.Empty;
+                    ScriptableObject scriptableObject = loadedGUID != string.Empty ?  AssetDatabase.LoadAssetAtPath<ScriptableObject>(AssetDatabase.GUIDToAssetPath(loadedGUID)) : ScriptableObject.CreateInstance(type);
+                    //var guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(scriptableObject));
+                    CSVData csvData = loadedGUID == string.Empty ? new CSVData() : csvDatas.FirstOrDefault(data => data.GetGUID() == loadedGUID);
+                    csvData.line = i;
+                    dataItems.Add(scriptableObject, csvData);
                     
+                    scriptableObjectforSheet[i] = line;
                     for (int columnIndex = 0; columnIndex < splitData.Length; columnIndex++)
                     {
                         if (!fieldMap.TryGetValue(columnIndex, out string mappedField))
@@ -143,7 +172,7 @@ namespace Editor.ScriptableObjectConverter
                         {
                             var field = type.GetField(mappedField);
                             var property = type.GetProperty(mappedField);
-
+                            
                             if (field != null)
                             {
                                 object value = Convert.ChangeType(splitData[columnIndex], field.FieldType);
@@ -171,12 +200,24 @@ namespace Editor.ScriptableObjectConverter
                         AssetDatabase.CreateFolder(parentFolder, Path.GetFileName(DefaultDataFolderPath));
                     }
 
-                    string assetPath = $"{DefaultDataFolderPath}/{type}_{i}.asset";
-                    AssetDatabase.CreateAsset(scriptableObject, assetPath);
-                    if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
+                    string subfolder = type.Name;
+                    if (!AssetDatabase.IsValidFolder($"{DefaultDataFolderPath}/{subfolder}"))
                     {
-                        Debug.Log($"Created ScriptableObject: {scriptableObject.name} at {assetPath}");
+                        string parentFolder = Path.GetDirectoryName($"{DefaultDataFolderPath}/{subfolder}");
+                        AssetDatabase.CreateFolder(parentFolder, Path.GetFileName($"{DefaultDataFolderPath}/{subfolder}"));
                     }
+
+                    if (isNewSO)
+                    {
+                        string assetPath = $"{DefaultDataFolderPath}/{subfolder}/{type.Name}_{i}.asset";
+                        AssetDatabase.CreateAsset(scriptableObject, assetPath);
+                        if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
+                        {
+                            Debug.Log($"Created ScriptableObject: {scriptableObject.name} at {assetPath}");
+                        }
+                    }
+                    
+                    csvDatas.Add(csvData);
                 }
 
                 AssetDatabase.SaveAssets();
@@ -187,34 +228,22 @@ namespace Editor.ScriptableObjectConverter
             }
             finally
             {
+                AssetDatabase.SaveAssets();
 #if UNITY_EDITOR
                 EditorUtility.ClearProgressBar();
                 EditorUtility.DisplayDialog("ScriptableObjects Creation Complete",
                     $"Successfully created {successCounter} out of {counter} objects.", "OK");
 #endif
-                AssetDatabase.SaveAssets();
+                List<CSVData> csvDatasToSave = new List<CSVData>();
+                foreach (var dataItem in dataItems)
+                {
+                    dataItem.Value.guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(dataItem.Key));
+                    csvDatasToSave.Add(dataItem.Value);
+                }
+                sheetData.csvDatas.Clear();
+                sheetData.csvDatas.AddRange(csvDatasToSave);
+                JSONUtility.GoogleSheetsJsonData.SetSheetData(sheetData, dataItemKey);
             }
-        }
-
-        /// <summary>
-        /// Retrieves a global unique identifier (GUID) for the given ID.
-        /// If the ID is not valid or does not exist in the dictionary, a new GUID is generated and stored.
-        /// </summary>
-        /// <param name="id">The input string ID for which a GUID is to be retrieved or generated.</param>
-        /// <returns>The existing or newly generated GUID corresponding to the provided ID.</returns>
-        private string GetGuid(string id)
-        {
-            if (AddedIDs.TryGetValue(id, out string existing))
-                return existing;
-
-            if (string.IsNullOrWhiteSpace(id) || id.Length != ValidGuidLength)
-            {
-                string newGuid = Guid.NewGuid().ToString("N");
-                AddedIDs[id] = newGuid;
-                return newGuid;
-            }
-
-            return id;
         }
 
         /// <summary>
@@ -228,12 +257,9 @@ namespace Editor.ScriptableObjectConverter
                 Debug.LogError("scriptableObjectType is null or empty.");
                 return;
             }
-
-            // Attempt to resolve the type
-            Type scriptableObjectType = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(assembly => assembly.GetTypes())
-                .FirstOrDefault(t => t.Name == dataItem.scriptableObjectType);
-
+            
+            Type scriptableObjectType = GoogleSheetsHelper.CheckType(dataItem.scriptableObjectType);
+            
             if (scriptableObjectType == null)
             {
                 Debug.LogError(
@@ -255,7 +281,11 @@ namespace Editor.ScriptableObjectConverter
             }
 
             Debug.Log($"Generating {scriptableObjectType.Name} objects...");
-            GenerateScriptableObjects(scriptableObjectType, dataItem.value);
+            
+            
+            
+            
+            GenerateScriptableObjects(scriptableObjectType, dataItem.value, dataItem.key);
         }
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Editor.Data;
 using Editor.Google_Sheets;
 using Editor.Project_Settings;
 using UnityEditor;
@@ -70,10 +71,10 @@ namespace Editor.Assemblies
         /// </returns>
         protected override TreeViewItem BuildRoot()
         {
-            string[] includeAssemblyFilters = GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] includeAssemblyFilters = GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
             Regex[] includeAssemblies = new Regex[] { };
-            if (includeAssemblyFilters.Any())
+            if (includeAssemblyFilters != null && includeAssemblyFilters.Any())
             {
                 includeAssemblies = includeAssemblyFilters
                     .Select(f => AssemblyFiltering.CreateFilterRegex(f))
@@ -169,8 +170,8 @@ namespace Editor.Assemblies
         /// </summary>
         public void SelectAssets()
         {
-            GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude = AssemblyFiltering.GetUserOnlyAssembliesString();
-            SelectFromString(GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude);
+            GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude = AssemblyFiltering.GetUserOnlyAssembliesString();
+            SelectFromString(GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude);
         }
 
         /// <summary>
@@ -181,8 +182,8 @@ namespace Editor.Assemblies
         /// </summary>
         public void SelectPackages()
         {
-            GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude = AssemblyFiltering.GetPackagesOnlyAssembliesString();
-            SelectFromString(GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude);
+            GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude = AssemblyFiltering.GetPackagesOnlyAssembliesString();
+            SelectFromString(GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude);
         }
 
         /// <summary>
@@ -254,7 +255,8 @@ namespace Editor.Assemblies
                 }
             }
 
-            GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude = sb.ToString();
+            GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude = sb.ToString();
+            JSONUtility.UpdateAssembliesToInclude(sb.ToString());
         }
     }
 }

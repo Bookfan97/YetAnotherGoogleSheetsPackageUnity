@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Editor.Assemblies;
+using Editor.Data;
 using Editor.Google_Sheets;
 using Editor.Utilities;
 using UnityEditor;
@@ -10,15 +11,32 @@ using UnityEngine;
 
 namespace Editor.Project_Settings
 {
+    
     static class GoogleSheetsCustomSettingsIMGUIRegister
     {
+        private static string m_AssembliesToInclude;
+        private static int m_AssembliesToIncludeLength;
         public static SettingsProvider thisSettingsProvider { get; private set; }
 
+        
         // Constants to avoid hardcoding strings
         private const string SPREADSHEET_ID_PROP = "m_spreadsheetID";
         private const string SERIALIZED_DATA_PROP = "m_Data";
         private const string JSON_FILE_EXTENSION = ".json";
         private const string PREFS_KEY = "Client JSON Secret";
+
+        public static string AssembliesToInclude
+        {
+            get => m_AssembliesToInclude;
+            set
+            {
+                m_AssembliesToInclude = value.TrimStart(',').TrimEnd(',');
+                m_AssembliesToIncludeLength = m_AssembliesToInclude.Length;
+                JSONUtility.GoogleSheetsJsonData.assembliesToInclude = m_AssembliesToInclude;
+                GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude = m_AssembliesToInclude;
+                //CoveragePreferences.instance.SetString("IncludeAssemblies", m_AssembliesToInclude);
+            }
+        }
 
         // GUIContent can remain static, as it does not change
         private static readonly GUIContent AssembliesToIncludeLabel =
@@ -72,10 +90,12 @@ namespace Editor.Project_Settings
                     GUILayout.Space(10f);
 
                     // Drawing additional properties with validation
-                    DrawPropertyWithValidation(settings, SERIALIZED_DATA_PROP, "My Data");
+                    DrawPropertyWithValidation(settings, SERIALIZED_DATA_PROP, "Sheet Data");
 
                     // Apply changes without undo history
                     settings.ApplyModifiedProperties();
+                    
+                    AssembliesToInclude = JSONUtility.GoogleSheetsJsonData.assembliesToInclude;
                 },
                 keywords = new HashSet<string>(new[] { "CSV", "Google", "Sheets", "JSON" })
             };
@@ -90,8 +110,8 @@ namespace Editor.Project_Settings
             EditorGUILayout.PrefixLabel(AssembliesToIncludeLabel);
 
             // Safely retrieve the assemblies string
-            var assembliesToInclude =
-                GoogleSheetsHelper.GoogleSheetsCustomSettings?.assembliesToInclude ?? string.Empty;
+            var assembliesToInclude = AssembliesToInclude;
+                //GoogleSheetsHelper.GoogleSheetsCustomSettings?.AssembliesToInclude ?? string.Empty;
             string displayText = string.IsNullOrEmpty(assembliesToInclude)
                 ? AssembliesToIncludeEmptyDropdownLabel.text
                 : $"{AssembliesToIncludeDropdownLabel.text}{assembliesToInclude}";
@@ -101,7 +121,7 @@ namespace Editor.Project_Settings
                     EditorStyles.miniPullDown))
             {
                 GUI.FocusControl(""); // Reset focus for better UX
-                PopupWindow.Show(buttonRect, new IncludedAssembliesPopupWindow(new GoogleSheetsDataItemDrawer()));
+                PopupWindow.Show(buttonRect, new IncludedAssembliesPopupWindow(new GoogleSheetsDataItemDrawer(), AssembliesToInclude));
             }
 
             GUILayout.EndHorizontal();
@@ -191,7 +211,7 @@ namespace Editor.Project_Settings
             public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
             {
                 EditorGUI.BeginProperty(position, label, property);
-
+                
                 float fieldWidth = position.width / 5;
 
                 // Rects for nested fields
@@ -209,21 +229,25 @@ namespace Editor.Project_Settings
                 var valueProp = property.FindPropertyRelative("value");
                 var indexProp = property.FindPropertyRelative("index");
                 var typeProp = property.FindPropertyRelative("scriptableObjectType");
-
+                var assemblyProp = property.FindPropertyRelative("assemblyName");
+                var typeValueProp = property.FindPropertyRelative("type");
                 if (keyProp != null && valueProp != null && indexProp != null && typeProp != null)
                 {
                     // Draw fields
                     EditorGUI.PropertyField(keyRect, keyProp, GUIContent.none);
                     EditorGUI.PropertyField(valueRect, valueProp, GUIContent.none);
+                    //UpdateJSON(keyProp, assemblyProp, typeProp);
 
                     // Populate dropdown menu
-                    List<Type> scriptableObjects = GetAllScriptableObjects.GetAllScriptableObjectClasses();
                     string[] dropdownOptions = Array.Empty<string>();
-                    if (scriptableObjects.Count != 0)
+                    if (GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes != null && 
+                        GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes.Count != 0)
                     {
-                        dropdownOptions = scriptableObjects.Select(obj => obj.Name).ToArray();
+                        dropdownOptions = GoogleSheetsHelper.GoogleSheetsCustomSettings.scriptableObjects.Select(obj => obj.Key.Name).ToArray();
                         indexProp.intValue = EditorGUI.Popup(dropdownRect, indexProp.intValue, dropdownOptions);
-                        typeProp.stringValue = scriptableObjects[indexProp.intValue].ToString();
+                        typeProp.stringValue = GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes[indexProp.intValue].Name;
+                        assemblyProp.stringValue = GoogleSheetsHelper.GoogleSheetsCustomSettings.allTypes[indexProp.intValue].Assembly.GetName().Name;
+                        UpdateJSON(keyProp, assemblyProp, typeProp);
                     }
                     
                     // Browse button for file selection
@@ -244,6 +268,14 @@ namespace Editor.Project_Settings
                 }
 
                 EditorGUI.EndProperty();
+            }
+
+            private static void UpdateJSON(SerializedProperty keyProp, SerializedProperty assemblyProp, SerializedProperty typeProp)
+            {
+                JSONUtility.GoogleSheetsJsonData.Add(new KeyValuePair<int, SheetData>(
+                    keyProp.intValue, new SheetData(keyProp.intValue, assemblyProp.stringValue, typeProp.stringValue, "")
+                    ));
+                //JSONUtility.SaveData();
             }
         }
     }

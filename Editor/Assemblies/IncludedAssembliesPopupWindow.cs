@@ -1,6 +1,8 @@
 ﻿/*
  * Taken from com.unity.testtools.codecoverage v. 1.2.6
  */
+
+using Editor.Data;
 using Editor.Google_Sheets;
 using Editor.Project_Settings;
 using UnityEditor;
@@ -75,10 +77,12 @@ namespace Editor.Assemblies
         /// This class is derived from the PopupWindowContent and provides functionality
         /// such as searching and displaying a list of assemblies to include.
         /// </summary>
-        public IncludedAssembliesPopupWindow(GoogleSheetsCustomSettingsIMGUIRegister.GoogleSheetsDataItemDrawer parent)
+        public IncludedAssembliesPopupWindow(GoogleSheetsCustomSettingsIMGUIRegister.GoogleSheetsDataItemDrawer parent,
+            string assembliesToInclude)
         {
             m_SearchField = new SearchField();
-            m_TreeView = new IncludedAssembliesTreeView(parent, GoogleSheetsHelper.GoogleSheetsCustomSettings.assembliesToInclude);
+            
+            m_TreeView = new IncludedAssembliesTreeView(parent, assembliesToInclude);
         }
 
         /// <summary>

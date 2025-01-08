@@ -116,7 +116,7 @@ namespace Editor
                 foreach (var dataItem in GoogleSheetsHelper.GoogleSheetsCustomSettings.Data)
                 {
                     SOtoCSV converter = new SOtoCSV();
-                    converter.CSVtoScriptableObjects(dataItem);
+                    converter.ScriptableObjectsToCSV(dataItem);
                 }
             }
             catch (Exception e)

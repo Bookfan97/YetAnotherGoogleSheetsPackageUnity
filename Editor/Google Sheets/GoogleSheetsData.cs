@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Editor.Google_Sheets
 {
     /// <summary>
-    ///     Represents a key-value pair for Google Sheets data.
+    /// Represents a key-value pair for Google Sheets data.
     /// </summary>
     [Serializable]
     public class DataItem
@@ -31,8 +31,14 @@ namespace Editor.Google_Sheets
         public string value;
 
         /// <summary>
-        /// Holds a reference to a Unity ScriptableObject, enabling enhanced data organization, management, and integration within the Google Sheets data workflow.
+        /// Represents the name of the assembly where the ScriptableObject type is defined.
         /// </summary>
-        public ScriptableObject scriptableObject;
+        public string assemblyName;
+
+        /// <summary>
+        /// Retrieves the Type of the ScriptableObject based on the scriptableObjectType and assemblyName.
+        /// </summary>
+        /// <returns>The Type of the ScriptableObject if found; otherwise, null.</returns>
+        public Type GetSOType() => Type.GetType($"{scriptableObjectType}, {assemblyName}");
     }
 }

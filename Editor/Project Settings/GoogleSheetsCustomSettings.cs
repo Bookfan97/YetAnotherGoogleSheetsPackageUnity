@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using Editor.Data;
 using Editor.Google_Sheets;
+using Editor.Utilities;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -13,7 +17,22 @@ namespace Editor.Project_Settings
     public class GoogleSheetsCustomSettings : ScriptableObject
     {
         /// <summary>
-        /// 
+        /// A dictionary that maps types to their corresponding string representations.
+        /// </summary>
+        public Dictionary<Type, string> scriptableObjects { get; private set; }
+
+        /// <summary>
+        /// A nested dictionary that maps integer keys to dictionaries of integer-string pairs.
+        /// </summary>
+        public Dictionary<int, Dictionary<int, string>> scriptableObjectDB { get; private set; }
+
+        /// <summary>
+        /// A list of all types used within the Google Sheets integration.
+        /// </summary>
+        public List<Type> allTypes { get; private set; }
+
+        /// <summary>
+        /// A list of data items used for Google Sheets operations.
         /// </summary>
         [SerializeField] private List<DataItem> m_Data;
 
@@ -25,13 +44,26 @@ namespace Editor.Project_Settings
         /// </summary>
         [SerializeField] private string m_spreadsheetID;
 
+        private string assembliesToInclude;
+
         /// <summary>
         /// Specifies a semicolon-separated list of assembly names to be included
         /// during the runtime compilation or evaluation process of the Google Sheets integration.
         /// This setting allows for dynamic referencing of specific assemblies required for
         /// the tailored handling of spreadsheet data within the Unity project.
         /// </summary>
-        public string assembliesToInclude { get; set; }
+        public string AssembliesToInclude
+        {
+            get => assembliesToInclude;
+            set
+            {
+                assembliesToInclude = value;
+                scriptableObjects = GetAllScriptableObjects.GetAllScriptableObjectClasses();
+                allTypes = scriptableObjects.Select(obj => obj.Key).ToList();
+                JSONUtility.GoogleSheetsJsonData.assembliesToInclude = value;
+                //JSONUtility.SaveData();
+            }
+        }
 
         /// <summary>
         /// Provides access to the collection of data items utilized for Google Sheets operations
@@ -80,5 +112,40 @@ namespace Editor.Project_Settings
         /// </summary>
         /// <returns>The string representing the default path for data assets.</returns>
         public string GetDefaultPath() => "Assets/Data";
+
+        /// <summary>
+        /// Retrieves the dictionary of scriptable objects associated with the specified data item key.
+        /// </summary>
+        /// <param name="dataItemKey">The key of the data item.</param>
+        /// <returns>A dictionary of integer-string pairs representing the scriptable objects.</returns>
+        public Dictionary<int, string> GetScriptableObjectforSheet(int dataItemKey)
+        {
+            scriptableObjectDB ??= new Dictionary<int, Dictionary<int, string>>();
+
+            foreach (var pair in scriptableObjectDB.Where(pair => pair.Key == dataItemKey))
+            {
+                return pair.Value;
+            }
+
+            return new Dictionary<int, string>();
+        }
+
+        /// <summary>
+        /// Sets the dictionary of scriptable objects for the specified data item key.
+        /// </summary>
+        /// <param name="dataItemKey">The key of the data item.</param>
+        /// <param name="values">The dictionary of integer-string pairs to set.</param>
+        public void SetScriptableObjectforSheet(int dataItemKey, Dictionary<int, string> values)
+        {
+            scriptableObjectDB ??= new Dictionary<int, Dictionary<int, string>>();
+
+            foreach (var pair in scriptableObjectDB)
+            {
+                if (pair.Key == dataItemKey)
+                {
+                    scriptableObjectDB[pair.Key] = values;
+                }
+            }
+        }
     }
 }

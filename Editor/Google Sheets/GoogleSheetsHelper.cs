@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Editor.Project_Settings;
 using UnityEditor;
 using UnityEngine;
@@ -27,7 +29,8 @@ namespace Editor.Google_Sheets
         /// preference setting, ensuring that the proper file path is maintained
         /// throughout various editor sessions.
         /// </summary>
-        public static string k_JSONEditorPref { get; private set; } = "DefinitiveInfinityMediaGoogleSheetsSettings_JSONPath";
+        public static string k_JSONEditorPref { get; private set; } =
+            "DefinitiveInfinityMediaGoogleSheetsSettings_JSONPath";
 
         /// <summary>
         /// Constant string representing the preference key for enabling or disabling debug logs related to Google Sheets settings in the editor.
@@ -36,7 +39,8 @@ namespace Editor.Google_Sheets
         /// This key is used to store and retrieve the user preference for logging debug information in the Unity editor
         /// while working with Google Sheets integrations. It ensures consistent behavior and settings across editor sessions.
         /// </remarks>
-        public static string k_debugLogEditorPref { get; private set; } = "DefinitiveInfinityMediaGoogleSheetsSettings_DebugLogs";
+        public static string k_debugLogEditorPref { get; private set; } =
+            "DefinitiveInfinityMediaGoogleSheetsSettings_DebugLogs";
 
         /// <summary>
         /// Property to get the instance of GoogleSheetsCustomSettings.
@@ -62,15 +66,17 @@ namespace Editor.Google_Sheets
             {
                 settings = ScriptableObject.CreateInstance<GoogleSheetsCustomSettings>();
                 settings.Data = new List<DataItem>();
-                if(!Directory.Exists("Assets/Settings"))
-                {	
+                if (!Directory.Exists("Assets/Settings"))
+                {
                     //if it doesn't, create it
                     Directory.CreateDirectory("Assets/Settings");
 
                 }
+
                 AssetDatabase.CreateAsset(settings, k_MyCustomSettingsPath);
                 AssetDatabase.SaveAssets();
             }
+
             return settings;
         }
 
@@ -79,5 +85,23 @@ namespace Editor.Google_Sheets
         /// </summary>
         /// <returns>A SerializedObject representing the Google Sheets custom settings.</returns>
         internal static SerializedObject GetSerializedSettings() => new(GetOrCreateSettings());
+
+        /// <summary>
+        /// Checks the type of a given type name within the Google Sheets custom settings.
+        /// </summary>
+        /// <param name="typeName">The name of the type to check.</param>
+        /// <returns>The type if found; otherwise, null.</returns>
+        public static Type CheckType(string typeName)
+        {
+            if (GoogleSheetsCustomSettings.scriptableObjects == null)
+            {
+                Debug.LogError("GoogleSheetsCustomSettings.scriptableObjects is null");
+                return null;
+            }
+
+            return (from typePair in GoogleSheetsCustomSettings.scriptableObjects
+                where typePair.Key.Name.Contains(typeName)
+                select typePair.Key).FirstOrDefault();
+        }
     }
 }
