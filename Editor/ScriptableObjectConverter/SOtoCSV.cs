@@ -7,6 +7,7 @@ using Editor.Data;
 using Editor.Google_Sheets;
 using UnityEditor;
 using UnityEngine;
+using Object = System.Object;
 
 namespace Editor.ScriptableObjectConverter
 {
@@ -28,10 +29,12 @@ namespace Editor.ScriptableObjectConverter
             int counter = 0;
             List<string> ids = new List<string>();
             List<string> lines = new List<string>();
-            var existingItems = Resources.FindObjectsOfTypeAll(scriptableObjectType);
-            string[] orderedLines = new string[existingItems.Length];
+            //Load(ResourcesPath, scriptableObjectType);
+            List<Object> existingItems = AssetDatabase.FindAssets("t:" + scriptableObjectType.Name).Select(guid => AssetDatabase.GUIDToAssetPath(guid)).Select(path => AssetDatabase.LoadAssetAtPath(path, scriptableObjectType)).Cast<Object>().ToList();
+
+            string[] orderedLines = new string[existingItems.Count];
             JSONUtility.LoadData();
-            SheetData sheetData = JSONUtility.GoogleSheetsJsonData.GetSheetData(dataItem.index);
+            SheetData sheetData = JSONUtility.GoogleSheetsJsonData.GetSheetData(dataItem.key);
             if(sheetData == null)
             {
                 sheetData = new SheetData(dataItem.key, dataItem.assemblyName, scriptableObjectType.Name, "");
@@ -40,7 +43,7 @@ namespace Editor.ScriptableObjectConverter
             
             if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
             {
-                Debug.Log($"Found {existingItems.Length} existing objects of type {scriptableObjectType.Name}.");
+                Debug.Log($"Found {existingItems.Count} existing objects of type {scriptableObjectType.Name}.");
             }
             Dictionary<int, string> headers = GetHeaders(scriptableObjectType);
             string headerString = "";
@@ -50,23 +53,46 @@ namespace Editor.ScriptableObjectConverter
                 headerString += header.Value + ",";
             }
             
-            orderedLines[0] = headerString;
+            Dictionary<string, string> newScriptableObjects = new Dictionary<string, string>();
+            int tempCounter = 0;
             
             foreach (ScriptableObject SOName in existingItems)
             {
                 var values = GetValuesFromScriptableObject(SOName, headers);
                 // Convert the values into a single CSV-compatible row format
                 string csvRow = string.Join(",", values);
+                int index;
+                string guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(SOName));
+                index = sheetData.GetIndexForGUID(guid);
 
-                // Add the row to the output list (assuming `lines` is accessible here)
-                orderedLines[counter] = csvRow;
+                if (index == -1)
+                {
+                    newScriptableObjects.Add(guid, csvRow);
+                }
+                else
+                {
+                    orderedLines[index - 1] = csvRow;
+                    tempCounter++;
+                }
                 
                 if ((bool)!skipPopups)
                 {
-                    EditorUtility.DisplayProgressBar($"Saving Dialogues", $"Saving Dialogue {counter} / {existingItems.Length}",
-                        counter / existingItems.Length);
+                    EditorUtility.DisplayProgressBar($"Saving Dialogues", $"Saving Dialogue {counter} / {existingItems.Count}",
+                        counter / existingItems.Count);
                     counter++;
                 }
+            }
+
+            int addedCounter = 1;
+            foreach (KeyValuePair<string, string> kvp in newScriptableObjects)
+            {
+                int lineIndex = tempCounter + addedCounter;
+                orderedLines[lineIndex - 1] = kvp.Value;
+                sheetData.csvDatas.Add(new CSVData
+                {
+                    guid = kvp.Key,
+                    line = lineIndex,
+                });
             }
             
             lines = new List<string>(orderedLines.ToArray());
@@ -75,7 +101,7 @@ namespace Editor.ScriptableObjectConverter
             if ((bool)!skipPopups)
             {
                 EditorUtility.ClearProgressBar();
-                EditorUtility.DisplayDialog("Creating Dialogues", $"Saved {counter} of {existingItems.Length} dialogues",
+                EditorUtility.DisplayDialog("Creating Dialogues", $"Saved {counter} of {existingItems.Count} dialogues",
                     "OK", "");
             }
             

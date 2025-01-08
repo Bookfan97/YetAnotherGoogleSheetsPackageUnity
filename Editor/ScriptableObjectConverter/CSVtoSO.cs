@@ -143,7 +143,7 @@ namespace Editor.ScriptableObjectConverter
 
                     string[] splitData = CSVParser.Split(line).Select(field => field.Trim('\"')).ToArray();
 
-                    if (splitData.Length != headerData.Length - 1)
+                    if (splitData.Length != headerData.Length)
                     {
                         Debug.LogWarning(
                             $"Line {i} has mismatched column count. Expected {headerData.Length}, got {splitData.Length}. Skipping...");
@@ -209,7 +209,7 @@ namespace Editor.ScriptableObjectConverter
 
                     if (isNewSO)
                     {
-                        string assetPath = $"{DefaultDataFolderPath}/{subfolder}/{type.Name}_{i + 1}.asset";
+                        string assetPath = $"{DefaultDataFolderPath}/{subfolder}/{type.Name}_{i}.asset";
                         AssetDatabase.CreateAsset(scriptableObject, assetPath);
                         if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
                         {

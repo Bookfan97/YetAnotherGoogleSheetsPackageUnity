@@ -124,6 +124,18 @@ namespace Editor.Data
             }
             return string.Empty;
         }
+
+        public int GetIndexForGUID(string guid)
+        {
+            foreach (var data in csvDatas)
+            {
+                if (data.guid == guid)
+                {
+                    return data.line;
+                }
+            }
+            return -1;
+        }
     }
 
     [System.Serializable]
