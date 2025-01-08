@@ -256,7 +256,7 @@ namespace Editor.Assemblies
             }
 
             GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude = sb.ToString();
-            JSONUtility.GoogleSheetsJsonData.assembliesToInclude = sb.ToString();
+            JSONUtility.UpdateAssembliesToInclude(sb.ToString());
         }
     }
 }

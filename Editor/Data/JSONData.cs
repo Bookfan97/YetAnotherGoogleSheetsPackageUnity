@@ -77,6 +77,11 @@ namespace Editor.Data
         }
 
         public bool CheckSheetIDInSheets(int? propertiesSheetId) => propertiesSheetId != null && sheets.Any(sheet => sheet.GetKey() == propertiesSheetId);
+
+        public void UpdateAssembliesToInclude(string toString)
+        {
+            assembliesToInclude = toString;
+        }
     }
 
     [System.Serializable]

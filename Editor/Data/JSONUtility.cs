@@ -60,5 +60,12 @@ namespace Editor.Data
             string data = JsonUtility.ToJson(GoogleSheetsJsonData, true);
             File.WriteAllText(filePath, data);
         }
+
+        public static void UpdateAssembliesToInclude(string toString)
+        {
+            LoadData();
+            GoogleSheetsJsonData.UpdateAssembliesToInclude(toString);
+            SaveData();
+        }
     }
 }
