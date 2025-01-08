@@ -93,8 +93,9 @@ namespace Editor.ScriptableObjectConverter
                     guid = kvp.Key,
                     line = lineIndex,
                 });
+                addedCounter++;
             }
-            
+            sheetData.headers = headerString;
             lines = new List<string>(orderedLines.ToArray());
             SaveToFile(dataItem.value, lines, headerString);
             
