@@ -11,15 +11,32 @@ using UnityEngine;
 
 namespace Editor.Project_Settings
 {
+    
     static class GoogleSheetsCustomSettingsIMGUIRegister
     {
+        private static string m_AssembliesToInclude;
+        private static int m_AssembliesToIncludeLength;
         public static SettingsProvider thisSettingsProvider { get; private set; }
 
+        
         // Constants to avoid hardcoding strings
         private const string SPREADSHEET_ID_PROP = "m_spreadsheetID";
         private const string SERIALIZED_DATA_PROP = "m_Data";
         private const string JSON_FILE_EXTENSION = ".json";
         private const string PREFS_KEY = "Client JSON Secret";
+
+        public static string AssembliesToInclude
+        {
+            get => m_AssembliesToInclude;
+            set
+            {
+                m_AssembliesToInclude = value.TrimStart(',').TrimEnd(',');
+                m_AssembliesToIncludeLength = m_AssembliesToInclude.Length;
+                JSONUtility.GoogleSheetsJsonData.assembliesToInclude = m_AssembliesToInclude;
+                GoogleSheetsHelper.GoogleSheetsCustomSettings.AssembliesToInclude = m_AssembliesToInclude;
+                //CoveragePreferences.instance.SetString("IncludeAssemblies", m_AssembliesToInclude);
+            }
+        }
 
         // GUIContent can remain static, as it does not change
         private static readonly GUIContent AssembliesToIncludeLabel =
@@ -77,6 +94,8 @@ namespace Editor.Project_Settings
 
                     // Apply changes without undo history
                     settings.ApplyModifiedProperties();
+                    
+                    AssembliesToInclude = JSONUtility.GoogleSheetsJsonData.assembliesToInclude;
                 },
                 keywords = new HashSet<string>(new[] { "CSV", "Google", "Sheets", "JSON" })
             };
@@ -91,8 +110,8 @@ namespace Editor.Project_Settings
             EditorGUILayout.PrefixLabel(AssembliesToIncludeLabel);
 
             // Safely retrieve the assemblies string
-            var assembliesToInclude =
-                GoogleSheetsHelper.GoogleSheetsCustomSettings?.AssembliesToInclude ?? string.Empty;
+            var assembliesToInclude = AssembliesToInclude;
+                //GoogleSheetsHelper.GoogleSheetsCustomSettings?.AssembliesToInclude ?? string.Empty;
             string displayText = string.IsNullOrEmpty(assembliesToInclude)
                 ? AssembliesToIncludeEmptyDropdownLabel.text
                 : $"{AssembliesToIncludeDropdownLabel.text}{assembliesToInclude}";
@@ -102,7 +121,7 @@ namespace Editor.Project_Settings
                     EditorStyles.miniPullDown))
             {
                 GUI.FocusControl(""); // Reset focus for better UX
-                PopupWindow.Show(buttonRect, new IncludedAssembliesPopupWindow(new GoogleSheetsDataItemDrawer()));
+                PopupWindow.Show(buttonRect, new IncludedAssembliesPopupWindow(new GoogleSheetsDataItemDrawer(), AssembliesToInclude));
             }
 
             GUILayout.EndHorizontal();
