@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class DataItem | Google Sheets | 2.1.0 </title>
+      <title>Class DataItem | Google Sheets | 2.2.0 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class DataItem | Google Sheets | 2.1.0 ">
+      <meta name="title" content="Class DataItem | Google Sheets | 2.2.0 ">
       
       <meta name="description" content="Represents a key-value pair for Google Sheets data.">
       <link rel="icon" href="../favicon.ico">
@@ -155,6 +155,37 @@ public class DataItem</code></pre>
 
 
 
+  <h3 id="Editor_Google_Sheets_DataItem_assemblyName" data-uid="Editor.Google_Sheets.DataItem.assemblyName">
+  assemblyName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsData.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Represents the name of the assembly where the ScriptableObject type is defined.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string assemblyName</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Editor_Google_Sheets_DataItem_index" data-uid="Editor.Google_Sheets.DataItem.index">
   index
   <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsData.cs/#L21"><i class="bi bi-code-slash"></i></a>
@@ -205,37 +236,6 @@ public class DataItem</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Editor_Google_Sheets_DataItem_scriptableObject" data-uid="Editor.Google_Sheets.DataItem.scriptableObject">
-  scriptableObject
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsData.cs/#L36"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Holds a reference to a Unity ScriptableObject, enabling enhanced data organization, management, and integration within the Google Sheets data workflow.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ScriptableObject scriptableObject</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">ScriptableObject</span></dt>
     <dd></dd>
   </dl>
 
@@ -300,6 +300,43 @@ public class DataItem</code></pre>
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Editor_Google_Sheets_DataItem_GetSOType_" data-uid="Editor.Google_Sheets.DataItem.GetSOType*"></a>
+
+  <h3 id="Editor_Google_Sheets_DataItem_GetSOType" data-uid="Editor.Google_Sheets.DataItem.GetSOType">
+  GetSOType()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsData.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the Type of the ScriptableObject based on the scriptableObjectType and assemblyName.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type GetSOType()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>The Type of the ScriptableObject if found; otherwise, null.</p>
+</dd>
+  </dl>
+
+
 
 
 

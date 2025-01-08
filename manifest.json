@@ -15,6 +15,56 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Data.CSVData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Data.CSVData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Data.GoogleSheetsJSONData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Data.GoogleSheetsJSONData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Data.JSONUtility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Data.JSONUtility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Data.SheetData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Data.SheetData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Editor.Google_Sheets.DataItem.yml",
       "output": {
         ".html": {

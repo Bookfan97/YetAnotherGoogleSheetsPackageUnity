@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class GetAllScriptableObjects | Google Sheets | 2.1.0 </title>
+      <title>Class GetAllScriptableObjects | Google Sheets | 2.2.0 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class GetAllScriptableObjects | Google Sheets | 2.1.0 ">
+      <meta name="title" content="Class GetAllScriptableObjects | Google Sheets | 2.2.0 ">
       
       <meta name="description" content="Provides utility methods for working with ScriptableObjects in Unity projects. Includes functionality for retrieving all ScriptableObject assets, discovering classes in assemblies, and listing ScriptableObject types.">
       <link rel="icon" href="../favicon.ico">
@@ -239,14 +239,14 @@ classes in assemblies, and listing ScriptableObject types.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;Type&gt; GetAllScriptableObjectClasses()</code></pre>
+    <pre><code class="lang-csharp hljs">public static Dictionary&lt;Type, string&gt; GetAllScriptableObjectClasses()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>&gt;</dt>
-    <dd><p>List of ScriptableObject class types</p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Dictionary of ScriptableObject class types</p>
 </dd>
   </dl>
 

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class CSVtoSO | Google Sheets | 2.1.0 </title>
+      <title>Class CSVtoSO | Google Sheets | 2.2.0 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class CSVtoSO | Google Sheets | 2.1.0 ">
+      <meta name="title" content="Class CSVtoSO | Google Sheets | 2.2.0 ">
       
       <meta name="description" content="A utility class for converting CSV data into Unity ScriptableObjects.">
       <link rel="icon" href="../favicon.ico">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Editor_ScriptableObjectConverter_CSVtoSO" data-uid="Editor.ScriptableObjectConverter.CSVtoSO" class="text-break">
-Class CSVtoSO  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L19"><i class="bi bi-code-slash"></i></a>
+Class CSVtoSO  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -157,48 +157,11 @@ It provides functionality to handle the conversion process, ensuring that types 
 </h2>
 
 
-  <a id="Editor_ScriptableObjectConverter_CSVtoSO_AddedIDs_" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs*"></a>
-
-  <h3 id="Editor_ScriptableObjectConverter_CSVtoSO_AddedIDs" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs">
-  AddedIDs
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L29"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>A dictionary that stores mapping between original identifiers and their corresponding unique GUIDs.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string&gt; AddedIDs { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-  <h4 class="section" id="Editor_ScriptableObjectConverter_CSVtoSO_AddedIDs_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This property is used during the conversion process to ensure each generated ScriptableObject has a unique identifier.
-The key represents the original identifier (e.g., from the CSV data), and the value is the assigned GUID.
-These mappings are preserved for potential reuse during subsequent operations or validations.</p>
-</div>
-
-
-
-
   <a id="Editor_ScriptableObjectConverter_CSVtoSO_Success_" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.Success*"></a>
 
   <h3 id="Editor_ScriptableObjectConverter_CSVtoSO_Success" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.Success">
   Success
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Indicates whether the CSV to ScriptableObject conversion process was successful.</p>
@@ -240,7 +203,7 @@ either a failure to create any ScriptableObjects or errors that interrupted the 
 
   <h3 id="Editor_ScriptableObjectConverter_CSVtoSO_Generate_Editor_Google_Sheets_DataItem_" data-uid="Editor.ScriptableObjectConverter.CSVtoSO.Generate(Editor.Google_Sheets.DataItem)">
   Generate(DataItem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/CSVtoSO.cs/#L253"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates ScriptableObject instances using the specified data item information.</p>

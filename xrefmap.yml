@@ -7,6 +7,402 @@ references:
   commentId: N:Editor
   fullName: Editor
   nameWithType: Editor
+- uid: Editor.Data
+  name: Editor.Data
+  href: api/Editor.Data.html
+  commentId: N:Editor.Data
+  fullName: Editor.Data
+  nameWithType: Editor.Data
+- uid: Editor.Data.CSVData
+  name: CSVData
+  href: api/Editor.Data.CSVData.html
+  commentId: T:Editor.Data.CSVData
+  fullName: Editor.Data.CSVData
+  nameWithType: CSVData
+- uid: Editor.Data.CSVData.GetGUID
+  name: GetGUID()
+  href: api/Editor.Data.CSVData.html#Editor_Data_CSVData_GetGUID
+  commentId: M:Editor.Data.CSVData.GetGUID
+  fullName: Editor.Data.CSVData.GetGUID()
+  nameWithType: CSVData.GetGUID()
+- uid: Editor.Data.CSVData.GetGUID*
+  name: GetGUID
+  href: api/Editor.Data.CSVData.html#Editor_Data_CSVData_GetGUID_
+  commentId: Overload:Editor.Data.CSVData.GetGUID
+  isSpec: "True"
+  fullName: Editor.Data.CSVData.GetGUID
+  nameWithType: CSVData.GetGUID
+- uid: Editor.Data.CSVData.GetLine
+  name: GetLine()
+  href: api/Editor.Data.CSVData.html#Editor_Data_CSVData_GetLine
+  commentId: M:Editor.Data.CSVData.GetLine
+  fullName: Editor.Data.CSVData.GetLine()
+  nameWithType: CSVData.GetLine()
+- uid: Editor.Data.CSVData.GetLine*
+  name: GetLine
+  href: api/Editor.Data.CSVData.html#Editor_Data_CSVData_GetLine_
+  commentId: Overload:Editor.Data.CSVData.GetLine
+  isSpec: "True"
+  fullName: Editor.Data.CSVData.GetLine
+  nameWithType: CSVData.GetLine
+- uid: Editor.Data.CSVData.guid
+  name: guid
+  href: api/Editor.Data.CSVData.html#Editor_Data_CSVData_guid
+  commentId: F:Editor.Data.CSVData.guid
+  fullName: Editor.Data.CSVData.guid
+  nameWithType: CSVData.guid
+- uid: Editor.Data.CSVData.line
+  name: line
+  href: api/Editor.Data.CSVData.html#Editor_Data_CSVData_line
+  commentId: F:Editor.Data.CSVData.line
+  fullName: Editor.Data.CSVData.line
+  nameWithType: CSVData.line
+- uid: Editor.Data.GoogleSheetsJSONData
+  name: GoogleSheetsJSONData
+  href: api/Editor.Data.GoogleSheetsJSONData.html
+  commentId: T:Editor.Data.GoogleSheetsJSONData
+  fullName: Editor.Data.GoogleSheetsJSONData
+  nameWithType: GoogleSheetsJSONData
+- uid: Editor.Data.GoogleSheetsJSONData.Add(System.Collections.Generic.KeyValuePair{System.Int32,Editor.Data.SheetData})
+  name: Add(KeyValuePair<int, SheetData>)
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_Add_System_Collections_Generic_KeyValuePair_System_Int32_Editor_Data_SheetData__
+  commentId: M:Editor.Data.GoogleSheetsJSONData.Add(System.Collections.Generic.KeyValuePair{System.Int32,Editor.Data.SheetData})
+  name.vb: Add(KeyValuePair(Of Integer, SheetData))
+  fullName: Editor.Data.GoogleSheetsJSONData.Add(System.Collections.Generic.KeyValuePair<int, Editor.Data.SheetData>)
+  fullName.vb: Editor.Data.GoogleSheetsJSONData.Add(System.Collections.Generic.KeyValuePair(Of Integer, Editor.Data.SheetData))
+  nameWithType: GoogleSheetsJSONData.Add(KeyValuePair<int, SheetData>)
+  nameWithType.vb: GoogleSheetsJSONData.Add(KeyValuePair(Of Integer, SheetData))
+- uid: Editor.Data.GoogleSheetsJSONData.Add*
+  name: Add
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_Add_
+  commentId: Overload:Editor.Data.GoogleSheetsJSONData.Add
+  isSpec: "True"
+  fullName: Editor.Data.GoogleSheetsJSONData.Add
+  nameWithType: GoogleSheetsJSONData.Add
+- uid: Editor.Data.GoogleSheetsJSONData.AddSheetData(Editor.Data.SheetData)
+  name: AddSheetData(SheetData)
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_AddSheetData_Editor_Data_SheetData_
+  commentId: M:Editor.Data.GoogleSheetsJSONData.AddSheetData(Editor.Data.SheetData)
+  fullName: Editor.Data.GoogleSheetsJSONData.AddSheetData(Editor.Data.SheetData)
+  nameWithType: GoogleSheetsJSONData.AddSheetData(SheetData)
+- uid: Editor.Data.GoogleSheetsJSONData.AddSheetData*
+  name: AddSheetData
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_AddSheetData_
+  commentId: Overload:Editor.Data.GoogleSheetsJSONData.AddSheetData
+  isSpec: "True"
+  fullName: Editor.Data.GoogleSheetsJSONData.AddSheetData
+  nameWithType: GoogleSheetsJSONData.AddSheetData
+- uid: Editor.Data.GoogleSheetsJSONData.CheckSheetIDInSheets(System.Nullable{System.Int32})
+  name: CheckSheetIDInSheets(int?)
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_CheckSheetIDInSheets_System_Nullable_System_Int32__
+  commentId: M:Editor.Data.GoogleSheetsJSONData.CheckSheetIDInSheets(System.Nullable{System.Int32})
+  name.vb: CheckSheetIDInSheets(Integer?)
+  fullName: Editor.Data.GoogleSheetsJSONData.CheckSheetIDInSheets(int?)
+  fullName.vb: Editor.Data.GoogleSheetsJSONData.CheckSheetIDInSheets(Integer?)
+  nameWithType: GoogleSheetsJSONData.CheckSheetIDInSheets(int?)
+  nameWithType.vb: GoogleSheetsJSONData.CheckSheetIDInSheets(Integer?)
+- uid: Editor.Data.GoogleSheetsJSONData.CheckSheetIDInSheets*
+  name: CheckSheetIDInSheets
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_CheckSheetIDInSheets_
+  commentId: Overload:Editor.Data.GoogleSheetsJSONData.CheckSheetIDInSheets
+  isSpec: "True"
+  fullName: Editor.Data.GoogleSheetsJSONData.CheckSheetIDInSheets
+  nameWithType: GoogleSheetsJSONData.CheckSheetIDInSheets
+- uid: Editor.Data.GoogleSheetsJSONData.GetExistingScriptableObjectforSheet(System.Int32)
+  name: GetExistingScriptableObjectforSheet(int)
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_GetExistingScriptableObjectforSheet_System_Int32_
+  commentId: M:Editor.Data.GoogleSheetsJSONData.GetExistingScriptableObjectforSheet(System.Int32)
+  name.vb: GetExistingScriptableObjectforSheet(Integer)
+  fullName: Editor.Data.GoogleSheetsJSONData.GetExistingScriptableObjectforSheet(int)
+  fullName.vb: Editor.Data.GoogleSheetsJSONData.GetExistingScriptableObjectforSheet(Integer)
+  nameWithType: GoogleSheetsJSONData.GetExistingScriptableObjectforSheet(int)
+  nameWithType.vb: GoogleSheetsJSONData.GetExistingScriptableObjectforSheet(Integer)
+- uid: Editor.Data.GoogleSheetsJSONData.GetExistingScriptableObjectforSheet*
+  name: GetExistingScriptableObjectforSheet
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_GetExistingScriptableObjectforSheet_
+  commentId: Overload:Editor.Data.GoogleSheetsJSONData.GetExistingScriptableObjectforSheet
+  isSpec: "True"
+  fullName: Editor.Data.GoogleSheetsJSONData.GetExistingScriptableObjectforSheet
+  nameWithType: GoogleSheetsJSONData.GetExistingScriptableObjectforSheet
+- uid: Editor.Data.GoogleSheetsJSONData.GetSheetData(System.Int32)
+  name: GetSheetData(int)
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_GetSheetData_System_Int32_
+  commentId: M:Editor.Data.GoogleSheetsJSONData.GetSheetData(System.Int32)
+  name.vb: GetSheetData(Integer)
+  fullName: Editor.Data.GoogleSheetsJSONData.GetSheetData(int)
+  fullName.vb: Editor.Data.GoogleSheetsJSONData.GetSheetData(Integer)
+  nameWithType: GoogleSheetsJSONData.GetSheetData(int)
+  nameWithType.vb: GoogleSheetsJSONData.GetSheetData(Integer)
+- uid: Editor.Data.GoogleSheetsJSONData.GetSheetData*
+  name: GetSheetData
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_GetSheetData_
+  commentId: Overload:Editor.Data.GoogleSheetsJSONData.GetSheetData
+  isSpec: "True"
+  fullName: Editor.Data.GoogleSheetsJSONData.GetSheetData
+  nameWithType: GoogleSheetsJSONData.GetSheetData
+- uid: Editor.Data.GoogleSheetsJSONData.Initialize
+  name: Initialize()
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_Initialize
+  commentId: M:Editor.Data.GoogleSheetsJSONData.Initialize
+  fullName: Editor.Data.GoogleSheetsJSONData.Initialize()
+  nameWithType: GoogleSheetsJSONData.Initialize()
+- uid: Editor.Data.GoogleSheetsJSONData.Initialize*
+  name: Initialize
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_Initialize_
+  commentId: Overload:Editor.Data.GoogleSheetsJSONData.Initialize
+  isSpec: "True"
+  fullName: Editor.Data.GoogleSheetsJSONData.Initialize
+  nameWithType: GoogleSheetsJSONData.Initialize
+- uid: Editor.Data.GoogleSheetsJSONData.SetExistingScriptableObjectforSheet(System.Collections.Generic.List{Editor.Data.CSVData},System.Int32)
+  name: SetExistingScriptableObjectforSheet(List<CSVData>, int)
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_SetExistingScriptableObjectforSheet_System_Collections_Generic_List_Editor_Data_CSVData__System_Int32_
+  commentId: M:Editor.Data.GoogleSheetsJSONData.SetExistingScriptableObjectforSheet(System.Collections.Generic.List{Editor.Data.CSVData},System.Int32)
+  name.vb: SetExistingScriptableObjectforSheet(List(Of CSVData), Integer)
+  fullName: Editor.Data.GoogleSheetsJSONData.SetExistingScriptableObjectforSheet(System.Collections.Generic.List<Editor.Data.CSVData>, int)
+  fullName.vb: Editor.Data.GoogleSheetsJSONData.SetExistingScriptableObjectforSheet(System.Collections.Generic.List(Of Editor.Data.CSVData), Integer)
+  nameWithType: GoogleSheetsJSONData.SetExistingScriptableObjectforSheet(List<CSVData>, int)
+  nameWithType.vb: GoogleSheetsJSONData.SetExistingScriptableObjectforSheet(List(Of CSVData), Integer)
+- uid: Editor.Data.GoogleSheetsJSONData.SetExistingScriptableObjectforSheet*
+  name: SetExistingScriptableObjectforSheet
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_SetExistingScriptableObjectforSheet_
+  commentId: Overload:Editor.Data.GoogleSheetsJSONData.SetExistingScriptableObjectforSheet
+  isSpec: "True"
+  fullName: Editor.Data.GoogleSheetsJSONData.SetExistingScriptableObjectforSheet
+  nameWithType: GoogleSheetsJSONData.SetExistingScriptableObjectforSheet
+- uid: Editor.Data.GoogleSheetsJSONData.SetSheetData(Editor.Data.SheetData,System.Int32)
+  name: SetSheetData(SheetData, int)
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_SetSheetData_Editor_Data_SheetData_System_Int32_
+  commentId: M:Editor.Data.GoogleSheetsJSONData.SetSheetData(Editor.Data.SheetData,System.Int32)
+  name.vb: SetSheetData(SheetData, Integer)
+  fullName: Editor.Data.GoogleSheetsJSONData.SetSheetData(Editor.Data.SheetData, int)
+  fullName.vb: Editor.Data.GoogleSheetsJSONData.SetSheetData(Editor.Data.SheetData, Integer)
+  nameWithType: GoogleSheetsJSONData.SetSheetData(SheetData, int)
+  nameWithType.vb: GoogleSheetsJSONData.SetSheetData(SheetData, Integer)
+- uid: Editor.Data.GoogleSheetsJSONData.SetSheetData*
+  name: SetSheetData
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_SetSheetData_
+  commentId: Overload:Editor.Data.GoogleSheetsJSONData.SetSheetData
+  isSpec: "True"
+  fullName: Editor.Data.GoogleSheetsJSONData.SetSheetData
+  nameWithType: GoogleSheetsJSONData.SetSheetData
+- uid: Editor.Data.GoogleSheetsJSONData.UpdateAssembliesToInclude(System.String)
+  name: UpdateAssembliesToInclude(string)
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_UpdateAssembliesToInclude_System_String_
+  commentId: M:Editor.Data.GoogleSheetsJSONData.UpdateAssembliesToInclude(System.String)
+  name.vb: UpdateAssembliesToInclude(String)
+  fullName: Editor.Data.GoogleSheetsJSONData.UpdateAssembliesToInclude(string)
+  fullName.vb: Editor.Data.GoogleSheetsJSONData.UpdateAssembliesToInclude(String)
+  nameWithType: GoogleSheetsJSONData.UpdateAssembliesToInclude(string)
+  nameWithType.vb: GoogleSheetsJSONData.UpdateAssembliesToInclude(String)
+- uid: Editor.Data.GoogleSheetsJSONData.UpdateAssembliesToInclude*
+  name: UpdateAssembliesToInclude
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_UpdateAssembliesToInclude_
+  commentId: Overload:Editor.Data.GoogleSheetsJSONData.UpdateAssembliesToInclude
+  isSpec: "True"
+  fullName: Editor.Data.GoogleSheetsJSONData.UpdateAssembliesToInclude
+  nameWithType: GoogleSheetsJSONData.UpdateAssembliesToInclude
+- uid: Editor.Data.GoogleSheetsJSONData.assembliesToInclude
+  name: assembliesToInclude
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_assembliesToInclude
+  commentId: F:Editor.Data.GoogleSheetsJSONData.assembliesToInclude
+  fullName: Editor.Data.GoogleSheetsJSONData.assembliesToInclude
+  nameWithType: GoogleSheetsJSONData.assembliesToInclude
+- uid: Editor.Data.GoogleSheetsJSONData.sheets
+  name: sheets
+  href: api/Editor.Data.GoogleSheetsJSONData.html#Editor_Data_GoogleSheetsJSONData_sheets
+  commentId: F:Editor.Data.GoogleSheetsJSONData.sheets
+  fullName: Editor.Data.GoogleSheetsJSONData.sheets
+  nameWithType: GoogleSheetsJSONData.sheets
+- uid: Editor.Data.JSONUtility
+  name: JSONUtility
+  href: api/Editor.Data.JSONUtility.html
+  commentId: T:Editor.Data.JSONUtility
+  fullName: Editor.Data.JSONUtility
+  nameWithType: JSONUtility
+- uid: Editor.Data.JSONUtility.GoogleSheetsJsonData
+  name: GoogleSheetsJsonData
+  href: api/Editor.Data.JSONUtility.html#Editor_Data_JSONUtility_GoogleSheetsJsonData
+  commentId: P:Editor.Data.JSONUtility.GoogleSheetsJsonData
+  fullName: Editor.Data.JSONUtility.GoogleSheetsJsonData
+  nameWithType: JSONUtility.GoogleSheetsJsonData
+- uid: Editor.Data.JSONUtility.GoogleSheetsJsonData*
+  name: GoogleSheetsJsonData
+  href: api/Editor.Data.JSONUtility.html#Editor_Data_JSONUtility_GoogleSheetsJsonData_
+  commentId: Overload:Editor.Data.JSONUtility.GoogleSheetsJsonData
+  isSpec: "True"
+  fullName: Editor.Data.JSONUtility.GoogleSheetsJsonData
+  nameWithType: JSONUtility.GoogleSheetsJsonData
+- uid: Editor.Data.JSONUtility.LoadData
+  name: LoadData()
+  href: api/Editor.Data.JSONUtility.html#Editor_Data_JSONUtility_LoadData
+  commentId: M:Editor.Data.JSONUtility.LoadData
+  fullName: Editor.Data.JSONUtility.LoadData()
+  nameWithType: JSONUtility.LoadData()
+- uid: Editor.Data.JSONUtility.LoadData*
+  name: LoadData
+  href: api/Editor.Data.JSONUtility.html#Editor_Data_JSONUtility_LoadData_
+  commentId: Overload:Editor.Data.JSONUtility.LoadData
+  isSpec: "True"
+  fullName: Editor.Data.JSONUtility.LoadData
+  nameWithType: JSONUtility.LoadData
+- uid: Editor.Data.JSONUtility.SaveData
+  name: SaveData()
+  href: api/Editor.Data.JSONUtility.html#Editor_Data_JSONUtility_SaveData
+  commentId: M:Editor.Data.JSONUtility.SaveData
+  fullName: Editor.Data.JSONUtility.SaveData()
+  nameWithType: JSONUtility.SaveData()
+- uid: Editor.Data.JSONUtility.SaveData*
+  name: SaveData
+  href: api/Editor.Data.JSONUtility.html#Editor_Data_JSONUtility_SaveData_
+  commentId: Overload:Editor.Data.JSONUtility.SaveData
+  isSpec: "True"
+  fullName: Editor.Data.JSONUtility.SaveData
+  nameWithType: JSONUtility.SaveData
+- uid: Editor.Data.JSONUtility.UpdateAssembliesToInclude(System.String)
+  name: UpdateAssembliesToInclude(string)
+  href: api/Editor.Data.JSONUtility.html#Editor_Data_JSONUtility_UpdateAssembliesToInclude_System_String_
+  commentId: M:Editor.Data.JSONUtility.UpdateAssembliesToInclude(System.String)
+  name.vb: UpdateAssembliesToInclude(String)
+  fullName: Editor.Data.JSONUtility.UpdateAssembliesToInclude(string)
+  fullName.vb: Editor.Data.JSONUtility.UpdateAssembliesToInclude(String)
+  nameWithType: JSONUtility.UpdateAssembliesToInclude(string)
+  nameWithType.vb: JSONUtility.UpdateAssembliesToInclude(String)
+- uid: Editor.Data.JSONUtility.UpdateAssembliesToInclude*
+  name: UpdateAssembliesToInclude
+  href: api/Editor.Data.JSONUtility.html#Editor_Data_JSONUtility_UpdateAssembliesToInclude_
+  commentId: Overload:Editor.Data.JSONUtility.UpdateAssembliesToInclude
+  isSpec: "True"
+  fullName: Editor.Data.JSONUtility.UpdateAssembliesToInclude
+  nameWithType: JSONUtility.UpdateAssembliesToInclude
+- uid: Editor.Data.SheetData
+  name: SheetData
+  href: api/Editor.Data.SheetData.html
+  commentId: T:Editor.Data.SheetData
+  fullName: Editor.Data.SheetData
+  nameWithType: SheetData
+- uid: Editor.Data.SheetData.#ctor(System.Int32,System.String,System.String,System.String)
+  name: SheetData(int, string, string, string)
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData__ctor_System_Int32_System_String_System_String_System_String_
+  commentId: M:Editor.Data.SheetData.#ctor(System.Int32,System.String,System.String,System.String)
+  name.vb: New(Integer, String, String, String)
+  fullName: Editor.Data.SheetData.SheetData(int, string, string, string)
+  fullName.vb: Editor.Data.SheetData.New(Integer, String, String, String)
+  nameWithType: SheetData.SheetData(int, string, string, string)
+  nameWithType.vb: SheetData.New(Integer, String, String, String)
+- uid: Editor.Data.SheetData.#ctor*
+  name: SheetData
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData__ctor_
+  commentId: Overload:Editor.Data.SheetData.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Editor.Data.SheetData.SheetData
+  fullName.vb: Editor.Data.SheetData.New
+  nameWithType: SheetData.SheetData
+  nameWithType.vb: SheetData.New
+- uid: Editor.Data.SheetData.CheckGUID(System.Int32)
+  name: CheckGUID(int)
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_CheckGUID_System_Int32_
+  commentId: M:Editor.Data.SheetData.CheckGUID(System.Int32)
+  name.vb: CheckGUID(Integer)
+  fullName: Editor.Data.SheetData.CheckGUID(int)
+  fullName.vb: Editor.Data.SheetData.CheckGUID(Integer)
+  nameWithType: SheetData.CheckGUID(int)
+  nameWithType.vb: SheetData.CheckGUID(Integer)
+- uid: Editor.Data.SheetData.CheckGUID*
+  name: CheckGUID
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_CheckGUID_
+  commentId: Overload:Editor.Data.SheetData.CheckGUID
+  isSpec: "True"
+  fullName: Editor.Data.SheetData.CheckGUID
+  nameWithType: SheetData.CheckGUID
+- uid: Editor.Data.SheetData.CheckSavedGUID(System.Int32)
+  name: CheckSavedGUID(int)
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_CheckSavedGUID_System_Int32_
+  commentId: M:Editor.Data.SheetData.CheckSavedGUID(System.Int32)
+  name.vb: CheckSavedGUID(Integer)
+  fullName: Editor.Data.SheetData.CheckSavedGUID(int)
+  fullName.vb: Editor.Data.SheetData.CheckSavedGUID(Integer)
+  nameWithType: SheetData.CheckSavedGUID(int)
+  nameWithType.vb: SheetData.CheckSavedGUID(Integer)
+- uid: Editor.Data.SheetData.CheckSavedGUID*
+  name: CheckSavedGUID
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_CheckSavedGUID_
+  commentId: Overload:Editor.Data.SheetData.CheckSavedGUID
+  isSpec: "True"
+  fullName: Editor.Data.SheetData.CheckSavedGUID
+  nameWithType: SheetData.CheckSavedGUID
+- uid: Editor.Data.SheetData.GetIndexForGUID(System.String)
+  name: GetIndexForGUID(string)
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_GetIndexForGUID_System_String_
+  commentId: M:Editor.Data.SheetData.GetIndexForGUID(System.String)
+  name.vb: GetIndexForGUID(String)
+  fullName: Editor.Data.SheetData.GetIndexForGUID(string)
+  fullName.vb: Editor.Data.SheetData.GetIndexForGUID(String)
+  nameWithType: SheetData.GetIndexForGUID(string)
+  nameWithType.vb: SheetData.GetIndexForGUID(String)
+- uid: Editor.Data.SheetData.GetIndexForGUID*
+  name: GetIndexForGUID
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_GetIndexForGUID_
+  commentId: Overload:Editor.Data.SheetData.GetIndexForGUID
+  isSpec: "True"
+  fullName: Editor.Data.SheetData.GetIndexForGUID
+  nameWithType: SheetData.GetIndexForGUID
+- uid: Editor.Data.SheetData.GetKey
+  name: GetKey()
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_GetKey
+  commentId: M:Editor.Data.SheetData.GetKey
+  fullName: Editor.Data.SheetData.GetKey()
+  nameWithType: SheetData.GetKey()
+- uid: Editor.Data.SheetData.GetKey*
+  name: GetKey
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_GetKey_
+  commentId: Overload:Editor.Data.SheetData.GetKey
+  isSpec: "True"
+  fullName: Editor.Data.SheetData.GetKey
+  nameWithType: SheetData.GetKey
+- uid: Editor.Data.SheetData.SetValues(Editor.Data.SheetData)
+  name: SetValues(SheetData)
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_SetValues_Editor_Data_SheetData_
+  commentId: M:Editor.Data.SheetData.SetValues(Editor.Data.SheetData)
+  fullName: Editor.Data.SheetData.SetValues(Editor.Data.SheetData)
+  nameWithType: SheetData.SetValues(SheetData)
+- uid: Editor.Data.SheetData.SetValues*
+  name: SetValues
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_SetValues_
+  commentId: Overload:Editor.Data.SheetData.SetValues
+  isSpec: "True"
+  fullName: Editor.Data.SheetData.SetValues
+  nameWithType: SheetData.SetValues
+- uid: Editor.Data.SheetData.assemblyName
+  name: assemblyName
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_assemblyName
+  commentId: F:Editor.Data.SheetData.assemblyName
+  fullName: Editor.Data.SheetData.assemblyName
+  nameWithType: SheetData.assemblyName
+- uid: Editor.Data.SheetData.className
+  name: className
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_className
+  commentId: F:Editor.Data.SheetData.className
+  fullName: Editor.Data.SheetData.className
+  nameWithType: SheetData.className
+- uid: Editor.Data.SheetData.csvDatas
+  name: csvDatas
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_csvDatas
+  commentId: F:Editor.Data.SheetData.csvDatas
+  fullName: Editor.Data.SheetData.csvDatas
+  nameWithType: SheetData.csvDatas
+- uid: Editor.Data.SheetData.headers
+  name: headers
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_headers
+  commentId: F:Editor.Data.SheetData.headers
+  fullName: Editor.Data.SheetData.headers
+  nameWithType: SheetData.headers
+- uid: Editor.Data.SheetData.key
+  name: key
+  href: api/Editor.Data.SheetData.html#Editor_Data_SheetData_key
+  commentId: F:Editor.Data.SheetData.key
+  fullName: Editor.Data.SheetData.key
+  nameWithType: SheetData.key
 - uid: Editor.Google_Sheets
   name: Editor.Google_Sheets
   href: api/Editor.Google_Sheets.html
@@ -19,6 +415,25 @@ references:
   commentId: T:Editor.Google_Sheets.DataItem
   fullName: Editor.Google_Sheets.DataItem
   nameWithType: DataItem
+- uid: Editor.Google_Sheets.DataItem.GetSOType
+  name: GetSOType()
+  href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_GetSOType
+  commentId: M:Editor.Google_Sheets.DataItem.GetSOType
+  fullName: Editor.Google_Sheets.DataItem.GetSOType()
+  nameWithType: DataItem.GetSOType()
+- uid: Editor.Google_Sheets.DataItem.GetSOType*
+  name: GetSOType
+  href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_GetSOType_
+  commentId: Overload:Editor.Google_Sheets.DataItem.GetSOType
+  isSpec: "True"
+  fullName: Editor.Google_Sheets.DataItem.GetSOType
+  nameWithType: DataItem.GetSOType
+- uid: Editor.Google_Sheets.DataItem.assemblyName
+  name: assemblyName
+  href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_assemblyName
+  commentId: F:Editor.Google_Sheets.DataItem.assemblyName
+  fullName: Editor.Google_Sheets.DataItem.assemblyName
+  nameWithType: DataItem.assemblyName
 - uid: Editor.Google_Sheets.DataItem.index
   name: index
   href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_index
@@ -31,12 +446,6 @@ references:
   commentId: F:Editor.Google_Sheets.DataItem.key
   fullName: Editor.Google_Sheets.DataItem.key
   nameWithType: DataItem.key
-- uid: Editor.Google_Sheets.DataItem.scriptableObject
-  name: scriptableObject
-  href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_scriptableObject
-  commentId: F:Editor.Google_Sheets.DataItem.scriptableObject
-  fullName: Editor.Google_Sheets.DataItem.scriptableObject
-  nameWithType: DataItem.scriptableObject
 - uid: Editor.Google_Sheets.DataItem.scriptableObjectType
   name: scriptableObjectType
   href: api/Editor.Google_Sheets.DataItem.html#Editor_Google_Sheets_DataItem_scriptableObjectType
@@ -106,6 +515,22 @@ references:
   commentId: T:Editor.Google_Sheets.GoogleSheetsHelper
   fullName: Editor.Google_Sheets.GoogleSheetsHelper
   nameWithType: GoogleSheetsHelper
+- uid: Editor.Google_Sheets.GoogleSheetsHelper.CheckType(System.String)
+  name: CheckType(string)
+  href: api/Editor.Google_Sheets.GoogleSheetsHelper.html#Editor_Google_Sheets_GoogleSheetsHelper_CheckType_System_String_
+  commentId: M:Editor.Google_Sheets.GoogleSheetsHelper.CheckType(System.String)
+  name.vb: CheckType(String)
+  fullName: Editor.Google_Sheets.GoogleSheetsHelper.CheckType(string)
+  fullName.vb: Editor.Google_Sheets.GoogleSheetsHelper.CheckType(String)
+  nameWithType: GoogleSheetsHelper.CheckType(string)
+  nameWithType.vb: GoogleSheetsHelper.CheckType(String)
+- uid: Editor.Google_Sheets.GoogleSheetsHelper.CheckType*
+  name: CheckType
+  href: api/Editor.Google_Sheets.GoogleSheetsHelper.html#Editor_Google_Sheets_GoogleSheetsHelper_CheckType_
+  commentId: Overload:Editor.Google_Sheets.GoogleSheetsHelper.CheckType
+  isSpec: "True"
+  fullName: Editor.Google_Sheets.GoogleSheetsHelper.CheckType
+  nameWithType: GoogleSheetsHelper.CheckType
 - uid: Editor.Google_Sheets.GoogleSheetsHelper.GoogleSheetsCustomSettings
   name: GoogleSheetsCustomSettings
   href: api/Editor.Google_Sheets.GoogleSheetsHelper.html#Editor_Google_Sheets_GoogleSheetsHelper_GoogleSheetsCustomSettings
@@ -220,6 +645,19 @@ references:
   commentId: T:Editor.Project_Settings.GoogleSheetsCustomSettings
   fullName: Editor.Project_Settings.GoogleSheetsCustomSettings
   nameWithType: GoogleSheetsCustomSettings
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.AssembliesToInclude
+  name: AssembliesToInclude
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_AssembliesToInclude
+  commentId: P:Editor.Project_Settings.GoogleSheetsCustomSettings.AssembliesToInclude
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.AssembliesToInclude
+  nameWithType: GoogleSheetsCustomSettings.AssembliesToInclude
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.AssembliesToInclude*
+  name: AssembliesToInclude
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_AssembliesToInclude_
+  commentId: Overload:Editor.Project_Settings.GoogleSheetsCustomSettings.AssembliesToInclude
+  isSpec: "True"
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.AssembliesToInclude
+  nameWithType: GoogleSheetsCustomSettings.AssembliesToInclude
 - uid: Editor.Project_Settings.GoogleSheetsCustomSettings.ClientSecretJsonPath
   name: ClientSecretJsonPath
   href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_ClientSecretJsonPath
@@ -275,6 +713,22 @@ references:
   isSpec: "True"
   fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.GetPathForSheet
   nameWithType: GoogleSheetsCustomSettings.GetPathForSheet
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.GetScriptableObjectforSheet(System.Int32)
+  name: GetScriptableObjectforSheet(int)
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_GetScriptableObjectforSheet_System_Int32_
+  commentId: M:Editor.Project_Settings.GoogleSheetsCustomSettings.GetScriptableObjectforSheet(System.Int32)
+  name.vb: GetScriptableObjectforSheet(Integer)
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.GetScriptableObjectforSheet(int)
+  fullName.vb: Editor.Project_Settings.GoogleSheetsCustomSettings.GetScriptableObjectforSheet(Integer)
+  nameWithType: GoogleSheetsCustomSettings.GetScriptableObjectforSheet(int)
+  nameWithType.vb: GoogleSheetsCustomSettings.GetScriptableObjectforSheet(Integer)
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.GetScriptableObjectforSheet*
+  name: GetScriptableObjectforSheet
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_GetScriptableObjectforSheet_
+  commentId: Overload:Editor.Project_Settings.GoogleSheetsCustomSettings.GetScriptableObjectforSheet
+  isSpec: "True"
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.GetScriptableObjectforSheet
+  nameWithType: GoogleSheetsCustomSettings.GetScriptableObjectforSheet
 - uid: Editor.Project_Settings.GoogleSheetsCustomSettings.MSpreadsheetID
   name: MSpreadsheetID
   href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_MSpreadsheetID
@@ -288,6 +742,22 @@ references:
   isSpec: "True"
   fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.MSpreadsheetID
   nameWithType: GoogleSheetsCustomSettings.MSpreadsheetID
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.SetScriptableObjectforSheet(System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.String})
+  name: SetScriptableObjectforSheet(int, Dictionary<int, string>)
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_SetScriptableObjectforSheet_System_Int32_System_Collections_Generic_Dictionary_System_Int32_System_String__
+  commentId: M:Editor.Project_Settings.GoogleSheetsCustomSettings.SetScriptableObjectforSheet(System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.String})
+  name.vb: SetScriptableObjectforSheet(Integer, Dictionary(Of Integer, String))
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.SetScriptableObjectforSheet(int, System.Collections.Generic.Dictionary<int, string>)
+  fullName.vb: Editor.Project_Settings.GoogleSheetsCustomSettings.SetScriptableObjectforSheet(Integer, System.Collections.Generic.Dictionary(Of Integer, String))
+  nameWithType: GoogleSheetsCustomSettings.SetScriptableObjectforSheet(int, Dictionary<int, string>)
+  nameWithType.vb: GoogleSheetsCustomSettings.SetScriptableObjectforSheet(Integer, Dictionary(Of Integer, String))
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.SetScriptableObjectforSheet*
+  name: SetScriptableObjectforSheet
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_SetScriptableObjectforSheet_
+  commentId: Overload:Editor.Project_Settings.GoogleSheetsCustomSettings.SetScriptableObjectforSheet
+  isSpec: "True"
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.SetScriptableObjectforSheet
+  nameWithType: GoogleSheetsCustomSettings.SetScriptableObjectforSheet
 - uid: Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs
   name: ShowDebugLogs
   href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_ShowDebugLogs
@@ -301,19 +771,45 @@ references:
   isSpec: "True"
   fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs
   nameWithType: GoogleSheetsCustomSettings.ShowDebugLogs
-- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude
-  name: assembliesToInclude
-  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_assembliesToInclude
-  commentId: P:Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude
-  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude
-  nameWithType: GoogleSheetsCustomSettings.assembliesToInclude
-- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude*
-  name: assembliesToInclude
-  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_assembliesToInclude_
-  commentId: Overload:Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.allTypes
+  name: allTypes
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_allTypes
+  commentId: P:Editor.Project_Settings.GoogleSheetsCustomSettings.allTypes
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.allTypes
+  nameWithType: GoogleSheetsCustomSettings.allTypes
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.allTypes*
+  name: allTypes
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_allTypes_
+  commentId: Overload:Editor.Project_Settings.GoogleSheetsCustomSettings.allTypes
   isSpec: "True"
-  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude
-  nameWithType: GoogleSheetsCustomSettings.assembliesToInclude
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.allTypes
+  nameWithType: GoogleSheetsCustomSettings.allTypes
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjectDB
+  name: scriptableObjectDB
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_scriptableObjectDB
+  commentId: P:Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjectDB
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjectDB
+  nameWithType: GoogleSheetsCustomSettings.scriptableObjectDB
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjectDB*
+  name: scriptableObjectDB
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_scriptableObjectDB_
+  commentId: Overload:Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjectDB
+  isSpec: "True"
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjectDB
+  nameWithType: GoogleSheetsCustomSettings.scriptableObjectDB
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjects
+  name: scriptableObjects
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_scriptableObjects
+  commentId: P:Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjects
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjects
+  nameWithType: GoogleSheetsCustomSettings.scriptableObjects
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjects*
+  name: scriptableObjects
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_scriptableObjects_
+  commentId: Overload:Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjects
+  isSpec: "True"
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjects
+  nameWithType: GoogleSheetsCustomSettings.scriptableObjects
 - uid: Editor.Project_Settings.GoogleSheetsEditorUtilities
   name: GoogleSheetsEditorUtilities
   href: api/Editor.Project_Settings.GoogleSheetsEditorUtilities.html
@@ -374,19 +870,6 @@ references:
   commentId: T:Editor.ScriptableObjectConverter.CSVtoSO
   fullName: Editor.ScriptableObjectConverter.CSVtoSO
   nameWithType: CSVtoSO
-- uid: Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs
-  name: AddedIDs
-  href: api/Editor.ScriptableObjectConverter.CSVtoSO.html#Editor_ScriptableObjectConverter_CSVtoSO_AddedIDs
-  commentId: P:Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs
-  fullName: Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs
-  nameWithType: CSVtoSO.AddedIDs
-- uid: Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs*
-  name: AddedIDs
-  href: api/Editor.ScriptableObjectConverter.CSVtoSO.html#Editor_ScriptableObjectConverter_CSVtoSO_AddedIDs_
-  commentId: Overload:Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs
-  isSpec: "True"
-  fullName: Editor.ScriptableObjectConverter.CSVtoSO.AddedIDs
-  nameWithType: CSVtoSO.AddedIDs
 - uid: Editor.ScriptableObjectConverter.CSVtoSO.Generate(Editor.Google_Sheets.DataItem)
   name: Generate(DataItem)
   href: api/Editor.ScriptableObjectConverter.CSVtoSO.html#Editor_ScriptableObjectConverter_CSVtoSO_Generate_Editor_Google_Sheets_DataItem_
@@ -419,28 +902,6 @@ references:
   commentId: T:Editor.ScriptableObjectConverter.SOtoCSV
   fullName: Editor.ScriptableObjectConverter.SOtoCSV
   nameWithType: SOtoCSV
-- uid: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(Editor.Google_Sheets.DataItem)
-  name: CSVtoScriptableObjects(DataItem)
-  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_CSVtoScriptableObjects_Editor_Google_Sheets_DataItem_
-  commentId: M:Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(Editor.Google_Sheets.DataItem)
-  fullName: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(Editor.Google_Sheets.DataItem)
-  nameWithType: SOtoCSV.CSVtoScriptableObjects(DataItem)
-- uid: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(System.Type,System.String,System.Nullable{System.Boolean})
-  name: CSVtoScriptableObjects(Type, string, bool?)
-  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_CSVtoScriptableObjects_System_Type_System_String_System_Nullable_System_Boolean__
-  commentId: M:Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(System.Type,System.String,System.Nullable{System.Boolean})
-  name.vb: CSVtoScriptableObjects(Type, String, Boolean?)
-  fullName: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(System.Type, string, bool?)
-  fullName.vb: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects(System.Type, String, Boolean?)
-  nameWithType: SOtoCSV.CSVtoScriptableObjects(Type, string, bool?)
-  nameWithType.vb: SOtoCSV.CSVtoScriptableObjects(Type, String, Boolean?)
-- uid: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects*
-  name: CSVtoScriptableObjects
-  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_CSVtoScriptableObjects_
-  commentId: Overload:Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects
-  isSpec: "True"
-  fullName: Editor.ScriptableObjectConverter.SOtoCSV.CSVtoScriptableObjects
-  nameWithType: SOtoCSV.CSVtoScriptableObjects
 - uid: Editor.ScriptableObjectConverter.SOtoCSV.SaveToFile(System.String,System.Collections.Generic.List{System.String},System.String)
   name: SaveToFile(string, List<string>, string)
   href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_SaveToFile_System_String_System_Collections_Generic_List_System_String__System_String_
@@ -457,6 +918,28 @@ references:
   isSpec: "True"
   fullName: Editor.ScriptableObjectConverter.SOtoCSV.SaveToFile
   nameWithType: SOtoCSV.SaveToFile
+- uid: Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV(Editor.Google_Sheets.DataItem)
+  name: ScriptableObjectsToCSV(DataItem)
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_ScriptableObjectsToCSV_Editor_Google_Sheets_DataItem_
+  commentId: M:Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV(Editor.Google_Sheets.DataItem)
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV(Editor.Google_Sheets.DataItem)
+  nameWithType: SOtoCSV.ScriptableObjectsToCSV(DataItem)
+- uid: Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV(System.Type,Editor.Google_Sheets.DataItem,System.Nullable{System.Boolean})
+  name: ScriptableObjectsToCSV(Type, DataItem, bool?)
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_ScriptableObjectsToCSV_System_Type_Editor_Google_Sheets_DataItem_System_Nullable_System_Boolean__
+  commentId: M:Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV(System.Type,Editor.Google_Sheets.DataItem,System.Nullable{System.Boolean})
+  name.vb: ScriptableObjectsToCSV(Type, DataItem, Boolean?)
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV(System.Type, Editor.Google_Sheets.DataItem, bool?)
+  fullName.vb: Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV(System.Type, Editor.Google_Sheets.DataItem, Boolean?)
+  nameWithType: SOtoCSV.ScriptableObjectsToCSV(Type, DataItem, bool?)
+  nameWithType.vb: SOtoCSV.ScriptableObjectsToCSV(Type, DataItem, Boolean?)
+- uid: Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV*
+  name: ScriptableObjectsToCSV
+  href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_ScriptableObjectsToCSV_
+  commentId: Overload:Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV
+  isSpec: "True"
+  fullName: Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV
+  nameWithType: SOtoCSV.ScriptableObjectsToCSV
 - uid: Editor.ScriptableObjectConverter.SOtoCSV.ToCSV(System.String,System.Collections.Generic.List{System.String})
   name: ToCSV(string, List<string>)
   href: api/Editor.ScriptableObjectConverter.SOtoCSV.html#Editor_ScriptableObjectConverter_SOtoCSV_ToCSV_System_String_System_Collections_Generic_List_System_String__

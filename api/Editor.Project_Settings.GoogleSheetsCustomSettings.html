@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class GoogleSheetsCustomSettings | Google Sheets | 2.1.0 </title>
+      <title>Class GoogleSheetsCustomSettings | Google Sheets | 2.2.0 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class GoogleSheetsCustomSettings | Google Sheets | 2.1.0 ">
+      <meta name="title" content="Class GoogleSheetsCustomSettings | Google Sheets | 2.2.0 ">
       
       <meta name="description" content="Represents the configuration settings necessary for integrating Google Sheets within a Unity project. Manages various parameters like spreadsheet ID and data items required for handling Google Sheets operations.">
       <link rel="icon" href="../favicon.ico">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Editor_Project_Settings_GoogleSheetsCustomSettings" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings" class="text-break">
-Class GoogleSheetsCustomSettings  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Class GoogleSheetsCustomSettings  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -129,11 +129,46 @@ Manages various parameters like spreadsheet ID and data items required for handl
 </h2>
 
 
+  <a id="Editor_Project_Settings_GoogleSheetsCustomSettings_AssembliesToInclude_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.AssembliesToInclude*"></a>
+
+  <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_AssembliesToInclude" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.AssembliesToInclude">
+  AssembliesToInclude
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Specifies a semicolon-separated list of assembly names to be included
+during the runtime compilation or evaluation process of the Google Sheets integration.
+This setting allows for dynamic referencing of specific assemblies required for
+the tailored handling of spreadsheet data within the Unity project.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AssembliesToInclude { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Editor_Project_Settings_GoogleSheetsCustomSettings_ClientSecretJsonPath_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.ClientSecretJsonPath*"></a>
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_ClientSecretJsonPath" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.ClientSecretJsonPath">
   ClientSecretJsonPath
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Specifies the file path to the JSON file containing the client secret credentials
@@ -168,7 +203,7 @@ access from the Unity editor or application.</p>
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_Data" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.Data">
   Data
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Provides access to the collection of data items utilized for Google Sheets operations
@@ -202,7 +237,7 @@ facilitates the interaction and data exchange between the application and the Go
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_MSpreadsheetID" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.MSpreadsheetID">
   MSpreadsheetID
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Provides access to the unique identifier of the current Google Spreadsheet.
@@ -236,7 +271,7 @@ or downloading data from the spreadsheet within the Unity editor environment.</p
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_ShowDebugLogs" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.ShowDebugLogs">
   ShowDebugLogs
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether debug logs for Google Sheets operations are enabled within the Unity editor.
@@ -266,22 +301,19 @@ or verifying functionality.</p>
 
 
 
-  <a id="Editor_Project_Settings_GoogleSheetsCustomSettings_assembliesToInclude_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude*"></a>
+  <a id="Editor_Project_Settings_GoogleSheetsCustomSettings_allTypes_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.allTypes*"></a>
 
-  <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_assembliesToInclude" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.assembliesToInclude">
-  assembliesToInclude
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_allTypes" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.allTypes">
+  allTypes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Specifies a semicolon-separated list of assembly names to be included
-during the runtime compilation or evaluation process of the Google Sheets integration.
-This setting allows for dynamic referencing of specific assemblies required for
-the tailored handling of spreadsheet data within the Unity project.</p>
+  <div class="markdown level1 summary"><p>A list of all types used within the Google Sheets integration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string assembliesToInclude { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;Type&gt; allTypes { get; }</code></pre>
   </div>
 
 
@@ -290,7 +322,71 @@ the tailored handling of spreadsheet data within the Unity project.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Editor_Project_Settings_GoogleSheetsCustomSettings_scriptableObjectDB_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjectDB*"></a>
+
+  <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_scriptableObjectDB" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjectDB">
+  scriptableObjectDB
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A nested dictionary that maps integer keys to dictionaries of integer-string pairs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;int, Dictionary&lt;int, string&gt;&gt; scriptableObjectDB { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Editor_Project_Settings_GoogleSheetsCustomSettings_scriptableObjects_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjects*"></a>
+
+  <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_scriptableObjects" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.scriptableObjects">
+  scriptableObjects
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A dictionary that maps types to their corresponding string representations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;Type, string&gt; scriptableObjects { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -309,7 +405,7 @@ the tailored handling of spreadsheet data within the Unity project.</p>
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_GetDefaultPath" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.GetDefaultPath">
   GetDefaultPath()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L114"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the default file path used for storing data.</p>
@@ -342,7 +438,7 @@ the tailored handling of spreadsheet data within the Unity project.</p>
 
   <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_GetPathForSheet_System_Int32_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.GetPathForSheet(System.Int32)">
   GetPathForSheet(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the file path associated with the specified spreadsheet ID.</p>
@@ -366,6 +462,81 @@ the tailored handling of spreadsheet data within the Unity project.</p>
     <dd><p>The file path as a string linked to the provided spreadsheet ID.</p>
 </dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Editor_Project_Settings_GoogleSheetsCustomSettings_GetScriptableObjectforSheet_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.GetScriptableObjectforSheet*"></a>
+
+  <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_GetScriptableObjectforSheet_System_Int32_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.GetScriptableObjectforSheet(System.Int32)">
+  GetScriptableObjectforSheet(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the dictionary of scriptable objects associated with the specified data item key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;int, string&gt; GetScriptableObjectforSheet(int dataItemKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dataItemKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The key of the data item.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>A dictionary of integer-string pairs representing the scriptable objects.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Editor_Project_Settings_GoogleSheetsCustomSettings_SetScriptableObjectforSheet_" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.SetScriptableObjectforSheet*"></a>
+
+  <h3 id="Editor_Project_Settings_GoogleSheetsCustomSettings_SetScriptableObjectforSheet_System_Int32_System_Collections_Generic_Dictionary_System_Int32_System_String__" data-uid="Editor.Project_Settings.GoogleSheetsCustomSettings.SetScriptableObjectforSheet(System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.String})">
+  SetScriptableObjectforSheet(int, Dictionary&lt;int, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Project Settings/GoogleSheetsCustomSettings.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the dictionary of scriptable objects for the specified data item key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetScriptableObjectforSheet(int dataItemKey, Dictionary&lt;int, string&gt; values)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dataItemKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The key of the data item.</p>
+</dd>
+    <dt><code>values</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The dictionary of integer-string pairs to set.</p>
+</dd>
+  </dl>
+
 
 
 
