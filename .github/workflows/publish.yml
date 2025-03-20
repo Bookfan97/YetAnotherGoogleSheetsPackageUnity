@@ -48,7 +48,7 @@ jobs:
    
     #Documentation
     - name: Build
-      uses: CaseyHofland/docfx-unitypackage@master
+      uses: CaseyHofland/docfx-unitypackage@main
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
