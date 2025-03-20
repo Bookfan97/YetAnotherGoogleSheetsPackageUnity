@@ -12,57 +12,57 @@ using Object = System.Object;
 namespace Editor.ScriptableObjectConverter
 {
     /// <summary>
-    /// The SOtoCSV class provides functionality to convert ScriptableObject data
-    /// to CSV format and save it to a file. It also supports creating ScriptableObject
-    /// instances from CSV data.
+    ///     The SOtoCSV class provides functionality to convert ScriptableObject data
+    ///     to CSV format and save it to a file. It also supports creating ScriptableObject
+    ///     instances from CSV data.
     /// </summary>
     public class SOtoCSV
     {
         /// <summary>
-        /// Converts CSV data into ScriptableObjects and populates their fields based on the CSV content.
+        ///     Converts CSV data into ScriptableObjects and populates their fields based on the CSV content.
         /// </summary>
         /// <param name="scriptableObjectType">The type of ScriptableObject to create and populate.</param>
         /// <param name="dataItem">The file path to the CSV file containing the data.</param>
-        /// <param name="skipPopups">Determines if popups (e.g., progress bars or dialog messages) should be skipped during the operation. Defaults to false.</param>
+        /// <param name="skipPopups">
+        ///     Determines if popups (e.g., progress bars or dialog messages) should be skipped during the
+        ///     operation. Defaults to false.
+        /// </param>
         public void ScriptableObjectsToCSV(Type scriptableObjectType, DataItem dataItem, bool? skipPopups = false)
         {
-            int counter = 0;
-            List<string> ids = new List<string>();
-            List<string> lines = new List<string>();
+            var counter = 0;
+            var ids = new List<string>();
+            var lines = new List<string>();
             //Load(ResourcesPath, scriptableObjectType);
-            List<Object> existingItems = AssetDatabase.FindAssets("t:" + scriptableObjectType.Name).Select(guid => AssetDatabase.GUIDToAssetPath(guid)).Select(path => AssetDatabase.LoadAssetAtPath(path, scriptableObjectType)).Cast<Object>().ToList();
+            var existingItems = AssetDatabase.FindAssets("t:" + scriptableObjectType.Name)
+                .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
+                .Select(path => AssetDatabase.LoadAssetAtPath(path, scriptableObjectType)).Cast<Object>().ToList();
 
-            string[] orderedLines = new string[existingItems.Count];
+            var orderedLines = new string[existingItems.Count];
             JSONUtility.LoadData();
-            SheetData sheetData = JSONUtility.GoogleSheetsJsonData.GetSheetData(dataItem.key);
-            if(sheetData == null)
+            var sheetData = JSONUtility.GoogleSheetsJsonData.GetSheetData(dataItem.key);
+            if (sheetData == null)
             {
                 sheetData = new SheetData(dataItem.key, dataItem.assemblyName, scriptableObjectType.Name, "");
                 JSONUtility.GoogleSheetsJsonData.AddSheetData(sheetData);
             }
-            
+
             if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
-            {
                 Debug.Log($"Found {existingItems.Count} existing objects of type {scriptableObjectType.Name}.");
-            }
-            Dictionary<int, string> headers = GetHeaders(scriptableObjectType);
-            string headerString = "";
-            
-            foreach (var header in headers)
-            {
-                headerString += header.Value + ",";
-            }
-            
-            Dictionary<string, string> newScriptableObjects = new Dictionary<string, string>();
-            int tempCounter = 0;
-            
+            var headers = GetHeaders(scriptableObjectType);
+            var headerString = "";
+
+            foreach (var header in headers) headerString += header.Value + ",";
+
+            var newScriptableObjects = new Dictionary<string, string>();
+            var tempCounter = 0;
+
             foreach (ScriptableObject SOName in existingItems)
             {
                 var values = GetValuesFromScriptableObject(SOName, headers);
                 // Convert the values into a single CSV-compatible row format
-                string csvRow = string.Join(",", values);
+                var csvRow = string.Join(",", values);
                 int index;
-                string guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(SOName));
+                var guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(SOName));
                 index = sheetData.GetIndexForGUID(guid);
 
                 if (index == -1)
@@ -74,48 +74,53 @@ namespace Editor.ScriptableObjectConverter
                     orderedLines[index - 1] = csvRow;
                     tempCounter++;
                 }
-                
+
                 if ((bool)!skipPopups)
                 {
-                    EditorUtility.DisplayProgressBar($"Saving Dialogues", $"Saving Dialogue {counter} / {existingItems.Count}",
+                    EditorUtility.DisplayProgressBar("Saving Dialogues",
+                        $"Saving Dialogue {counter} / {existingItems.Count}",
                         counter / existingItems.Count);
                     counter++;
                 }
             }
 
-            int addedCounter = 1;
-            foreach (KeyValuePair<string, string> kvp in newScriptableObjects)
+            var addedCounter = 1;
+            foreach (var kvp in newScriptableObjects)
             {
-                int lineIndex = tempCounter + addedCounter;
+                var lineIndex = tempCounter + addedCounter;
                 orderedLines[lineIndex - 1] = kvp.Value;
                 sheetData.csvDatas.Add(new CSVData
                 {
                     guid = kvp.Key,
-                    line = lineIndex,
+                    line = lineIndex
                 });
                 addedCounter++;
             }
+
             sheetData.headers = headerString;
             lines = new List<string>(orderedLines.ToArray());
             SaveToFile(dataItem.value, lines, headerString);
-            
+
             if ((bool)!skipPopups)
             {
                 EditorUtility.ClearProgressBar();
                 EditorUtility.DisplayDialog("Creating Dialogues", $"Saved {counter} of {existingItems.Count} dialogues",
                     "OK", "");
             }
-            
+
             JSONUtility.SaveData();
         }
 
         /// <summary>
-        /// Extracts values from a given ScriptableObject based on a dictionary of header mappings and
-        /// returns them as a list of strings, representing its fields or properties.
+        ///     Extracts values from a given ScriptableObject based on a dictionary of header mappings and
+        ///     returns them as a list of strings, representing its fields or properties.
         /// </summary>
         /// <param name="soName">The ScriptableObject instance from which to extract values.</param>
         /// <param name="headers">A dictionary mapping header indices to field or property names in the ScriptableObject.</param>
-        /// <returns>A list of string values corresponding to the specified fields or properties in the ScriptableObject. Returns null if the input is invalid.</returns>
+        /// <returns>
+        ///     A list of string values corresponding to the specified fields or properties in the ScriptableObject. Returns
+        ///     null if the input is invalid.
+        /// </returns>
         private List<string> GetValuesFromScriptableObject(ScriptableObject soName, Dictionary<int, string> headers)
         {
             if (soName == null || headers == null || headers.Count == 0)
@@ -125,7 +130,7 @@ namespace Editor.ScriptableObjectConverter
                 return null;
             }
 
-            List<string> values = new List<string>();
+            var values = new List<string>();
 
             // Iterate through each header (field/property name) and get corresponding value
             foreach (var header in headers)
@@ -138,12 +143,18 @@ namespace Editor.ScriptableObjectConverter
                 object value = null;
 
                 if (fieldInfo != null)
-                {
                     value = fieldInfo.GetValue(soName); // Get the value of the field
-                }
-                else if (propertyInfo != null)
+                else if (propertyInfo != null) value = propertyInfo.GetValue(soName); // Get the value of the property
+
+                if (value.GetType() == typeof(Vector2))
                 {
-                    value = propertyInfo.GetValue(soName); // Get the value of the property
+                    var vectorValue = (Vector2)value;
+                    value = $"\"({vectorValue.x},{vectorValue.y})\"";
+                }
+                else if (value.GetType() == typeof(Vector3))
+                {
+                    var vectorValue = (Vector3)value;
+                    value = $"\"({vectorValue.x},{vectorValue.y},{vectorValue.z})\"";
                 }
 
                 // If value is null, use an empty string as a placeholder
@@ -154,26 +165,23 @@ namespace Editor.ScriptableObjectConverter
         }
 
         /// <summary>
-        /// Retrieves the headers (fields) of a specified ScriptableObject type and maps them to their respective indices.
+        ///     Retrieves the headers (fields) of a specified ScriptableObject type and maps them to their respective indices.
         /// </summary>
         /// <param name="scriptableObjectType">The type of ScriptableObject to analyze and retrieve the headers from.</param>
         /// <returns>A dictionary where the keys are indices and the values are the names of the fields of the ScriptableObject.</returns>
         private Dictionary<int, string> GetHeaders(Type scriptableObjectType)
         {
             // Dictionary to hold index and names
-            Dictionary<int, string> headers = new Dictionary<int, string>();
+            var headers = new Dictionary<int, string>();
 
             // Use reflection to get all fields and properties of the ScriptableObject type
             var fields = scriptableObjectType.GetFields();
             var properties = scriptableObjectType.GetProperties();
 
-            int index = 0;
+            var index = 0;
 
             // Add all fields to the headers dictionary
-            foreach (var field in fields)
-            {
-                headers.Add(index++, field.Name);
-            }
+            foreach (var field in fields) headers.Add(index++, field.Name);
 
             /*// Add all properties to the headers dictionary
             foreach (var property in properties)
@@ -185,24 +193,24 @@ namespace Editor.ScriptableObjectConverter
         }
 
         /// <summary>
-        /// Converts a collection of data lines and a set of headers into a single CSV-formatted string.
+        ///     Converts a collection of data lines and a set of headers into a single CSV-formatted string.
         /// </summary>
-        /// <param name="headers">A string representing the headers for the CSV file, usually separated by a delimiter such as a comma.</param>
+        /// <param name="headers">
+        ///     A string representing the headers for the CSV file, usually separated by a delimiter such as a
+        ///     comma.
+        /// </param>
         /// <param name="data">A list of data lines where each line corresponds to a row of the CSV file.</param>
         /// <returns>A string containing the headers followed by the data rows, formatted as a CSV.</returns>
         public string ToCSV(string headers, List<string> data)
         {
             var sb = new StringBuilder(headers);
-            foreach (var line in data)
-            {
-                sb.Append('\n').Append(line);
-            }
+            foreach (var line in data) sb.Append('\n').Append(line);
 
             return sb.ToString();
         }
 
         /// <summary>
-        /// Saves data to a specified file in CSV format using the provided headers and data content.
+        ///     Saves data to a specified file in CSV format using the provided headers and data content.
         /// </summary>
         /// <param name="filePath">The full file path where the CSV content will be saved.</param>
         /// <param name="data">A list of strings representing the data rows to be saved in the file.</param>
@@ -215,15 +223,12 @@ namespace Editor.ScriptableObjectConverter
 #if UNITY_EDITOR
                 var folder = Application.streamingAssetsPath;
 
-                if(!Directory.Exists(folder))
-                {
-                    Directory.CreateDirectory(folder);
-                }
+                if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 #else
     var folder = Application.persistentDataPath;
 #endif
 
-                string localPath = filePath.Replace($"{Application.dataPath}/", "");
+                var localPath = filePath.Replace($"{Application.dataPath}/", "");
                 localPath = "Assets/" + localPath;
                 File.WriteAllText(filePath, content);
 
@@ -239,9 +244,12 @@ namespace Editor.ScriptableObjectConverter
         }
 
         /// <summary>
-        /// Converts data from a CSV file into ScriptableObjects and populates their fields based on the provided data item.
+        ///     Converts data from a CSV file into ScriptableObjects and populates their fields based on the provided data item.
         /// </summary>
-        /// <param name="dataItem">An instance of DataItem containing information about the ScriptableObject type and the path to the CSV file.</param>
+        /// <param name="dataItem">
+        ///     An instance of DataItem containing information about the ScriptableObject type and the path to
+        ///     the CSV file.
+        /// </param>
         public void ScriptableObjectsToCSV(DataItem dataItem)
         {
             if (string.IsNullOrEmpty(dataItem.scriptableObjectType))
@@ -251,7 +259,7 @@ namespace Editor.ScriptableObjectConverter
             }
 
             // Attempt to resolve the type
-            Type scriptableObjectType = AppDomain.CurrentDomain.GetAssemblies()
+            var scriptableObjectType = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
                 .FirstOrDefault(t => t.Name == dataItem.scriptableObjectType);
 
@@ -276,9 +284,7 @@ namespace Editor.ScriptableObjectConverter
             }
 
             if (GoogleSheetsHelper.GoogleSheetsCustomSettings.ShowDebugLogs)
-            {
                 Debug.Log($"Generating {scriptableObjectType.Name} objects...");
-            }
 
             ScriptableObjectsToCSV(scriptableObjectType, dataItem);
         }

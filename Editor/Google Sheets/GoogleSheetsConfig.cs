@@ -3,14 +3,13 @@ using Editor.Project_Settings;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
-using UnityEditor.Localization.Plugins.Google;
 
 namespace Editor.Google_Sheets
 {
     /// <summary>
     ///     Represents the configuration settings for accessing and using the Google Sheets API.
     /// </summary>
-    public class GoogleSheetsConfig : IGoogleSheetsService
+    public class GoogleSheetsConfig
     {
         /// <summary>
         ///     A read-only array containing the scopes required to access Google Sheets and Google Drive APIs.
@@ -48,7 +47,8 @@ namespace Editor.Google_Sheets
         {
             try
             {
-                var credentials = GoogleCredential.FromFile(GoogleSheetsHelper.GoogleSheetsCustomSettings.ClientSecretJsonPath)
+                var credentials = GoogleCredential
+                    .FromFile(GoogleSheetsHelper.GoogleSheetsCustomSettings.ClientSecretJsonPath)
                     .CreateScoped(_scopes);
 
                 Service = new SheetsService(new BaseClientService.Initializer

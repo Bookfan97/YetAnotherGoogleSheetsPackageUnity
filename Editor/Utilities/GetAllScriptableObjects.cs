@@ -11,43 +11,42 @@ using UnityEngine;
 namespace Editor.Utilities
 {
     /// <summary>
-    /// Provides utility methods for working with ScriptableObjects in Unity projects.
-    /// Includes functionality for retrieving all ScriptableObject assets, discovering
-    /// classes in assemblies, and listing ScriptableObject types.
+    ///     Provides utility methods for working with ScriptableObjects in Unity projects.
+    ///     Includes functionality for retrieving all ScriptableObject assets, discovering
+    ///     classes in assemblies, and listing ScriptableObject types.
     /// </summary>
     public class GetAllScriptableObjects
     {
         /// <summary>
-        /// Finds all ScriptableObject assets in the project and returns their paths.
+        ///     Finds all ScriptableObject assets in the project and returns their paths.
         /// </summary>
         /// <returns>List of paths to ScriptableObject assets</returns>
         public List<string> GetAllNames()
         {
             // Safely retrieve ScriptableObject GUIDs using AssetDatabase
-            string[] options = AssetDatabase.FindAssets("t:ScriptableObject");
+            var options = AssetDatabase.FindAssets("t:ScriptableObject");
             return options.Select(option => AssetDatabase.GUIDToAssetPath(option)).ToList();
         }
 
         /// <summary>
-        /// Reads all DLL files in the project and extracts class names, filtering out system or generated classes.
+        ///     Reads all DLL files in the project and extracts class names, filtering out system or generated classes.
         /// </summary>
         /// <param name="projectPath">Root project path</param>
         /// <returns>List of class names with namespaces</returns>
         public static List<string> GetAllClasses(string projectPath)
         {
-            List<string> classNames = new List<string>();
+            var classNames = new List<string>();
 
             // Get all .dll files in project directories (including subdirectories)
-            string[] scriptFiles = Directory.GetFiles(projectPath, "*.dll", SearchOption.AllDirectories);
+            var scriptFiles = Directory.GetFiles(projectPath, "*.dll", SearchOption.AllDirectories);
 
-            foreach (string dllFile in scriptFiles)
-            {
+            foreach (var dllFile in scriptFiles)
                 try
                 {
                     // Use Mono.Cecil to safely and efficiently parse assemblies
                     var assembly = AssemblyDefinition.ReadAssembly(dllFile);
 
-                    foreach (TypeDefinition type in assembly.MainModule.Types)
+                    foreach (var type in assembly.MainModule.Types)
                     {
                         // Skip generated/system classes or those without a namespace
                         if (type.Name.StartsWith("<") || string.IsNullOrEmpty(type.Namespace)) continue;
@@ -61,18 +60,17 @@ namespace Editor.Utilities
                     // Handle potential Mono.Cecil issues systematically and log meaningful messages
                     Debug.LogError($"Failed to analyze {dllFile}: {ex.Message}");
                 }
-            }
 
             return classNames;
         }
 
         /// <summary>
-        /// Finds all classes derived from ScriptableObject across all project assemblies.
+        ///     Finds all classes derived from ScriptableObject across all project assemblies.
         /// </summary>
         /// <returns>Dictionary of ScriptableObject class types</returns>
         public static Dictionary<Type, string> GetAllScriptableObjectClasses()
         {
-            Dictionary<Type, string> scriptableObjectClasses = new Dictionary<Type, string>();
+            var scriptableObjectClasses = new Dictionary<Type, string>();
 
             try
             {
@@ -82,31 +80,23 @@ namespace Editor.Utilities
                         assembly.GetName().Name.StartsWith("Assembly-CSharp")); // Avoid irrelevant assemblies
 
                 foreach (var assembly in assemblies)
-                {
                     try
                     {
                         var types = assembly.GetTypes();
 
                         foreach (var type in types)
-                        {
                             // Check for non-abstract, ScriptableObject-derived classes
                             if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(ScriptableObject)))
-                            {
                                 // Verify inclusion in relevant assemblies through GoogleSheets settings
                                 if (GoogleSheetsHelper.GoogleSheetsCustomSettings?.AssembliesToInclude?
                                         .Contains(type.Assembly.GetName().Name) == true)
-                                {
                                     scriptableObjectClasses.Add(type, type.Assembly.GetName().Name);
-                                }
-                            }
-                        }
                     }
                     catch (ReflectionTypeLoadException ex)
                     {
                         // Handle type reflection errors
                         Debug.LogWarning($"Failed to load types from assembly {assembly.GetName().Name}: {ex.Message}");
                     }
-                }
             }
             catch (Exception ex)
             {
