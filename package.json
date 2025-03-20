@@ -1,6 +1,6 @@
 {
   "name": "com.definitiveinfinitymedia.googlesheets",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "displayName": "Google Sheets",
   "description": "A package for Unity that syncs data between a local csv and the Google Sheet",
   "unity": "2021.1",
