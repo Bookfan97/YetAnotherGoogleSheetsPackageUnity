@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2025-03-20
+### :sparkles: New Features
+- [`4fedf26`](https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/commit/4fedf266d9fe52e952e964425f5894b715199b37) - Remove Dependency on Localization Package *(commit by [@Bookfan97](https://github.com/Bookfan97))*
+
+
 ## [2.2.0] - 2025-01-08
 ### :sparkles: New Features
 - [`b41675b`](https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/commit/b41675b0bcb56f2bfd09934eda7e27caa2f25e1f) - Google Sheets Icon *(commit by [@Bookfan97](https://github.com/Bookfan97))*
@@ -53,3 +58,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [2.0.0]: https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/compare/1.0.0...2.0.0
 [2.1.0]: https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/compare/2.0.0...2.1.0
 [2.2.0]: https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/compare/2.1.0...2.2.0
+[2.3.0]: https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/compare/2.2.0...2.3.0
