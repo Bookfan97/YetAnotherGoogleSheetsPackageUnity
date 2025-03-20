@@ -10,7 +10,5 @@
   "author": {
     "name": "Definitive Infinity Media"
   },
-  "dependencies": {
-    "com.unity.localization": "1.5.3"
-  }
+  "dependencies": {}
 }
