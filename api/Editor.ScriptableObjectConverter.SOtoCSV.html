@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class SOtoCSV | Google Sheets | 2.2.0 </title>
+      <title>Class SOtoCSV | Google Sheets | 2.3.2 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class SOtoCSV | Google Sheets | 2.2.0 ">
+      <meta name="title" content="Class SOtoCSV | Google Sheets | 2.3.2 ">
       
       <meta name="description" content="The SOtoCSV class provides functionality to convert ScriptableObject data to CSV format and save it to a file. It also supports creating ScriptableObject instances from CSV data.">
       <link rel="icon" href="../favicon.ico">
@@ -159,7 +159,7 @@ instances from CSV data.</p>
 
   <h3 id="Editor_ScriptableObjectConverter_SOtoCSV_SaveToFile_System_String_System_Collections_Generic_List_System_String__System_String_" data-uid="Editor.ScriptableObjectConverter.SOtoCSV.SaveToFile(System.String,System.Collections.Generic.List{System.String},System.String)">
   SaveToFile(string, List&lt;string&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/SOtoCSV.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/SOtoCSV.cs/#L218"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Saves data to a specified file in CSV format using the provided headers and data content.</p>
@@ -198,7 +198,7 @@ instances from CSV data.</p>
 
   <h3 id="Editor_ScriptableObjectConverter_SOtoCSV_ScriptableObjectsToCSV_Editor_Google_Sheets_DataItem_" data-uid="Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV(Editor.Google_Sheets.DataItem)">
   ScriptableObjectsToCSV(DataItem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/SOtoCSV.cs/#L245"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/SOtoCSV.cs/#L253"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts data from a CSV file into ScriptableObjects and populates their fields based on the provided data item.</p>
@@ -212,7 +212,8 @@ instances from CSV data.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>dataItem</code> <a class="xref" href="Editor.Google_Sheets.DataItem.html">DataItem</a></dt>
-    <dd><p>An instance of DataItem containing information about the ScriptableObject type and the path to the CSV file.</p>
+    <dd><p>An instance of DataItem containing information about the ScriptableObject type and the path to
+the CSV file.</p>
 </dd>
   </dl>
 
@@ -231,7 +232,7 @@ instances from CSV data.</p>
 
   <h3 id="Editor_ScriptableObjectConverter_SOtoCSV_ScriptableObjectsToCSV_System_Type_Editor_Google_Sheets_DataItem_System_Nullable_System_Boolean__" data-uid="Editor.ScriptableObjectConverter.SOtoCSV.ScriptableObjectsToCSV(System.Type,Editor.Google_Sheets.DataItem,System.Nullable{System.Boolean})">
   ScriptableObjectsToCSV(Type, DataItem, bool?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/SOtoCSV.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/SOtoCSV.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts CSV data into ScriptableObjects and populates their fields based on the CSV content.</p>
@@ -251,7 +252,8 @@ instances from CSV data.</p>
     <dd><p>The file path to the CSV file containing the data.</p>
 </dd>
     <dt><code>skipPopups</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
-    <dd><p>Determines if popups (e.g., progress bars or dialog messages) should be skipped during the operation. Defaults to false.</p>
+    <dd><p>Determines if popups (e.g., progress bars or dialog messages) should be skipped during the
+operation. Defaults to false.</p>
 </dd>
   </dl>
 
@@ -270,7 +272,7 @@ instances from CSV data.</p>
 
   <h3 id="Editor_ScriptableObjectConverter_SOtoCSV_ToCSV_System_String_System_Collections_Generic_List_System_String__" data-uid="Editor.ScriptableObjectConverter.SOtoCSV.ToCSV(System.String,System.Collections.Generic.List{System.String})">
   ToCSV(string, List&lt;string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/SOtoCSV.cs/#L193"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/ScriptableObjectConverter/SOtoCSV.cs/#L204"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts a collection of data lines and a set of headers into a single CSV-formatted string.</p>
@@ -284,7 +286,8 @@ instances from CSV data.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>headers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>A string representing the headers for the CSV file, usually separated by a delimiter such as a comma.</p>
+    <dd><p>A string representing the headers for the CSV file, usually separated by a delimiter such as a
+comma.</p>
 </dd>
     <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd><p>A list of data lines where each line corresponds to a row of the CSV file.</p>

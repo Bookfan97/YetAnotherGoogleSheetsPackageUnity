@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class GoogleSheetsInstance | Google Sheets | 2.2.0 </title>
+      <title>Class GoogleSheetsInstance | Google Sheets | 2.3.2 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class GoogleSheetsInstance | Google Sheets | 2.2.0 ">
+      <meta name="title" content="Class GoogleSheetsInstance | Google Sheets | 2.3.2 ">
       
       <meta name="description" content="Manages the interactions with Google Sheets by providing functionalities for uploading and downloading data.">
       <link rel="icon" href="../favicon.ico">
@@ -153,10 +153,10 @@ Class GoogleSheetsInstance  <a class="header-action link-secondary" title="View 
 </h2>
 
 
-  <a id="Editor_Google_Sheets_GoogleSheetsInstance_DownloadData_" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.DownloadData*"></a>
+  <a id="Editor_Google_Sheets_GoogleSheetsInstance_DownloadAllData_" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.DownloadAllData*"></a>
 
-  <h3 id="Editor_Google_Sheets_GoogleSheetsInstance_DownloadData" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.DownloadData">
-  DownloadData()
+  <h3 id="Editor_Google_Sheets_GoogleSheetsInstance_DownloadAllData" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.DownloadAllData">
+  DownloadAllData()
   <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsInstance.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -165,7 +165,7 @@ Class GoogleSheetsInstance  <a class="header-action link-secondary" title="View 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void DownloadData()</code></pre>
+    <pre><code class="lang-csharp hljs">public void DownloadAllData()</code></pre>
   </div>
 
 
@@ -180,10 +180,42 @@ Class GoogleSheetsInstance  <a class="header-action link-secondary" title="View 
 
 
 
-  <a id="Editor_Google_Sheets_GoogleSheetsInstance_UploadData_" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.UploadData*"></a>
+  <a id="Editor_Google_Sheets_GoogleSheetsInstance_DownloadSheetData_" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.DownloadSheetData*"></a>
 
-  <h3 id="Editor_Google_Sheets_GoogleSheetsInstance_UploadData" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.UploadData">
-  UploadData()
+  <h3 id="Editor_Google_Sheets_GoogleSheetsInstance_DownloadSheetData_Editor_Google_Sheets_DataItem_" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.DownloadSheetData(Editor.Google_Sheets.DataItem)">
+  DownloadSheetData(DataItem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsInstance.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Downloads data from a Google Sheets spreadsheet to a local CSV file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DownloadSheetData(DataItem dataItem)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dataItem</code> <a class="xref" href="Editor.Google_Sheets.DataItem.html">DataItem</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Editor_Google_Sheets_GoogleSheetsInstance_UploadAllData_" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.UploadAllData*"></a>
+
+  <h3 id="Editor_Google_Sheets_GoogleSheetsInstance_UploadAllData" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.UploadAllData">
+  UploadAllData()
   <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsInstance.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -192,9 +224,41 @@ Class GoogleSheetsInstance  <a class="header-action link-secondary" title="View 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UploadData()</code></pre>
+    <pre><code class="lang-csharp hljs">public void UploadAllData()</code></pre>
   </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Editor_Google_Sheets_GoogleSheetsInstance_UploadSheetData_" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.UploadSheetData*"></a>
+
+  <h3 id="Editor_Google_Sheets_GoogleSheetsInstance_UploadSheetData_Editor_Google_Sheets_DataItem_" data-uid="Editor.Google_Sheets.GoogleSheetsInstance.UploadSheetData(Editor.Google_Sheets.DataItem)">
+  UploadSheetData(DataItem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsInstance.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Uploads data from a local CSV file to a Google Sheets spreadsheet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UploadSheetData(DataItem dataItem)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dataItem</code> <a class="xref" href="Editor.Google_Sheets.DataItem.html">DataItem</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

@@ -496,19 +496,32 @@ references:
   commentId: T:Editor.Google_Sheets.GoogleSheetsDownloader
   fullName: Editor.Google_Sheets.GoogleSheetsDownloader
   nameWithType: GoogleSheetsDownloader
-- uid: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadData
-  name: DownloadData()
-  href: api/Editor.Google_Sheets.GoogleSheetsDownloader.html#Editor_Google_Sheets_GoogleSheetsDownloader_DownloadData
-  commentId: M:Editor.Google_Sheets.GoogleSheetsDownloader.DownloadData
-  fullName: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadData()
-  nameWithType: GoogleSheetsDownloader.DownloadData()
-- uid: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadData*
-  name: DownloadData
-  href: api/Editor.Google_Sheets.GoogleSheetsDownloader.html#Editor_Google_Sheets_GoogleSheetsDownloader_DownloadData_
-  commentId: Overload:Editor.Google_Sheets.GoogleSheetsDownloader.DownloadData
+- uid: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadAllData
+  name: DownloadAllData()
+  href: api/Editor.Google_Sheets.GoogleSheetsDownloader.html#Editor_Google_Sheets_GoogleSheetsDownloader_DownloadAllData
+  commentId: M:Editor.Google_Sheets.GoogleSheetsDownloader.DownloadAllData
+  fullName: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadAllData()
+  nameWithType: GoogleSheetsDownloader.DownloadAllData()
+- uid: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadAllData*
+  name: DownloadAllData
+  href: api/Editor.Google_Sheets.GoogleSheetsDownloader.html#Editor_Google_Sheets_GoogleSheetsDownloader_DownloadAllData_
+  commentId: Overload:Editor.Google_Sheets.GoogleSheetsDownloader.DownloadAllData
   isSpec: "True"
-  fullName: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadData
-  nameWithType: GoogleSheetsDownloader.DownloadData
+  fullName: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadAllData
+  nameWithType: GoogleSheetsDownloader.DownloadAllData
+- uid: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadSheetData(Editor.Google_Sheets.DataItem)
+  name: DownloadSheetData(DataItem)
+  href: api/Editor.Google_Sheets.GoogleSheetsDownloader.html#Editor_Google_Sheets_GoogleSheetsDownloader_DownloadSheetData_Editor_Google_Sheets_DataItem_
+  commentId: M:Editor.Google_Sheets.GoogleSheetsDownloader.DownloadSheetData(Editor.Google_Sheets.DataItem)
+  fullName: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadSheetData(Editor.Google_Sheets.DataItem)
+  nameWithType: GoogleSheetsDownloader.DownloadSheetData(DataItem)
+- uid: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadSheetData*
+  name: DownloadSheetData
+  href: api/Editor.Google_Sheets.GoogleSheetsDownloader.html#Editor_Google_Sheets_GoogleSheetsDownloader_DownloadSheetData_
+  commentId: Overload:Editor.Google_Sheets.GoogleSheetsDownloader.DownloadSheetData
+  isSpec: "True"
+  fullName: Editor.Google_Sheets.GoogleSheetsDownloader.DownloadSheetData
+  nameWithType: GoogleSheetsDownloader.DownloadSheetData
 - uid: Editor.Google_Sheets.GoogleSheetsHelper
   name: GoogleSheetsHelper
   href: api/Editor.Google_Sheets.GoogleSheetsHelper.html
@@ -576,63 +589,96 @@ references:
   commentId: T:Editor.Google_Sheets.GoogleSheetsInstance
   fullName: Editor.Google_Sheets.GoogleSheetsInstance
   nameWithType: GoogleSheetsInstance
-- uid: Editor.Google_Sheets.GoogleSheetsInstance.DownloadData
-  name: DownloadData()
-  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_DownloadData
-  commentId: M:Editor.Google_Sheets.GoogleSheetsInstance.DownloadData
-  fullName: Editor.Google_Sheets.GoogleSheetsInstance.DownloadData()
-  nameWithType: GoogleSheetsInstance.DownloadData()
-- uid: Editor.Google_Sheets.GoogleSheetsInstance.DownloadData*
-  name: DownloadData
-  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_DownloadData_
-  commentId: Overload:Editor.Google_Sheets.GoogleSheetsInstance.DownloadData
+- uid: Editor.Google_Sheets.GoogleSheetsInstance.DownloadAllData
+  name: DownloadAllData()
+  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_DownloadAllData
+  commentId: M:Editor.Google_Sheets.GoogleSheetsInstance.DownloadAllData
+  fullName: Editor.Google_Sheets.GoogleSheetsInstance.DownloadAllData()
+  nameWithType: GoogleSheetsInstance.DownloadAllData()
+- uid: Editor.Google_Sheets.GoogleSheetsInstance.DownloadAllData*
+  name: DownloadAllData
+  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_DownloadAllData_
+  commentId: Overload:Editor.Google_Sheets.GoogleSheetsInstance.DownloadAllData
   isSpec: "True"
-  fullName: Editor.Google_Sheets.GoogleSheetsInstance.DownloadData
-  nameWithType: GoogleSheetsInstance.DownloadData
-- uid: Editor.Google_Sheets.GoogleSheetsInstance.UploadData
-  name: UploadData()
-  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_UploadData
-  commentId: M:Editor.Google_Sheets.GoogleSheetsInstance.UploadData
-  fullName: Editor.Google_Sheets.GoogleSheetsInstance.UploadData()
-  nameWithType: GoogleSheetsInstance.UploadData()
-- uid: Editor.Google_Sheets.GoogleSheetsInstance.UploadData*
-  name: UploadData
-  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_UploadData_
-  commentId: Overload:Editor.Google_Sheets.GoogleSheetsInstance.UploadData
+  fullName: Editor.Google_Sheets.GoogleSheetsInstance.DownloadAllData
+  nameWithType: GoogleSheetsInstance.DownloadAllData
+- uid: Editor.Google_Sheets.GoogleSheetsInstance.DownloadSheetData(Editor.Google_Sheets.DataItem)
+  name: DownloadSheetData(DataItem)
+  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_DownloadSheetData_Editor_Google_Sheets_DataItem_
+  commentId: M:Editor.Google_Sheets.GoogleSheetsInstance.DownloadSheetData(Editor.Google_Sheets.DataItem)
+  fullName: Editor.Google_Sheets.GoogleSheetsInstance.DownloadSheetData(Editor.Google_Sheets.DataItem)
+  nameWithType: GoogleSheetsInstance.DownloadSheetData(DataItem)
+- uid: Editor.Google_Sheets.GoogleSheetsInstance.DownloadSheetData*
+  name: DownloadSheetData
+  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_DownloadSheetData_
+  commentId: Overload:Editor.Google_Sheets.GoogleSheetsInstance.DownloadSheetData
   isSpec: "True"
-  fullName: Editor.Google_Sheets.GoogleSheetsInstance.UploadData
-  nameWithType: GoogleSheetsInstance.UploadData
+  fullName: Editor.Google_Sheets.GoogleSheetsInstance.DownloadSheetData
+  nameWithType: GoogleSheetsInstance.DownloadSheetData
+- uid: Editor.Google_Sheets.GoogleSheetsInstance.UploadAllData
+  name: UploadAllData()
+  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_UploadAllData
+  commentId: M:Editor.Google_Sheets.GoogleSheetsInstance.UploadAllData
+  fullName: Editor.Google_Sheets.GoogleSheetsInstance.UploadAllData()
+  nameWithType: GoogleSheetsInstance.UploadAllData()
+- uid: Editor.Google_Sheets.GoogleSheetsInstance.UploadAllData*
+  name: UploadAllData
+  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_UploadAllData_
+  commentId: Overload:Editor.Google_Sheets.GoogleSheetsInstance.UploadAllData
+  isSpec: "True"
+  fullName: Editor.Google_Sheets.GoogleSheetsInstance.UploadAllData
+  nameWithType: GoogleSheetsInstance.UploadAllData
+- uid: Editor.Google_Sheets.GoogleSheetsInstance.UploadSheetData(Editor.Google_Sheets.DataItem)
+  name: UploadSheetData(DataItem)
+  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_UploadSheetData_Editor_Google_Sheets_DataItem_
+  commentId: M:Editor.Google_Sheets.GoogleSheetsInstance.UploadSheetData(Editor.Google_Sheets.DataItem)
+  fullName: Editor.Google_Sheets.GoogleSheetsInstance.UploadSheetData(Editor.Google_Sheets.DataItem)
+  nameWithType: GoogleSheetsInstance.UploadSheetData(DataItem)
+- uid: Editor.Google_Sheets.GoogleSheetsInstance.UploadSheetData*
+  name: UploadSheetData
+  href: api/Editor.Google_Sheets.GoogleSheetsInstance.html#Editor_Google_Sheets_GoogleSheetsInstance_UploadSheetData_
+  commentId: Overload:Editor.Google_Sheets.GoogleSheetsInstance.UploadSheetData
+  isSpec: "True"
+  fullName: Editor.Google_Sheets.GoogleSheetsInstance.UploadSheetData
+  nameWithType: GoogleSheetsInstance.UploadSheetData
 - uid: Editor.Google_Sheets.GoogleSheetsUploader
   name: GoogleSheetsUploader
   href: api/Editor.Google_Sheets.GoogleSheetsUploader.html
   commentId: T:Editor.Google_Sheets.GoogleSheetsUploader
   fullName: Editor.Google_Sheets.GoogleSheetsUploader
   nameWithType: GoogleSheetsUploader
-- uid: Editor.Google_Sheets.GoogleSheetsUploader.UploadData
-  name: UploadData()
-  href: api/Editor.Google_Sheets.GoogleSheetsUploader.html#Editor_Google_Sheets_GoogleSheetsUploader_UploadData
-  commentId: M:Editor.Google_Sheets.GoogleSheetsUploader.UploadData
-  fullName: Editor.Google_Sheets.GoogleSheetsUploader.UploadData()
-  nameWithType: GoogleSheetsUploader.UploadData()
-- uid: Editor.Google_Sheets.GoogleSheetsUploader.UploadData*
-  name: UploadData
-  href: api/Editor.Google_Sheets.GoogleSheetsUploader.html#Editor_Google_Sheets_GoogleSheetsUploader_UploadData_
-  commentId: Overload:Editor.Google_Sheets.GoogleSheetsUploader.UploadData
+- uid: Editor.Google_Sheets.GoogleSheetsUploader.UploadAllData
+  name: UploadAllData()
+  href: api/Editor.Google_Sheets.GoogleSheetsUploader.html#Editor_Google_Sheets_GoogleSheetsUploader_UploadAllData
+  commentId: M:Editor.Google_Sheets.GoogleSheetsUploader.UploadAllData
+  fullName: Editor.Google_Sheets.GoogleSheetsUploader.UploadAllData()
+  nameWithType: GoogleSheetsUploader.UploadAllData()
+- uid: Editor.Google_Sheets.GoogleSheetsUploader.UploadAllData*
+  name: UploadAllData
+  href: api/Editor.Google_Sheets.GoogleSheetsUploader.html#Editor_Google_Sheets_GoogleSheetsUploader_UploadAllData_
+  commentId: Overload:Editor.Google_Sheets.GoogleSheetsUploader.UploadAllData
   isSpec: "True"
-  fullName: Editor.Google_Sheets.GoogleSheetsUploader.UploadData
-  nameWithType: GoogleSheetsUploader.UploadData
+  fullName: Editor.Google_Sheets.GoogleSheetsUploader.UploadAllData
+  nameWithType: GoogleSheetsUploader.UploadAllData
+- uid: Editor.Google_Sheets.GoogleSheetsUploader.UploadSheetData(Editor.Google_Sheets.DataItem)
+  name: UploadSheetData(DataItem)
+  href: api/Editor.Google_Sheets.GoogleSheetsUploader.html#Editor_Google_Sheets_GoogleSheetsUploader_UploadSheetData_Editor_Google_Sheets_DataItem_
+  commentId: M:Editor.Google_Sheets.GoogleSheetsUploader.UploadSheetData(Editor.Google_Sheets.DataItem)
+  fullName: Editor.Google_Sheets.GoogleSheetsUploader.UploadSheetData(Editor.Google_Sheets.DataItem)
+  nameWithType: GoogleSheetsUploader.UploadSheetData(DataItem)
+- uid: Editor.Google_Sheets.GoogleSheetsUploader.UploadSheetData*
+  name: UploadSheetData
+  href: api/Editor.Google_Sheets.GoogleSheetsUploader.html#Editor_Google_Sheets_GoogleSheetsUploader_UploadSheetData_
+  commentId: Overload:Editor.Google_Sheets.GoogleSheetsUploader.UploadSheetData
+  isSpec: "True"
+  fullName: Editor.Google_Sheets.GoogleSheetsUploader.UploadSheetData
+  nameWithType: GoogleSheetsUploader.UploadSheetData
 - uid: Editor.MenuItems
   name: MenuItems
   href: api/Editor.MenuItems.html
   commentId: T:Editor.MenuItems
   fullName: Editor.MenuItems
   nameWithType: MenuItems
-- uid: Editor.MenuItems.csvPath
-  name: csvPath
-  href: api/Editor.MenuItems.html#Editor_MenuItems_csvPath
-  commentId: F:Editor.MenuItems.csvPath
-  fullName: Editor.MenuItems.csvPath
-  nameWithType: MenuItems.csvPath
 - uid: Editor.Project_Settings
   name: Editor.Project_Settings
   href: api/Editor.Project_Settings.html
@@ -729,6 +775,19 @@ references:
   isSpec: "True"
   fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.GetScriptableObjectforSheet
   nameWithType: GoogleSheetsCustomSettings.GetScriptableObjectforSheet
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.LoadScriptableObjects
+  name: LoadScriptableObjects()
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_LoadScriptableObjects
+  commentId: M:Editor.Project_Settings.GoogleSheetsCustomSettings.LoadScriptableObjects
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.LoadScriptableObjects()
+  nameWithType: GoogleSheetsCustomSettings.LoadScriptableObjects()
+- uid: Editor.Project_Settings.GoogleSheetsCustomSettings.LoadScriptableObjects*
+  name: LoadScriptableObjects
+  href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_LoadScriptableObjects_
+  commentId: Overload:Editor.Project_Settings.GoogleSheetsCustomSettings.LoadScriptableObjects
+  isSpec: "True"
+  fullName: Editor.Project_Settings.GoogleSheetsCustomSettings.LoadScriptableObjects
+  nameWithType: GoogleSheetsCustomSettings.LoadScriptableObjects
 - uid: Editor.Project_Settings.GoogleSheetsCustomSettings.MSpreadsheetID
   name: MSpreadsheetID
   href: api/Editor.Project_Settings.GoogleSheetsCustomSettings.html#Editor_Project_Settings_GoogleSheetsCustomSettings_MSpreadsheetID
@@ -962,6 +1021,28 @@ references:
   commentId: N:Editor.Utilities
   fullName: Editor.Utilities
   nameWithType: Editor.Utilities
+- uid: Editor.Utilities.CSVUtils
+  name: CSVUtils
+  href: api/Editor.Utilities.CSVUtils.html
+  commentId: T:Editor.Utilities.CSVUtils
+  fullName: Editor.Utilities.CSVUtils
+  nameWithType: CSVUtils
+- uid: Editor.Utilities.CSVUtils.ParseLine(System.String)
+  name: ParseLine(string)
+  href: api/Editor.Utilities.CSVUtils.html#Editor_Utilities_CSVUtils_ParseLine_System_String_
+  commentId: M:Editor.Utilities.CSVUtils.ParseLine(System.String)
+  name.vb: ParseLine(String)
+  fullName: Editor.Utilities.CSVUtils.ParseLine(string)
+  fullName.vb: Editor.Utilities.CSVUtils.ParseLine(String)
+  nameWithType: CSVUtils.ParseLine(string)
+  nameWithType.vb: CSVUtils.ParseLine(String)
+- uid: Editor.Utilities.CSVUtils.ParseLine*
+  name: ParseLine
+  href: api/Editor.Utilities.CSVUtils.html#Editor_Utilities_CSVUtils_ParseLine_
+  commentId: Overload:Editor.Utilities.CSVUtils.ParseLine
+  isSpec: "True"
+  fullName: Editor.Utilities.CSVUtils.ParseLine
+  nameWithType: CSVUtils.ParseLine
 - uid: Editor.Utilities.GetAllScriptableObjects
   name: GetAllScriptableObjects
   href: api/Editor.Utilities.GetAllScriptableObjects.html
@@ -1010,3 +1091,15 @@ references:
   isSpec: "True"
   fullName: Editor.Utilities.GetAllScriptableObjects.GetAllScriptableObjectClasses
   nameWithType: GetAllScriptableObjects.GetAllScriptableObjectClasses
+- uid: Editor.Window
+  name: Editor.Window
+  href: api/Editor.Window.html
+  commentId: N:Editor.Window
+  fullName: Editor.Window
+  nameWithType: Editor.Window
+- uid: Editor.Window.GoogleSheetsEditorWindow
+  name: GoogleSheetsEditorWindow
+  href: api/Editor.Window.GoogleSheetsEditorWindow.html
+  commentId: T:Editor.Window.GoogleSheetsEditorWindow
+  fullName: Editor.Window.GoogleSheetsEditorWindow
+  nameWithType: GoogleSheetsEditorWindow

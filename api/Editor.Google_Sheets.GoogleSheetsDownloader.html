@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class GoogleSheetsDownloader | Google Sheets | 2.2.0 </title>
+      <title>Class GoogleSheetsDownloader | Google Sheets | 2.3.2 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class GoogleSheetsDownloader | Google Sheets | 2.2.0 ">
+      <meta name="title" content="Class GoogleSheetsDownloader | Google Sheets | 2.3.2 ">
       
       <meta name="description" content="Responsible for downloading data from a specified Google Sheets spreadsheet.">
       <link rel="icon" href="../favicon.ico">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Editor_Google_Sheets_GoogleSheetsDownloader" data-uid="Editor.Google_Sheets.GoogleSheetsDownloader" class="text-break">
-Class GoogleSheetsDownloader  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsDownloader.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Class GoogleSheetsDownloader  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsDownloader.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -153,19 +153,19 @@ Class GoogleSheetsDownloader  <a class="header-action link-secondary" title="Vie
 </h2>
 
 
-  <a id="Editor_Google_Sheets_GoogleSheetsDownloader_DownloadData_" data-uid="Editor.Google_Sheets.GoogleSheetsDownloader.DownloadData*"></a>
+  <a id="Editor_Google_Sheets_GoogleSheetsDownloader_DownloadAllData_" data-uid="Editor.Google_Sheets.GoogleSheetsDownloader.DownloadAllData*"></a>
 
-  <h3 id="Editor_Google_Sheets_GoogleSheetsDownloader_DownloadData" data-uid="Editor.Google_Sheets.GoogleSheetsDownloader.DownloadData">
-  DownloadData()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsDownloader.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Editor_Google_Sheets_GoogleSheetsDownloader_DownloadAllData" data-uid="Editor.Google_Sheets.GoogleSheetsDownloader.DownloadAllData">
+  DownloadAllData()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsDownloader.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Downloads data from the Google Sheets spreadsheet specified in the project settings.</p>
+  <div class="markdown level1 summary"><p>Downloads data from all the Google Sheets spreadsheet specified in the project settings.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void DownloadData()</code></pre>
+    <pre><code class="lang-csharp hljs">public void DownloadAllData()</code></pre>
   </div>
 
 
@@ -176,7 +176,50 @@ Class GoogleSheetsDownloader  <a class="header-action link-secondary" title="Vie
 
 
 
-  <h4 class="section" id="Editor_Google_Sheets_GoogleSheetsDownloader_DownloadData_remarks">Remarks</h4>
+  <h4 class="section" id="Editor_Google_Sheets_GoogleSheetsDownloader_DownloadAllData_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method initializes the Google Sheets service, retrieves the spreadsheet data,
+and then generates a CSV file from the downloaded data. If an error occurs during
+the download, an error message is logged and the exception is rethrown.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown when an error occurs during the download process.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Editor_Google_Sheets_GoogleSheetsDownloader_DownloadSheetData_" data-uid="Editor.Google_Sheets.GoogleSheetsDownloader.DownloadSheetData*"></a>
+
+  <h3 id="Editor_Google_Sheets_GoogleSheetsDownloader_DownloadSheetData_Editor_Google_Sheets_DataItem_" data-uid="Editor.Google_Sheets.GoogleSheetsDownloader.DownloadSheetData(Editor.Google_Sheets.DataItem)">
+  DownloadSheetData(DataItem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsDownloader.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Downloads data from the Google Sheets spreadsheet specified in the parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DownloadSheetData(DataItem dataItem)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dataItem</code> <a class="xref" href="Editor.Google_Sheets.DataItem.html">DataItem</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Editor_Google_Sheets_GoogleSheetsDownloader_DownloadSheetData_Editor_Google_Sheets_DataItem__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method initializes the Google Sheets service, retrieves the spreadsheet data,
 and then generates a CSV file from the downloaded data. If an error occurs during
 the download, an error message is logged and the exception is rethrown.</p>

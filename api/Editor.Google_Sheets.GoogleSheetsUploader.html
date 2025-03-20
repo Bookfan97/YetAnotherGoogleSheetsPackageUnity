@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class GoogleSheetsUploader | Google Sheets | 2.2.0 </title>
+      <title>Class GoogleSheetsUploader | Google Sheets | 2.3.2 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class GoogleSheetsUploader | Google Sheets | 2.2.0 ">
+      <meta name="title" content="Class GoogleSheetsUploader | Google Sheets | 2.3.2 ">
       
-      <meta name="description" content="A utility class that handles the uploading of data from a local CSV file to a Google Sheets spreadsheet. This class reads CSV data from a configured file path and uses the Google Sheets API to paste the data into a specified spreadsheet.">
+      <meta name="description" content="A utility class that handles the uploading of data from all local CSV file to each Google Sheets spreadsheet. This class reads CSV data from a configured file path and uses the Google Sheets API to paste the data into a specified spreadsheet.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,7 @@ Class GoogleSheetsUploader  <a class="header-action link-secondary" title="View 
   
   </div>
 
-  <div class="markdown summary"><p>A utility class that handles the uploading of data from a local CSV file to a Google Sheets spreadsheet.
+  <div class="markdown summary"><p>A utility class that handles the uploading of data from all local CSV file to each Google Sheets spreadsheet.
 This class reads CSV data from a configured file path and uses the Google Sheets API to paste the data into a
 specified spreadsheet.</p>
 </div>
@@ -155,10 +155,10 @@ specified spreadsheet.</p>
 </h2>
 
 
-  <a id="Editor_Google_Sheets_GoogleSheetsUploader_UploadData_" data-uid="Editor.Google_Sheets.GoogleSheetsUploader.UploadData*"></a>
+  <a id="Editor_Google_Sheets_GoogleSheetsUploader_UploadAllData_" data-uid="Editor.Google_Sheets.GoogleSheetsUploader.UploadAllData*"></a>
 
-  <h3 id="Editor_Google_Sheets_GoogleSheetsUploader_UploadData" data-uid="Editor.Google_Sheets.GoogleSheetsUploader.UploadData">
-  UploadData()
+  <h3 id="Editor_Google_Sheets_GoogleSheetsUploader_UploadAllData" data-uid="Editor.Google_Sheets.GoogleSheetsUploader.UploadAllData">
+  UploadAllData()
   <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsUploader.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -167,7 +167,7 @@ specified spreadsheet.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UploadData()</code></pre>
+    <pre><code class="lang-csharp hljs">public void UploadAllData()</code></pre>
   </div>
 
 
@@ -178,7 +178,44 @@ specified spreadsheet.</p>
 
 
 
-  <h4 class="section" id="Editor_Google_Sheets_GoogleSheetsUploader_UploadData_remarks">Remarks</h4>
+  <h4 class="section" id="Editor_Google_Sheets_GoogleSheetsUploader_UploadAllData_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method reads the contents of a CSV file located at the path specified in the project settings.
+It then uses the Google Sheets API to paste this data into the first sheet of the spreadsheet.
+The method logs an error if the update fails.</p>
+</div>
+
+
+
+
+  <a id="Editor_Google_Sheets_GoogleSheetsUploader_UploadSheetData_" data-uid="Editor.Google_Sheets.GoogleSheetsUploader.UploadSheetData*"></a>
+
+  <h3 id="Editor_Google_Sheets_GoogleSheetsUploader_UploadSheetData_Editor_Google_Sheets_DataItem_" data-uid="Editor.Google_Sheets.GoogleSheetsUploader.UploadSheetData(Editor.Google_Sheets.DataItem)">
+  UploadSheetData(DataItem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/blob/main/Editor/Google Sheets/GoogleSheetsUploader.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Uploads data from a local CSV file to a specified Google Sheets spreadsheet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UploadSheetData(DataItem dataItem)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dataItem</code> <a class="xref" href="Editor.Google_Sheets.DataItem.html">DataItem</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Editor_Google_Sheets_GoogleSheetsUploader_UploadSheetData_Editor_Google_Sheets_DataItem__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method reads the contents of a CSV file located at the path specified in the project settings.
 It then uses the Google Sheets API to paste this data into the first sheet of the spreadsheet.
 The method logs an error if the update fails.</p>

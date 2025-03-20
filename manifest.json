@@ -21,7 +21,11 @@
           "relative_path": "api/Editor.Data.CSVData.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Data.CSVData",
+      "Summary": "<p sourcefile=\"api/Editor.Data.CSVData.yml\" sourcestartlinenumber=\"1\">Represents data for a single CSV entry</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -31,7 +35,11 @@
           "relative_path": "api/Editor.Data.GoogleSheetsJSONData.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Data.GoogleSheetsJSONData",
+      "Summary": "<p sourcefile=\"api/Editor.Data.GoogleSheetsJSONData.yml\" sourcestartlinenumber=\"1\">Container class that contains data for all scriptable object types linked to Google Sheets</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -41,7 +49,11 @@
           "relative_path": "api/Editor.Data.JSONUtility.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Data.JSONUtility",
+      "Summary": "<p sourcefile=\"api/Editor.Data.JSONUtility.yml\" sourcestartlinenumber=\"1\">Utility class for handling JSON data related to Google Sheets in Unity editor.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -51,7 +63,11 @@
           "relative_path": "api/Editor.Data.SheetData.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Data.SheetData",
+      "Summary": "<p sourcefile=\"api/Editor.Data.SheetData.yml\" sourcestartlinenumber=\"1\">Represents data for a single sheet</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -61,7 +77,11 @@
           "relative_path": "api/Editor.Data.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Data",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -71,7 +91,11 @@
           "relative_path": "api/Editor.Google_Sheets.DataItem.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Google_Sheets.DataItem",
+      "Summary": "<p sourcefile=\"api/Editor.Google_Sheets.DataItem.yml\" sourcestartlinenumber=\"1\">Represents a key-value pair for Google Sheets data.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -81,7 +105,11 @@
           "relative_path": "api/Editor.Google_Sheets.GoogleSheetsConfig.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Google_Sheets.GoogleSheetsConfig",
+      "Summary": "<p sourcefile=\"api/Editor.Google_Sheets.GoogleSheetsConfig.yml\" sourcestartlinenumber=\"1\">Represents the configuration settings for accessing and using the Google Sheets API.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -91,7 +119,11 @@
           "relative_path": "api/Editor.Google_Sheets.GoogleSheetsDownloader.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Google_Sheets.GoogleSheetsDownloader",
+      "Summary": "<p sourcefile=\"api/Editor.Google_Sheets.GoogleSheetsDownloader.yml\" sourcestartlinenumber=\"1\">Responsible for downloading data from a specified Google Sheets spreadsheet.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -101,7 +133,11 @@
           "relative_path": "api/Editor.Google_Sheets.GoogleSheetsHelper.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Google_Sheets.GoogleSheetsHelper",
+      "Summary": "<p sourcefile=\"api/Editor.Google_Sheets.GoogleSheetsHelper.yml\" sourcestartlinenumber=\"1\">Provides helper methods and properties for managing Google Sheets settings within the editor.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -111,7 +147,11 @@
           "relative_path": "api/Editor.Google_Sheets.GoogleSheetsInstance.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Google_Sheets.GoogleSheetsInstance",
+      "Summary": "<p sourcefile=\"api/Editor.Google_Sheets.GoogleSheetsInstance.yml\" sourcestartlinenumber=\"1\">Manages the interactions with Google Sheets by providing functionalities for uploading and downloading data.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -121,7 +161,11 @@
           "relative_path": "api/Editor.Google_Sheets.GoogleSheetsUploader.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Google_Sheets.GoogleSheetsUploader",
+      "Summary": "<p sourcefile=\"api/Editor.Google_Sheets.GoogleSheetsUploader.yml\" sourcestartlinenumber=\"1\">A utility class that handles the uploading of data from all local CSV file to each Google Sheets spreadsheet.\nThis class reads CSV data from a configured file path and uses the Google Sheets API to paste the data into a\nspecified spreadsheet.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -131,7 +175,11 @@
           "relative_path": "api/Editor.Google_Sheets.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Google_Sheets",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -141,7 +189,11 @@
           "relative_path": "api/Editor.MenuItems.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.MenuItems",
+      "Summary": "<p sourcefile=\"api/Editor.MenuItems.yml\" sourcestartlinenumber=\"1\">Represents a collection of menu items in the editor.\nThis class provides functionality to manage and interact with the menu items.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -151,7 +203,11 @@
           "relative_path": "api/Editor.Project_Settings.GoogleSheetsCustomSettings.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Project_Settings.GoogleSheetsCustomSettings",
+      "Summary": "<p sourcefile=\"api/Editor.Project_Settings.GoogleSheetsCustomSettings.yml\" sourcestartlinenumber=\"1\">Represents the configuration settings necessary for integrating Google Sheets within a Unity project.\nManages various parameters like spreadsheet ID and data items required for handling Google Sheets operations.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -161,7 +217,11 @@
           "relative_path": "api/Editor.Project_Settings.GoogleSheetsEditorUtilities.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Project_Settings.GoogleSheetsEditorUtilities",
+      "Summary": "<p sourcefile=\"api/Editor.Project_Settings.GoogleSheetsEditorUtilities.yml\" sourcestartlinenumber=\"1\">Provides utility functions for managing Google Sheets integration within the Unity Editor.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -171,7 +231,11 @@
           "relative_path": "api/Editor.Project_Settings.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Project_Settings",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -181,7 +245,11 @@
           "relative_path": "api/Editor.ScriptableObjectConverter.CSVtoSO.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.ScriptableObjectConverter.CSVtoSO",
+      "Summary": "<p sourcefile=\"api/Editor.ScriptableObjectConverter.CSVtoSO.yml\" sourcestartlinenumber=\"1\">A utility class for converting CSV data into Unity ScriptableObjects.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -191,7 +259,11 @@
           "relative_path": "api/Editor.ScriptableObjectConverter.SOtoCSV.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.ScriptableObjectConverter.SOtoCSV",
+      "Summary": "<p sourcefile=\"api/Editor.ScriptableObjectConverter.SOtoCSV.yml\" sourcestartlinenumber=\"1\">The SOtoCSV class provides functionality to convert ScriptableObject data\nto CSV format and save it to a file. It also supports creating ScriptableObject\ninstances from CSV data.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -201,7 +273,25 @@
           "relative_path": "api/Editor.ScriptableObjectConverter.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.ScriptableObjectConverter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Utilities.CSVUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Utilities.CSVUtils.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Utilities.CSVUtils",
+      "Summary": "<p sourcefile=\"api/Editor.Utilities.CSVUtils.yml\" sourcestartlinenumber=\"1\">Provides utility methods for parsing CSV (Comma-Separated Values) formatted strings.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -211,7 +301,11 @@
           "relative_path": "api/Editor.Utilities.GetAllScriptableObjects.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Utilities.GetAllScriptableObjects",
+      "Summary": "<p sourcefile=\"api/Editor.Utilities.GetAllScriptableObjects.yml\" sourcestartlinenumber=\"1\">Provides utility methods for working with ScriptableObjects in Unity projects.\nIncludes functionality for retrieving all ScriptableObject assets, discovering\nclasses in assemblies, and listing ScriptableObject types.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -221,7 +315,39 @@
           "relative_path": "api/Editor.Utilities.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Utilities",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Window.GoogleSheetsEditorWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Window.GoogleSheetsEditorWindow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Window.GoogleSheetsEditorWindow",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Editor.Window.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Editor.Window.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor.Window",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -231,7 +357,11 @@
           "relative_path": "api/Editor.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Editor",
+      "Summary": null
     },
     {
       "type": "Conceptual",
