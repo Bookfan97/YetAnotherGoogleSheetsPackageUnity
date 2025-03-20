@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.2] - 2025-03-20
+### :wrench: Chores
+- [`921a76d`](https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/commit/921a76d7410b02d1a6ae678a0b3d820b4755294e) - Update publish.yml *(commit by [@Bookfan97](https://github.com/Bookfan97))*
+
+
 ## [2.3.1] - 2025-03-20
 ### :bug: Bug Fixes
 - [`d8f5338`](https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/commit/d8f5338024fb465632a4c93bc157e4efb8c47ea1) - Remove Dependency *(commit by [@Bookfan97](https://github.com/Bookfan97))*
@@ -65,3 +70,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [2.2.0]: https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/compare/2.1.0...2.2.0
 [2.3.0]: https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/compare/2.2.0...2.3.0
 [2.3.1]: https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/compare/2.3.0...2.3.1
+[2.3.2]: https://github.com/Bookfan97/YetAnotherGoogleSheetsPackageUnity/compare/2.3.1...2.3.2
